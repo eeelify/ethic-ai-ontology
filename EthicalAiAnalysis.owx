@@ -1,0 +1,3114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://tair.adaptcentre.ie/ontologies/tair" ontologyIRI="http://tair.adaptcentre.ie/ontologies/tair">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="/Activity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/AiApplicationDeveloper"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/AiModelDeveloper"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/AiSystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/AiUser"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Asset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Concept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/ConjuntiveRequirement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/DataPovider"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/DataProvider"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Dataset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/DisjuntiveRequirement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Entity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/ExhibitedCharacteristic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Requirement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/RequirementCollection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/RequirementSpecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Stakeholder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Test"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/ValueChainOrg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AdversarialRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AffectedPerson"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Algorithm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AnonymisedData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Argument"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Article17_RightToErasure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Article20_DataPortability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Article22_AutomatedDecision"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Article46_DataTransfer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Article6_LegalBasis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Article9_SensitiveData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AssessPhase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AuditReport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/AutomationLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/BenchmarkCase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/BiasRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Child"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Claim"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ConformityAssessment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/CreditScoringSystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/CriminalData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/CumulativeRiskVolume"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/DPIA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/DataLifecycleStage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/DataSubjectRight"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/DataTransferMechanism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/DecisionType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Deployer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ERCScore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EducationAISystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EducationExpert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EthicalExpert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EthicalTension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EthnicMinority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationProject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationResponse"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ExplainabilityMethod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/GDPR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/GeneralPurposeAIModel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HRRecruitmentSystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HallucinationRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HealthData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HealthcareAISystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HighRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HighRiskCategory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/HumanOversightMechanism"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/KVKK"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/KVKKGenerativeAIGuideline"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LLM"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LawEnforcementAISystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LegalBasis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LegalExpert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LegalMitigation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LegalPerson"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/LimitedRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/MLModel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/MedicalExpert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/MinimalRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ModelCard"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ModelPerformanceMetric"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/NaturalPerson"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/OrganizationalMitigation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/PersonWithDisability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/PhysicalArea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/PrivacyRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ProhibitedPractice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/PublicServiceAISystem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/R7IQTrb4RaMLziMAVAbN75l"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/R82TD0ystRq1JKaQCnORfUl"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/R8hjUBAYRmndS5FebU232JS"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RBW4tFi0RuAzpgqEtLJA7me"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RBwHdIGCfr50Xhx8lckQlyU"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RDKecqGMn0ec9qsqb82BIAr"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RDU00Z3Ld6gXbk86tmwsq"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RDlMfo7udW9DIeHG241bEO"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RKgl8KRfyRMYCL8YQFetkh"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RPNScore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RegulatoryAuthority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ResolvePhase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Response"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RightToExplanation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RiskMetric"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/Sector"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/SensitiveData"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/SetupPhase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/SeverityLevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/TechinalExpert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalDocumentation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalMitigation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/TestResult"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ThirdPartyCertification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/UseCase"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/UseCaseOwner"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/VulnerableGroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="rdf:LangString"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="rdf:Literal"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="rdf:Resource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Collection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#Form"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalConcept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalEntry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/ns/oa#Annotation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constrains"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#elaborates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#exhibitedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#exhibits"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#governs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#implements"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAffectedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isGovernedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMitigatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isProcessedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isRequirementOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isViolatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#satisfies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#specifies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tracks"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/affectedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/constrainedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/decomposes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/elaboratedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/exhibitedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/implementedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/satisfiedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/specifiedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/trackedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="/uses"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/addressedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/belongsToPhase"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/detectedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasDataTransferMechanism"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEvaluation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRequirement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasResponse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasStatus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/isAssignedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/isGovernedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/mitigates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/processes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/providesEvidence"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/requires"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/transfersTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/triggers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/verifies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/violates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="rdfs:label"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#canonicalForm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#denotes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#lexicalForm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#otherForm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#writtenRep"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/oa#hasBody"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/ns/oa#hasTarget"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/actionPerformed"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/complianceStatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasAnswerWeight"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasImportanceScore"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasRiskScore"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasTimestamp"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasVersion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/isMandatory"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/isSensitive"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/justificationText"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/mitigationDeadline"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/phaseDuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/questionText"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="/RequirementCollection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ChildProtectionPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/CreditScoringDecision"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/DataMinimizationPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/EducationSector"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FairnessAccuracyTension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FairnessPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FinanceSector"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FullyAutomated"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HRSector"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HealthcareSector"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HighRisk"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/LimitedRisk"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/MinimalRisk"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/NoAdequacyDecision"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/NoConsentBasis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/NoExplicitConsentBasis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ProfilingDecision"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/PublicSpace"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ScoringDecision"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/SecurityPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TechnicalDocumentationObligation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TransparencySecurityTension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
+    </Declaration>
+    <Declaration>
+        <Datatype IRI="http://www.w3.org/2001/XMLSchema#duration%20"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="/Activity"/>
+        <Class IRI="/Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Agent"/>
+        <Class IRI="/Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/AiApplicationDeveloper"/>
+        <Class IRI="/ValueChainOrg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/AiModelDeveloper"/>
+        <Class IRI="/ValueChainOrg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/AiUser"/>
+        <Class IRI="/ValueChainOrg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Asset"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Asset"/>
+        <Class IRI="/Dataset"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Asset"/>
+        <Class IRI="/Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Asset"/>
+        <Class IRI="/Test"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Concept"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalConcept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/ConjuntiveRequirement"/>
+        <Class IRI="/Requirement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/DataPovider"/>
+        <Class IRI="/ValueChainOrg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/DataProvider"/>
+        <Class IRI="/ValueChainOrg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/DisjuntiveRequirement"/>
+        <Class IRI="/Requirement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Entity"/>
+        <Class IRI="/Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/ExhibitedCharacteristic"/>
+        <Class IRI="/Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Organization"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Requirement"/>
+        <Class IRI="/RequirementCollection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Requirement"/>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/RequirementCollection"/>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Collection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/RequirementSpecification"/>
+        <Class IRI="/Requirement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Stakeholder"/>
+        <Class IRI="/Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/ValueChainOrg"/>
+        <Class IRI="/Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/AdversarialRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/AffectedPerson"/>
+        <Class IRI="http://webprotege.stanford.edu/NaturalPerson"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Algorithm"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/AnonymisedData"/>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Argument"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Article17_RightToErasure"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Article20_DataPortability"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Article22_AutomatedDecision"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Article46_DataTransfer"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Article6_LegalBasis"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Article9_SensitiveData"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/AssessPhase"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/AuditReport"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/AutomationLevel"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/BenchmarkCase"/>
+        <Class IRI="http://webprotege.stanford.edu/UseCase"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/BiasRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Child"/>
+        <Class IRI="http://webprotege.stanford.edu/VulnerableGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Claim"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ConformityAssessment"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
+        <Class IRI="http://webprotege.stanford.edu/ConformityAssessment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/CreditScoringSystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/CriminalData"/>
+        <Class IRI="http://webprotege.stanford.edu/SensitiveData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/CumulativeRiskVolume"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskMetric"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/DPIA"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPR"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/DataLifecycleStage"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/DataSubjectRight"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/DataTransferMechanism"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/DecisionType"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Deployer"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ERCScore"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskMetric"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EducationAISystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EducationExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EthicalExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EthicalTension"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EthnicMinority"/>
+        <Class IRI="http://webprotege.stanford.edu/VulnerableGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
+        <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationResponse"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ExplainabilityMethod"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/GDPR"/>
+        <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/GDPRArticle"/>
+        <Class IRI="http://webprotege.stanford.edu/GDPR"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/GeneralPurposeAIModel"/>
+        <Class IRI="http://webprotege.stanford.edu/MLModel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HRRecruitmentSystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HallucinationRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HealthData"/>
+        <Class IRI="http://webprotege.stanford.edu/SensitiveData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HealthcareAISystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HighRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HighRiskCategory"/>
+        <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/HumanOversightMechanism"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/KVKK"/>
+        <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/KVKKGenerativeAIGuideline"/>
+        <Class IRI="http://webprotege.stanford.edu/KVKK"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LLM"/>
+        <Class IRI="http://webprotege.stanford.edu/MLModel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LawEnforcementAISystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LegalBasis"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LegalExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LegalMitigation"/>
+        <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LegalPerson"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/LimitedRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/MLModel"/>
+        <Class IRI="http://webprotege.stanford.edu/Algorithm"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/MedicalExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/MinimalRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
+        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ModelCard"/>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ModelPerformanceMetric"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/NaturalPerson"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/OrganizationalMitigation"/>
+        <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/PersonWithDisability"/>
+        <Class IRI="http://webprotege.stanford.edu/VulnerableGroup"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/PhysicalArea"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/PrivacyRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ProhibitedPractice"/>
+        <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/PublicServiceAISystem"/>
+        <Class IRI="/AiSystem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/R7IQTrb4RaMLziMAVAbN75l"/>
+        <Class IRI="http://webprotege.stanford.edu/SensitiveData"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
+        <Class IRI="/Dataset"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/R82TD0ystRq1JKaQCnORfUl"/>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/R8hjUBAYRmndS5FebU232JS"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RBW4tFi0RuAzpgqEtLJA7me"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RBwHdIGCfr50Xhx8lckQlyU"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RDKecqGMn0ec9qsqb82BIAr"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RDU00Z3Ld6gXbk86tmwsq"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RDlMfo7udW9DIeHG241bEO"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RKgl8KRfyRMYCL8YQFetkh"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RPNScore"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskMetric"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RegulatoryAuthority"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ResolvePhase"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RightToExplanation"/>
+        <Class IRI="http://webprotege.stanford.edu/DataSubjectRight"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RiskMetric"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/Sector"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/SensitiveData"/>
+        <Class IRI="http://webprotege.stanford.edu/R82TD0ystRq1JKaQCnORfUl"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/SetupPhase"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/SeverityLevel"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/TechinalExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalDocumentation"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalDocumentation"/>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalMitigation"/>
+        <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/TestResult"/>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ThirdPartyCertification"/>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
+        <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/UseCase"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/UseCaseOwner"/>
+        <Class IRI="/Stakeholder"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/VulnerableGroup"/>
+        <Class IRI="http://webprotege.stanford.edu/AffectedPerson"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="/ConjuntiveRequirement"/>
+        <Class IRI="/DisjuntiveRequirement"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ChildProtectionPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/DecisionType"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/CreditScoringDecision"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/DataMinimizationPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/Sector"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/EducationSector"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalTension"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FairnessAccuracyTension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FairnessPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/Sector"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FinanceSector"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/AutomationLevel"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/FullyAutomated"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/Sector"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HRSector"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/Sector"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HealthcareSector"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HighRisk"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/HumanOversightMechanism"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/LimitedRisk"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/MinimalRisk"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/LegalBasis"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/NoAdequacyDecision"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/LegalBasis"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/NoConsentBasis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/LegalBasis"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/NoExplicitConsentBasis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalTension"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/DecisionType"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ProfilingDecision"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/PhysicalArea"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/PublicSpace"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/DecisionType"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/DecisionType"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/ScoringDecision"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/SecurityPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalDocumentation"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TechnicalDocumentationObligation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/EthicalTension"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/TransparencySecurityTension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+        <NamedIndividual IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="rdfs:label"/>
+        <AnonymousIndividual nodeID="_:genid2147483648"/>
+        <NamedIndividual IRI="/RequirementCollection"/>
+    </ObjectPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="/specifiedBy"/>
+        <ObjectProperty IRI="#satisfies"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/addressedTo"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/belongsToPhase"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasDataTransferMechanism"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEvaluation"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasResponse"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasStatus"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/processes"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/requires"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/transfersTo"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/triggers"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/verifies"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/violates"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#constrains"/>
+        <ObjectProperty IRI="/constrainedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#elaborates"/>
+        <ObjectProperty IRI="/elaboratedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#exhibitedBy"/>
+        <ObjectProperty IRI="#exhibits"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#governs"/>
+        <ObjectProperty IRI="#isGovernedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#implements"/>
+        <ObjectProperty IRI="/implementedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isAffectedBy"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isMitigatedBy"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/mitigates"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isProcessedBy"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/processes"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isRequirementOf"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRequirement"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isViolatedBy"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/violates"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#satisfies"/>
+        <ObjectProperty IRI="/satisfiedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#specifies"/>
+        <ObjectProperty IRI="/specifiedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#tracks"/>
+        <ObjectProperty IRI="/trackedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="/affectedBy"/>
+        <ObjectProperty IRI="/affectedBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="/affectedBy"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluates"/>
+    </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/>
+    </SymmetricObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#specifies"/>
+        <Class abbreviatedIRI="rdf:Resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/affectedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/constrainedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/decomposes"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/elaboratedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/exhibitedTo"/>
+        <Class IRI="/ExhibitedCharacteristic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/implementedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/satisfiedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/specifiedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/trackedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="/uses"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/addressedTo"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/belongsToPhase"/>
+        <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/detectedIn"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationProject"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEvaluation"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRequirement"/>
+        <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasResponse"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/isAssignedTo"/>
+        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/isGovernedBy"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/mitigates"/>
+        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/processes"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/providesEvidence"/>
+        <Class IRI="http://webprotege.stanford.edu/Evidence"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/triggers"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/verifies"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/violates"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="rdfs:label"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#Form"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#canonicalForm"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#denotes"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#lexicalForm"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#otherForm"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#writtenRep"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#Form"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/oa#hasBody"/>
+        <Class IRI="http://www.w3.org/ns/oa#Annotation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.w3.org/ns/oa#hasTarget"/>
+        <Class IRI="http://www.w3.org/ns/oa#Annotation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#specifies"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/affectedBy"/>
+        <Class IRI="/Concept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/constrainedBy"/>
+        <Class abbreviatedIRI="rdf:Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/decomposes"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/elaboratedBy"/>
+        <Class abbreviatedIRI="rdf:Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/exhibitedTo"/>
+        <Class IRI="/Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/implementedBy"/>
+        <Class IRI="/Concept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/satisfiedBy"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/specifiedBy"/>
+        <Class abbreviatedIRI="rdf:Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/trackedBy"/>
+        <Class IRI="/Concept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="/uses"/>
+        <Class abbreviatedIRI="rdf:Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/belongsToPhase"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/>
+        <Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/detectedIn"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
+        <Class IRI="http://webprotege.stanford.edu/Expert"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluates"/>
+        <Class IRI="/AiSystem"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEvaluation"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationProject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRequirement"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasResponse"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationResponse"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/hasStatus"/>
+        <Class IRI="/ExhibitedCharacteristic"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/isAssignedTo"/>
+        <Class IRI="/Stakeholder"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/isGovernedBy"/>
+        <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/mitigates"/>
+        <Class IRI="http://webprotege.stanford.edu/RiskType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/processes"/>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/providesEvidence"/>
+        <Class IRI="http://webprotege.stanford.edu/AuditReport"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/triggers"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/verifies"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://webprotege.stanford.edu/violates"/>
+        <Class IRI="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="rdfs:label"/>
+        <Class abbreviatedIRI="rdf:Literal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#canonicalForm"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#Form"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#denotes"/>
+        <Class IRI="/Concept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#lexicalForm"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#Form"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#otherForm"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#Form"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/lemon/ontolex#writtenRep"/>
+        <Class abbreviatedIRI="rdf:LangString"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/oa#hasBody"/>
+        <Class IRI="http://www.w3.org/ns/lemon/ontolex#LexicalEntry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.w3.org/ns/oa#hasTarget"/>
+        <Class IRI="/Requirement"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/actionPerformed"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/complianceStatus"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasAnswerWeight"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasImportanceScore"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasRiskScore"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasTimestamp"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasVersion"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/isMandatory"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/isSensitive"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/justificationText"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/mitigationDeadline"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/phaseDuration"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/questionText"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/actionPerformed"/>
+        <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/complianceStatus"/>
+        <Class IRI="http://webprotege.stanford.edu/AuditReport"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasAnswerWeight"/>
+        <Class IRI="http://webprotege.stanford.edu/Response"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasImportanceScore"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasRiskScore"/>
+        <Class IRI="/AiSystem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasTimestamp"/>
+        <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasVersion"/>
+        <Class IRI="http://webprotege.stanford.edu/MLModel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/isMandatory"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/isSensitive"/>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/justificationText"/>
+        <Class IRI="http://webprotege.stanford.edu/Claim"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/mitigationDeadline"/>
+        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/phaseDuration"/>
+        <Class IRI="http://webprotege.stanford.edu/ZInspectionPhase"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/questionText"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationQuestion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
+        <Class IRI="http://webprotege.stanford.edu/EvaluationResponse"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
+        <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/actionPerformed"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/complianceStatus"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasAnswerWeight"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasImportanceScore"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasRiskScore"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasTimestamp"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/hasVersion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/isMandatory"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/isSensitive"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/justificationText"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/mitigationDeadline"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/phaseDuration"/>
+        <Datatype IRI="http://www.w3.org/2001/XMLSchema#duration%20"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/questionText"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal/>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S1</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="/AiSystem"/>
+                <Variable abbreviatedIRI="owl:s"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/PublicSpace"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class IRI="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
+                <Variable abbreviatedIRI="owl:s"/>
+            </ClassAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Tam Otomasyon → İnsan Müdahalesi</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S3</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="/AiSystem"/>
+                <Variable abbreviatedIRI="owl:s"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/FullyAutomated"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <Variable abbreviatedIRI="owl:p"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/requires"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal>Eğitim + Puanlama → HighRisk:</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal>S2</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="/AiSystem"/>
+                <Variable abbreviatedIRI="owl:s"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/EducationSector"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/ScoringDecision"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
+                <Variable abbreviatedIRI="owl:s"/>
+                <NamedIndividual IRI="http://webprotege.stanford.edu/HighRisk"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>/RequirementCollection</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">Collection of requirements.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>/RequirementCollection</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2000/01/rdf-schema#Literal">Requirement collection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AIAuditExtension</IRI>
+        <Literal>AIAuditExtension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AccountabilityPrinciple</IRI>
+        <Literal>AccountabilityPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AccuracyPrinciple</IRI>
+        <Literal>AccuracyPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AdversarialRisk</IRI>
+        <Literal>AdversarialRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AffectedPerson</IRI>
+        <Literal xml:lang="en">AffectedPerson</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Algorithm</IRI>
+        <Literal>Algorithm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AnonymisedData</IRI>
+        <Literal>AnonymisedData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Argument</IRI>
+        <Literal>Argument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Article17_RightToErasure</IRI>
+        <Literal>Article17_RightToErasure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Article20_DataPortability</IRI>
+        <Literal>Article20_DataPortability</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Article22_AutomatedDecision</IRI>
+        <Literal>Article22_AutomatedDecision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Article46_DataTransfer</IRI>
+        <Literal>Article46_DataTransfer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Article6_LegalBasis</IRI>
+        <Literal>Article6_LegalBasis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Article9_SensitiveData</IRI>
+        <Literal>Article9_SensitiveData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AssessPhase</IRI>
+        <Literal>AssessPhase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AuditLog</IRI>
+        <Literal>AuditLog</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AuditReport</IRI>
+        <Literal>AuditReport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/AutomationLevel</IRI>
+        <Literal>AutomationLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/BenchmarkCase</IRI>
+        <Literal>BenchmarkCase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/BiasRisk</IRI>
+        <Literal>BiasRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/BiometricIdentificationSystem</IRI>
+        <Literal>BiometricIdentificationSystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Child</IRI>
+        <Literal xml:lang="en">Child</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ChildProtectionPrinciple</IRI>
+        <Literal>ChildProtectionPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Claim</IRI>
+        <Literal>Claim</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ConformityAssessment</IRI>
+        <Literal>ConformityAssessment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ConformityAssessmentObligation</IRI>
+        <Literal>ConformityAssessmentObligation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/CorrectiveAction</IRI>
+        <Literal>CorrectiveAction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/CorrectiveAction</IRI>
+        <Literal>CorrectiveAction </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/CreditScoringDecision</IRI>
+        <Literal>CreditScoringDecision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/CreditScoringSystem</IRI>
+        <Literal>CreditScoringSystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/CriminalData</IRI>
+        <Literal>CriminalData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/CumulativeRiskVolume</IRI>
+        <Literal>CumulativeRiskVolume</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/DPIA</IRI>
+        <Literal>DPIA</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/DataLifecycleStage</IRI>
+        <Literal>DataLifecycleStage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/DataMinimizationPrinciple</IRI>
+        <Literal>DataMinimizationPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/DataSubjectRight</IRI>
+        <Literal>DataSubjectRight</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/DataTransferMechanism</IRI>
+        <Literal>DataTransferMechanism</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/DecisionType</IRI>
+        <Literal>DecisionType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Deployer</IRI>
+        <Literal>Deployer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ERCScore</IRI>
+        <Literal>ERCScore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EducationAISystem</IRI>
+        <Literal>EducationAISystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EducationExpert</IRI>
+        <Literal>EducationExpert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EducationSector</IRI>
+        <Literal>EducationSector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EthicalExpert</IRI>
+        <Literal>EthicalExpert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EthicalPrinciple</IRI>
+        <Literal>EthicalPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EthicalTension</IRI>
+        <Literal>EthicalTension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EthnicMinority</IRI>
+        <Literal xml:lang="en">EthnicMinority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EuAiAct</IRI>
+        <Literal>EuAiAct</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EvaluationQuestion</IRI>
+        <Literal>EvaluationQuestion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/EvaluationResponse</IRI>
+        <Literal>EvaluationResponse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Evidence</IRI>
+        <Literal>Evidence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Expert</IRI>
+        <Literal>Expert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ExplainabilityMethod</IRI>
+        <Literal>ExplainabilityMethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/FairnessAccuracyTension</IRI>
+        <Literal>FairnessAccuracyTension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/FairnessPrinciple</IRI>
+        <Literal>FairnessPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/FinanceSector</IRI>
+        <Literal>FinanceSector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/FullyAutomated</IRI>
+        <Literal>FullyAutomated</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/GDPR</IRI>
+        <Literal>GDPR</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/GDPRArticle</IRI>
+        <Literal>GDPRArticle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/GeneralPurposeAIModel</IRI>
+        <Literal>GeneralPurposeAIModel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HRRecruitmentSystem</IRI>
+        <Literal>HRRecruitmentSystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HRSector</IRI>
+        <Literal>HRSector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HallucinationRisk</IRI>
+        <Literal>HallucinationRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HealthcareAISystem</IRI>
+        <Literal>HealthcareAISystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HealthcareSector</IRI>
+        <Literal>HealthcareSector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HighRisk</IRI>
+        <Literal>HighRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HighRiskCategory</IRI>
+        <Literal>HighRiskCategory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HumanOversightMechanism</IRI>
+        <Literal>HumanOversightMechanism</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/HumanOversightMechanismObligation</IRI>
+        <Literal>HumanOversightMechanismObligation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/KVKK</IRI>
+        <Literal>KVKK</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/KVKKGenerativeAIGuideline</IRI>
+        <Literal>KVKKGenerativeAIGuideline</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LLM</IRI>
+        <Literal>LLM</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LawEnforcementAISystem</IRI>
+        <Literal>LawEnforcementAISystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LegalBasis</IRI>
+        <Literal>LegalBasis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LegalExpert</IRI>
+        <Literal>LegalExpert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LegalPerson</IRI>
+        <Literal>LegalPerson</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LegalProvision</IRI>
+        <Literal>LegalProvision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/LimitedRisk</IRI>
+        <Literal>LimitedRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/MLModel</IRI>
+        <Literal>MLModel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/MedicalExpert</IRI>
+        <Literal>MedicalExpert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/MinimalRisk</IRI>
+        <Literal>MinimalRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/MitigationStrategy</IRI>
+        <Literal>MitigationStrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ModelCard</IRI>
+        <Literal>ModelCard</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ModelPerformanceMetric</IRI>
+        <Literal>ModelPerformanceMetric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/NoAdequacyDecision</IRI>
+        <Literal>NoAdequacyDecision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/NoConsentBasis</IRI>
+        <Literal>NoConsentBasis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/NoExplicitConsentBasis</IRI>
+        <Literal>NoExplicitConsentBasis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/OrganizationalMitigation</IRI>
+        <Literal>OrganizationalMitigation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PersonWithDisability</IRI>
+        <Literal xml:lang="en">PersonWithDisability</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PhysicalArea</IRI>
+        <Literal>PhysicalArea</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PrivacyAccountabilityTension</IRI>
+        <Literal>PrivacyAccountabilityTension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PrivacyPrinciple</IRI>
+        <Literal>PrivacyPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PrivacyRisk</IRI>
+        <Literal>PrivacyRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ProfilingDecision</IRI>
+        <Literal>ProfilingDecision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ProhibitedPractice</IRI>
+        <Literal>ProhibitedPractice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PublicServiceAISystem</IRI>
+        <Literal>PublicServiceAISystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/PublicSpace</IRI>
+        <Literal>PublicSpace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/R7IQTrb4RaMLziMAVAbN75l</IRI>
+        <Literal>BiometricData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr</IRI>
+        <Literal>DataCategory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/R82TD0ystRq1JKaQCnORfUl</IRI>
+        <Literal>PersonalData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/R8hjUBAYRmndS5FebU232JS</IRI>
+        <Literal>SocialAndInterpersonalWell-being</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RBW4tFi0RuAzpgqEtLJA7me</IRI>
+        <Literal>PrivacyAndDataGovernance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4</IRI>
+        <Literal>EthicalPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RBwHdIGCfr50Xhx8lckQlyU</IRI>
+        <Literal>Transparency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RDKecqGMn0ec9qsqb82BIAr</IRI>
+        <Literal>HumanAgencyAndOversight</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RDU00Z3Ld6gXbk86tmwsq</IRI>
+        <Literal>Accountability</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RDlMfo7udW9DIeHG241bEO</IRI>
+        <Literal>TechnicalRobustnessAndSafety</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RKgl8KRfyRMYCL8YQFetkh</IRI>
+        <Literal>DiversityNonDiscriminationAndFairness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RPNScore</IRI>
+        <Literal>RPNScore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RecruitmentFilteringDecision</IRI>
+        <Literal>RecruitmentFilteringDecision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RegulatoryAuthority</IRI>
+        <Literal>RegulatoryAuthority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ResolvePhase</IRI>
+        <Literal>ResolvePhase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Response</IRI>
+        <Literal>Response</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RightToExplanation</IRI>
+        <Literal>RightToExplanation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RightToExplanationPrinciple</IRI>
+        <Literal>RightToExplanationPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RiskAssessment</IRI>
+        <Literal>RiskAssessment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RiskLevel</IRI>
+        <Literal>RiskLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RiskMetric</IRI>
+        <Literal>RiskMetric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/RiskType</IRI>
+        <Literal>RiskType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ScoringDecision</IRI>
+        <Literal>ScoringDecision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/Sector</IRI>
+        <Literal>Sector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/SecurityPrinciple</IRI>
+        <Literal>SecurityPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/SensitiveData</IRI>
+        <Literal>SensitiveData</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/SetupPhase</IRI>
+        <Literal>SetupPhase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/SeverityLevel</IRI>
+        <Literal>SeverityLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TechinalExpert</IRI>
+        <Literal>TechnicalExpert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TechnicalDocumentation</IRI>
+        <Literal>TechnicalDocumentation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TechnicalDocumentationObligation</IRI>
+        <Literal>TechnicalDocumentationObligation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TechnicalMitigation</IRI>
+        <Literal>TechnicalMitigation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TestResult</IRI>
+        <Literal>TestResult</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ThirdPartyCertification</IRI>
+        <Literal>ThirdPartyCertification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TransparencyObligation</IRI>
+        <Literal>TransparencyObligation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TransparencyPrinciple</IRI>
+        <Literal>TransparencyPrinciple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/TransparencySecurityTension</IRI>
+        <Literal>TransparencySecurityTension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/UnacceptableRisk</IRI>
+        <Literal>UnacceptableRisk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/UseCase</IRI>
+        <Literal>UseCase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/VulnerableGroup</IRI>
+        <Literal xml:lang="en">VulnerableGroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/ZInspectionPhase</IRI>
+        <Literal>ZInspectionPhase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/actionPerformed</IRI>
+        <Literal>actionPerformed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/addressedTo</IRI>
+        <Literal>addressedTo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/affects</IRI>
+        <Literal>affects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/belongsToPhase</IRI>
+        <Literal>belongsToPhase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/complianceStatus</IRI>
+        <Literal>complianceStatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/detectedIn</IRI>
+        <Literal>detectedIn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/evaluatedBy</IRI>
+        <Literal>evaluatedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasAnswerWeight</IRI>
+        <Literal>hasAnswerWeight</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasAutomationLevel</IRI>
+        <Literal>hasAutomationLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasDataTransferMechanism</IRI>
+        <Literal>hasDataTransferMechanism</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasDecisionType</IRI>
+        <Literal>hasDecisionType</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasEthicalTension</IRI>
+        <Literal>hasEthicalTension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasEvaluatio</IRI>
+        <Literal>hasEvaluation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasEvaluation</IRI>
+        <Literal>hasEvaluation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasImportanceScore</IRI>
+        <Literal>hasImportanceScore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasLegalBasis</IRI>
+        <Literal>hasLegalBasis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasRequirement</IRI>
+        <Literal>hasRequirement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasResponse</IRI>
+        <Literal>hasResponse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasRiskLevel</IRI>
+        <Literal>hasRiskLevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasRiskScore</IRI>
+        <Literal>hasRiskScore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasSector</IRI>
+        <Literal>hasSector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasStatus</IRI>
+        <Literal>hasStatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasTimestamp</IRI>
+        <Literal>hasTimestamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasUserArea</IRI>
+        <Literal>hasUserArea</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/hasVersion</IRI>
+        <Literal>hasVersion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/isAssignedTo</IRI>
+        <Literal>isAssignedTo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/isGovernedBy</IRI>
+        <Literal>isGovernedBy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/isSensitive</IRI>
+        <Literal>isSensitive</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/justificationText</IRI>
+        <Literal>justificationText</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/mitigates</IRI>
+        <Literal>mitigates</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/mitigationDeadline</IRI>
+        <Literal>mitigationDeadline</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/phaseDuration</IRI>
+        <Literal>phaseDuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/providesEvidence</IRI>
+        <Literal>providesEvidence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/questionText</IRI>
+        <Literal>questionText</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/requires</IRI>
+        <Literal>requires</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/responseText</IRI>
+        <Literal>responseText</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/timestamp</IRI>
+        <Literal>timestamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/transfersTo</IRI>
+        <Literal>transfersTo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/triggers</IRI>
+        <Literal>triggers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://webprotege.stanford.edu/verifies</IRI>
+        <Literal>verifies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://www.w3.org/2001/XMLSchema#duration%20</IRI>
+        <Literal>duration </Literal>
+    </AnnotationAssertion>
+<ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/><Class IRI="http://webprotege.stanford.edu/Sector"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/><Class IRI="http://webprotege.stanford.edu/DecisionType"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/><Class IRI="http://webprotege.stanford.edu/AutomationLevel"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/><Class IRI="http://webprotege.stanford.edu/PhysicalArea"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/><Class IRI="http://webprotege.stanford.edu/LegalBasis"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><Class IRI="http://webprotege.stanford.edu/EthicalTension"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/requires"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/requires"/><Class IRI="http://webprotege.stanford.edu/HumanOversightMechanism"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/transfersTo"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/transfersTo"/><Class IRI="http://webprotege.stanford.edu/LegalProvision"/></ObjectPropertyRange><ObjectPropertyDomain><ObjectProperty IRI="http://webprotege.stanford.edu/hasDataTransferMechanism"/><Class IRI="/AiSystem"/></ObjectPropertyDomain><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/hasDataTransferMechanism"/><Class IRI="http://webprotege.stanford.edu/DataTransferMechanism"/></ObjectPropertyRange><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/></Declaration><ClassAssertion><Class IRI="http://webprotege.stanford.edu/BiometricIdentificationSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/></ClassAssertion><ClassAssertion><Class IRI="/AiSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/></ClassAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/><NamedIndividual IRI="http://webprotege.stanford.edu/PublicSpace"/></ObjectPropertyAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/StudentGradingSystem"/></Declaration><ClassAssertion><Class IRI="/AiSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/StudentGradingSystem"/></ClassAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/><NamedIndividual IRI="http://webprotege.stanford.edu/StudentGradingSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/EducationSector"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/><NamedIndividual IRI="http://webprotege.stanford.edu/StudentGradingSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/ScoringDecision"/></ObjectPropertyAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/AutoHiringSystem"/></Declaration><ClassAssertion><Class IRI="/AiSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/AutoHiringSystem"/></ClassAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/JobApplicant_1"/></Declaration><ClassAssertion><Class IRI="http://webprotege.stanford.edu/AffectedPerson"/><NamedIndividual IRI="http://webprotege.stanford.edu/JobApplicant_1"/></ClassAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/><NamedIndividual IRI="http://webprotege.stanford.edu/AutoHiringSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/FullyAutomated"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/affects"/><NamedIndividual IRI="http://webprotege.stanford.edu/AutoHiringSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/JobApplicant_1"/></ObjectPropertyAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/></Declaration><ClassAssertion><Class IRI="http://webprotege.stanford.edu/HRRecruitmentSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/></ClassAssertion><ClassAssertion><Class IRI="/AiSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/></ClassAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/JobApplicant_2"/></Declaration><ClassAssertion><Class IRI="http://webprotege.stanford.edu/AffectedPerson"/><NamedIndividual IRI="http://webprotege.stanford.edu/JobApplicant_2"/></ClassAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/HRSector"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/FullyAutomated"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/affects"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/JobApplicant_2"/></ObjectPropertyAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/></Declaration><ClassAssertion><Class IRI="/AiSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/></ClassAssertion><Declaration><NamedIndividual IRI="http://webprotege.stanford.edu/Defendant_1"/></Declaration><ClassAssertion><Class IRI="http://webprotege.stanford.edu/AffectedPerson"/><NamedIndividual IRI="http://webprotege.stanford.edu/Defendant_1"/></ClassAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/FinanceSector"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/ProfilingDecision"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/FullyAutomated"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/affects"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/Defendant_1"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/NoConsentBasis"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/SecurityPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/SecurityPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/FairnessPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccuracyPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccuracyPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/FairnessPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccountabilityPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccountabilityPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/DataMinimizationPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccuracyPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/conflictsWith"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccuracyPrinciple"/><NamedIndividual IRI="http://webprotege.stanford.edu/DataMinimizationPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/><NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/><NamedIndividual IRI="http://webprotege.stanford.edu/DataMinimizationPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/FairnessPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/TransparencyPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/FairnessPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/AccountabilityPrinciple"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/RightToExplanationPrinciple"/></ObjectPropertyAssertion><DLSafeRule><Annotation><AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/><Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal></Annotation><Annotation><AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/><Literal>Hassas veri işleyen sistem + yasal dayanak yok → PrivacyPrinciple ihlali</Literal></Annotation><Annotation><AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/><Literal>S4</Literal></Annotation><Body><ClassAtom><Class IRI="/AiSystem"/><Variable abbreviatedIRI="owl:s"/></ClassAtom><ObjectPropertyAtom><ObjectProperty IRI="http://webprotege.stanford.edu/processes"/><Variable abbreviatedIRI="owl:s"/><Variable abbreviatedIRI="owl:d"/></ObjectPropertyAtom><ClassAtom><Class IRI="http://webprotege.stanford.edu/SensitiveData"/><Variable abbreviatedIRI="owl:d"/></ClassAtom><ObjectPropertyAtom><ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/><Variable abbreviatedIRI="owl:s"/><NamedIndividual IRI="http://webprotege.stanford.edu/NoExplicitConsentBasis"/></ObjectPropertyAtom></Body><Head><ObjectPropertyAtom><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><Variable abbreviatedIRI="owl:s"/><NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyPrinciple"/></ObjectPropertyAtom></Head></DLSafeRule><DLSafeRule><Annotation><AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/><Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal></Annotation><Annotation><AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/><Literal>Veri transferi + adequacy kararı yok → GDPR Article 46 zorunluluğu</Literal></Annotation><Annotation><AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/><Literal>S5</Literal></Annotation><Body><ClassAtom><Class IRI="/AiSystem"/><Variable abbreviatedIRI="owl:s"/></ClassAtom><ObjectPropertyAtom><ObjectProperty IRI="http://webprotege.stanford.edu/transfersTo"/><Variable abbreviatedIRI="owl:s"/><Variable abbreviatedIRI="owl:t"/></ObjectPropertyAtom><ObjectPropertyAtom><ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/><Variable abbreviatedIRI="owl:s"/><NamedIndividual IRI="http://webprotege.stanford.edu/NoAdequacyDecision"/></ObjectPropertyAtom></Body><Head><ObjectPropertyAtom><ObjectProperty IRI="http://webprotege.stanford.edu/requires"/><Variable abbreviatedIRI="owl:s"/><NamedIndividual IRI="http://webprotege.stanford.edu/ConformityAssessmentObligation"/></ObjectPropertyAtom></Head></DLSafeRule><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/><NamedIndividual IRI="http://webprotege.stanford.edu/TransparencySecurityTension"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/><NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/><NamedIndividual IRI="http://webprotege.stanford.edu/FairnessAccuracyTension"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/FairnessAccuracyTension"/></ObjectPropertyAssertion><ObjectPropertyAssertion><ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/><NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/><NamedIndividual IRI="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/></ObjectPropertyAssertion><ObjectPropertyRange><ObjectProperty IRI="http://webprotege.stanford.edu/violates"/><Class IRI="http://webprotege.stanford.edu/EthicalPrinciple"/></ObjectPropertyRange></Ontology>
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
