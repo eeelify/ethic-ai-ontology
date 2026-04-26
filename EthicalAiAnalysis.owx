@@ -228,9 +228,6 @@
         <Class IRI="http://webprotege.stanford.edu/HealthcareAISystem"/>
     </Declaration>
     <Declaration>
-        <Class IRI="http://webprotege.stanford.edu/HighRisk"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="http://webprotege.stanford.edu/HighRiskCategory"/>
     </Declaration>
     <Declaration>
@@ -264,16 +261,10 @@
         <Class IRI="http://webprotege.stanford.edu/LegalProvision"/>
     </Declaration>
     <Declaration>
-        <Class IRI="http://webprotege.stanford.edu/LimitedRisk"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="http://webprotege.stanford.edu/MLModel"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://webprotege.stanford.edu/MedicalExpert"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="http://webprotege.stanford.edu/MinimalRisk"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
@@ -378,7 +369,7 @@
         <Class IRI="http://webprotege.stanford.edu/SeverityLevel"/>
     </Declaration>
     <Declaration>
-        <Class IRI="http://webprotege.stanford.edu/TechinalExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalExpert"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://webprotege.stanford.edu/TechnicalDocumentation"/>
@@ -394,9 +385,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://webprotege.stanford.edu/UseCase"/>
@@ -478,9 +466,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#tracks"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="/affectedBy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="/constrainedBy"/>
@@ -660,9 +645,6 @@
         <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="/RequirementCollection"/>
     </Declaration>
     <Declaration>
@@ -816,19 +798,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="/Asset"/>
-        <Class IRI="/AiSystem"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="/Asset"/>
-        <Class IRI="/Dataset"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="/Asset"/>
         <Class IRI="/Entity"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="/Asset"/>
-        <Class IRI="/Test"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="/Concept"/>
@@ -1083,10 +1053,6 @@
         <Class IRI="/AiSystem"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://webprotege.stanford.edu/HighRisk"/>
-        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/HighRiskCategory"/>
         <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
     </SubClassOf>
@@ -1127,10 +1093,6 @@
         <Class IRI="/Stakeholder"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://webprotege.stanford.edu/LimitedRisk"/>
-        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/MLModel"/>
         <Class IRI="http://webprotege.stanford.edu/Algorithm"/>
     </SubClassOf>
@@ -1139,12 +1101,8 @@
         <Class IRI="http://webprotege.stanford.edu/Expert"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://webprotege.stanford.edu/MinimalRisk"/>
-        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/MitigationStrategy"/>
-        <Class IRI="http://webprotege.stanford.edu/CorrectiveAction"/>
+        <Class IRI="http://webprotege.stanford.edu/AIAuditExtension"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/ModelCard"/>
@@ -1260,7 +1218,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/SensitiveData"/>
-        <Class IRI="http://webprotege.stanford.edu/R82TD0ystRq1JKaQCnORfUl"/>
+        <Class IRI="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/SetupPhase"/>
@@ -1271,7 +1229,7 @@
         <Class IRI="http://webprotege.stanford.edu/RiskAssessment"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="http://webprotege.stanford.edu/TechinalExpert"/>
+        <Class IRI="http://webprotege.stanford.edu/TechnicalExpert"/>
         <Class IRI="http://webprotege.stanford.edu/Expert"/>
     </SubClassOf>
     <SubClassOf>
@@ -1297,10 +1255,6 @@
     <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/TransparencyObligation"/>
         <Class IRI="http://webprotege.stanford.edu/EuAiAct"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
-        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="http://webprotege.stanford.edu/UseCase"/>
@@ -1335,13 +1289,6 @@
         <NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/>
     </ClassAssertion>
     <ClassAssertion>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
-            <Class IRI="http://webprotege.stanford.edu/HighRisk"/>
-        </ObjectSomeValuesFrom>
-        <NamedIndividual IRI="http://webprotege.stanford.edu/AmazonHR_CVFilter"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="/AiSystem"/>
         <NamedIndividual IRI="http://webprotege.stanford.edu/AutoHiringSystem"/>
     </ClassAssertion>
@@ -1350,25 +1297,11 @@
         <NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/>
     </ClassAssertion>
     <ClassAssertion>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
-            <Class IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
-        </ObjectSomeValuesFrom>
-        <NamedIndividual IRI="http://webprotege.stanford.edu/COMPAS_RecidivismSystem"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="/AiSystem"/>
         <NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
-        <NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
-            <Class IRI="http://webprotege.stanford.edu/UnacceptableRisk"/>
-        </ObjectSomeValuesFrom>
         <NamedIndividual IRI="http://webprotege.stanford.edu/ClearviewAI_System"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -1473,13 +1406,6 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="/AiSystem"/>
-        <NamedIndividual IRI="http://webprotege.stanford.edu/StudentGradingSystem"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
-            <Class IRI="http://webprotege.stanford.edu/HighRisk"/>
-        </ObjectSomeValuesFrom>
         <NamedIndividual IRI="http://webprotege.stanford.edu/StudentGradingSystem"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -1598,94 +1524,6 @@
         <AnonymousIndividual nodeID="_:0"/>
         <NamedIndividual IRI="/RequirementCollection"/>
     </ObjectPropertyAssertion>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="/specifiedBy"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/addressedTo"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/belongsToPhase"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasAutomationLevel"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasDataTransferMechanism"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasDecisionType"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEthicalTension"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasEvaluation"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasLegalBasis"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasResponse"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasStatus"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/hasUserArea"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/processes"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/requires"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/transfersTo"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/triggers"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/verifies"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/violates"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
     <InverseObjectProperties>
         <ObjectProperty IRI="#constrains"/>
         <ObjectProperty IRI="/constrainedBy"/>
@@ -1725,14 +1563,6 @@
     <InverseObjectProperties>
         <ObjectProperty IRI="#tracks"/>
         <ObjectProperty IRI="/trackedBy"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="/affectedBy"/>
-        <ObjectProperty IRI="/affectedBy"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="/affectedBy"/>
-        <ObjectProperty IRI="http://webprotege.stanford.edu/affects"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="http://webprotege.stanford.edu/evaluatedBy"/>
@@ -1792,10 +1622,6 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#tracks"/>
-        <Class IRI="/Requirement"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="/affectedBy"/>
         <Class IRI="/Requirement"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -2035,10 +1861,6 @@
         <Class IRI="/Concept"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="/affectedBy"/>
-        <Class IRI="/Concept"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="/constrainedBy"/>
         <Class abbreviatedIRI="rdf:Resource"/>
     </ObjectPropertyRange>
@@ -2132,7 +1954,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="http://webprotege.stanford.edu/hasRiskLevel"/>
-        <Class IRI="http://webprotege.stanford.edu/RiskLevel"/>
+        <Class abbreviatedIRI="owl:Thing"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="http://webprotege.stanford.edu/hasSector"/>
@@ -2274,10 +2096,6 @@
         <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
         <DataProperty abbreviatedIRI="owl:topDataProperty"/>
     </SubDataPropertyOf>
-    <SubDataPropertyOf>
-        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
-        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
-    </SubDataPropertyOf>
     <DataPropertyDomain>
         <DataProperty IRI="http://webprotege.stanford.edu/actionPerformed"/>
         <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
@@ -2334,10 +2152,6 @@
         <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
         <Class IRI="http://webprotege.stanford.edu/EvaluationResponse"/>
     </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
-        <Class IRI="http://webprotege.stanford.edu/AuditLog"/>
-    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="http://webprotege.stanford.edu/actionPerformed"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -2393,10 +2207,6 @@
     <DataPropertyRange>
         <DataProperty IRI="http://webprotege.stanford.edu/responseText"/>
         <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="http://webprotege.stanford.edu/timestamp"/>
-        <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
     <DLSafeRule>
         <Body>
@@ -2704,11 +2514,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>http://webprotege.stanford.edu/CorrectiveAction</IRI>
         <Literal>CorrectiveAction</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>http://webprotege.stanford.edu/CorrectiveAction</IRI>
-        <Literal>CorrectiveAction </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3192,7 +2997,7 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>http://webprotege.stanford.edu/TechinalExpert</IRI>
+        <IRI>http://webprotege.stanford.edu/TechnicalExpert</IRI>
         <Literal>TechnicalExpert</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -3312,11 +3117,6 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>http://webprotege.stanford.edu/hasEvaluatio</IRI>
-        <Literal>hasEvaluation</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>http://webprotege.stanford.edu/hasEvaluation</IRI>
         <Literal>hasEvaluation</Literal>
     </AnnotationAssertion>
@@ -3429,11 +3229,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>http://webprotege.stanford.edu/responseText</IRI>
         <Literal>responseText</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>http://webprotege.stanford.edu/timestamp</IRI>
-        <Literal>timestamp</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

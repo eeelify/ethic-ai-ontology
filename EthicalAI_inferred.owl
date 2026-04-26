@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-20#"
-     xml:base="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-20"
+<rdf:RDF xmlns="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-26#"
+     xml:base="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-26"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -9,7 +9,7 @@
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:webprotege="http://webprotege.stanford.edu/">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-20"/>
+    <owl:Ontology rdf:about="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-26"/>
     
 
 
@@ -104,40 +104,9 @@
     <!-- http://tair.adaptcentre.ie/ontologies/tair#isAffectedBy -->
 
     <owl:ObjectProperty rdf:about="http://tair.adaptcentre.ie/ontologies/tair#isAffectedBy">
-        <owl:equivalentProperty rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/affectedBy"/>
         <owl:inverseOf rdf:resource="http://webprotege.stanford.edu/affects"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Requirement"/>
         <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Concept"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://tair.adaptcentre.ie/ontologies/tair/affectedBy -->
-
-    <owl:ObjectProperty rdf:about="http://tair.adaptcentre.ie/ontologies/tair/affectedBy">
-        <owl:equivalentProperty rdf:resource="http://webprotege.stanford.edu/affects"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://webprotege.stanford.edu/affects -->
-
-    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/affects">
-        <owl:equivalentProperty>
-            <rdf:Description>
-                <owl:inverseOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair#isAffectedBy"/>
-                <owl:equivalentProperty>
-                    <rdf:Description>
-                        <owl:inverseOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/affectedBy"/>
-                        <owl:equivalentProperty>
-                            <rdf:Description>
-                                <owl:inverseOf rdf:resource="http://webprotege.stanford.edu/affects"/>
-                            </rdf:Description>
-                        </owl:equivalentProperty>
-                    </rdf:Description>
-                </owl:equivalentProperty>
-            </rdf:Description>
-        </owl:equivalentProperty>
     </owl:ObjectProperty>
     
 
@@ -210,17 +179,6 @@
     
 
 
-    <!-- http://tair.adaptcentre.ie/ontologies/tair/affectedBy -->
-
-    <owl:ObjectProperty rdf:about="http://tair.adaptcentre.ie/ontologies/tair/affectedBy">
-        <owl:inverseOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/affectedBy"/>
-        <owl:inverseOf rdf:resource="http://webprotege.stanford.edu/affects"/>
-        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Requirement"/>
-        <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Concept"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://tair.adaptcentre.ie/ontologies/tair/constrainedBy -->
 
     <owl:ObjectProperty rdf:about="http://tair.adaptcentre.ie/ontologies/tair/constrainedBy">
@@ -278,7 +236,6 @@
     <!-- http://tair.adaptcentre.ie/ontologies/tair/specifiedBy -->
 
     <owl:ObjectProperty rdf:about="http://tair.adaptcentre.ie/ontologies/tair/specifiedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Requirement"/>
         <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
     </owl:ObjectProperty>
@@ -306,7 +263,6 @@
     <!-- http://webprotege.stanford.edu/addressedTo -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/addressedTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/EvaluationQuestion"/>
         <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Stakeholder"/>
     </owl:ObjectProperty>
@@ -316,7 +272,6 @@
     <!-- http://webprotege.stanford.edu/affects -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/affects">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Stakeholder"/>
         <rdfs:label>affects</rdfs:label>
@@ -327,7 +282,6 @@
     <!-- http://webprotege.stanford.edu/belongsToPhase -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/belongsToPhase">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/AuditLog"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/ZInspectionPhase"/>
         <rdfs:label>belongsToPhase</rdfs:label>
@@ -348,7 +302,6 @@
     <!-- http://webprotege.stanford.edu/evaluatedBy -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/evaluatedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://webprotege.stanford.edu/evaluates"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/EvaluationProject"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/Expert"/>
@@ -369,7 +322,6 @@
     <!-- http://webprotege.stanford.edu/hasAutomationLevel -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasAutomationLevel">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label>hasAutomationLevel</rdfs:label>
@@ -380,7 +332,6 @@
     <!-- http://webprotege.stanford.edu/hasDataTransferMechanism -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasDataTransferMechanism">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/DataTransferMechanism"/>
         <rdfs:label>hasDataTransferMechanism</rdfs:label>
@@ -391,7 +342,6 @@
     <!-- http://webprotege.stanford.edu/hasDecisionType -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasDecisionType">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
         <rdfs:label>hasDecisionType</rdfs:label>
@@ -402,7 +352,6 @@
     <!-- http://webprotege.stanford.edu/hasEthicalTension -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasEthicalTension">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label>hasEthicalTension</rdfs:label>
@@ -413,7 +362,6 @@
     <!-- http://webprotege.stanford.edu/hasEvaluation -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasEvaluation">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/EvaluationProject"/>
         <rdfs:label>hasEvaluation</rdfs:label>
@@ -424,7 +372,6 @@
     <!-- http://webprotege.stanford.edu/hasLegalBasis -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasLegalBasis">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
         <rdfs:label>hasLegalBasis</rdfs:label>
@@ -445,7 +392,6 @@
     <!-- http://webprotege.stanford.edu/hasResponse -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasResponse">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/EvaluationQuestion"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/EvaluationResponse"/>
         <rdfs:label>hasResponse</rdfs:label>
@@ -456,9 +402,8 @@
     <!-- http://webprotege.stanford.edu/hasRiskLevel -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasRiskLevel">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label>hasRiskLevel</rdfs:label>
     </owl:ObjectProperty>
     
@@ -467,7 +412,6 @@
     <!-- http://webprotege.stanford.edu/hasSector -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasSector">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/Sector"/>
         <rdfs:label>hasSector</rdfs:label>
@@ -478,7 +422,6 @@
     <!-- http://webprotege.stanford.edu/hasStatus -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasStatus">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/ZInspectionPhase"/>
         <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/ExhibitedCharacteristic"/>
         <rdfs:label>hasStatus</rdfs:label>
@@ -489,7 +432,6 @@
     <!-- http://webprotege.stanford.edu/hasUserArea -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasUserArea">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/PhysicalArea"/>
         <rdfs:label>hasUserArea</rdfs:label>
@@ -530,7 +472,6 @@
     <!-- http://webprotege.stanford.edu/processes -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/processes">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
     </owl:ObjectProperty>
@@ -550,7 +491,6 @@
     <!-- http://webprotege.stanford.edu/requires -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/requires">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label>requires</rdfs:label>
@@ -561,7 +501,6 @@
     <!-- http://webprotege.stanford.edu/transfersTo -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/transfersTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/DataTransferMechanism"/>
         <rdfs:label>transfersTo</rdfs:label>
@@ -572,7 +511,6 @@
     <!-- http://webprotege.stanford.edu/triggers -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/triggers">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/ZInspectionPhase"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/ZInspectionPhase"/>
         <rdfs:label>triggers</rdfs:label>
@@ -583,7 +521,6 @@
     <!-- http://webprotege.stanford.edu/verifies -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/verifies">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/EvaluationQuestion"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
     </owl:ObjectProperty>
@@ -593,7 +530,6 @@
     <!-- http://webprotege.stanford.edu/violates -->
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/violates">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
     </owl:ObjectProperty>
@@ -836,17 +772,6 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/timestamp -->
-
-    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/timestamp">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/AuditLog"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <rdfs:label>timestamp</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -907,10 +832,7 @@
     <!-- http://tair.adaptcentre.ie/ontologies/tair/Asset -->
 
     <owl:Class rdf:about="http://tair.adaptcentre.ie/ontologies/tair/Asset">
-        <rdfs:subClassOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:subClassOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Dataset"/>
         <rdfs:subClassOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Entity"/>
-        <rdfs:subClassOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Test"/>
         <rdfs:label>Asset</rdfs:label>
     </owl:Class>
     
@@ -1009,12 +931,6 @@
     <owl:Class rdf:about="http://tair.adaptcentre.ie/ontologies/tair/Stakeholder">
         <rdfs:subClassOf rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Agent"/>
     </owl:Class>
-    
-
-
-    <!-- http://tair.adaptcentre.ie/ontologies/tair/Test -->
-
-    <owl:Class rdf:about="http://tair.adaptcentre.ie/ontologies/tair/Test"/>
     
 
 
@@ -1235,7 +1151,6 @@
     <owl:Class rdf:about="http://webprotege.stanford.edu/CorrectiveAction">
         <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskAssessment"/>
         <rdfs:label>CorrectiveAction</rdfs:label>
-        <rdfs:label>CorrectiveAction </rdfs:label>
     </owl:Class>
     
 
@@ -1497,14 +1412,6 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/HighRisk -->
-
-    <owl:Class rdf:about="http://webprotege.stanford.edu/HighRisk">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
-    </owl:Class>
-    
-
-
     <!-- http://webprotege.stanford.edu/HighRiskCategory -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/HighRiskCategory">
@@ -1602,14 +1509,6 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/LimitedRisk -->
-
-    <owl:Class rdf:about="http://webprotege.stanford.edu/LimitedRisk">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
-    </owl:Class>
-    
-
-
     <!-- http://webprotege.stanford.edu/MLModel -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/MLModel">
@@ -1628,18 +1527,10 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/MinimalRisk -->
-
-    <owl:Class rdf:about="http://webprotege.stanford.edu/MinimalRisk">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
-    </owl:Class>
-    
-
-
     <!-- http://webprotege.stanford.edu/MitigationStrategy -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/MitigationStrategy">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/CorrectiveAction"/>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/AIAuditExtension"/>
         <rdfs:label>MitigationStrategy</rdfs:label>
     </owl:Class>
     
@@ -1915,7 +1806,7 @@
     <!-- http://webprotege.stanford.edu/SensitiveData -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/SensitiveData">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R82TD0ystRq1JKaQCnORfUl"/>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R7mn6FnGHJ9AeARbnauPusr"/>
         <rdfs:label>SensitiveData</rdfs:label>
     </owl:Class>
     
@@ -1939,21 +1830,21 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/TechinalExpert -->
-
-    <owl:Class rdf:about="http://webprotege.stanford.edu/TechinalExpert">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Expert"/>
-        <rdfs:label>TechnicalExpert</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://webprotege.stanford.edu/TechnicalDocumentation -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/TechnicalDocumentation">
         <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/AIAuditExtension"/>
         <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Evidence"/>
         <rdfs:label>TechnicalDocumentation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/TechnicalExpert -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/TechnicalExpert">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Expert"/>
+        <rdfs:label>TechnicalExpert</rdfs:label>
     </owl:Class>
     
 
@@ -1989,14 +1880,6 @@
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/TransparencyObligation">
         <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EuAiAct"/>
-    </owl:Class>
-    
-
-
-    <!-- http://webprotege.stanford.edu/UnacceptableRisk -->
-
-    <owl:Class rdf:about="http://webprotege.stanford.edu/UnacceptableRisk">
-        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
     </owl:Class>
     
 
@@ -2121,12 +2004,6 @@
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AmazonHR_CVFilter">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdf:type rdf:resource="http://webprotege.stanford.edu/HRRecruitmentSystem"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
-                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
-            </owl:Restriction>
-        </rdf:type>
         <webprotege:affects rdf:resource="http://webprotege.stanford.edu/JobApplicant_2"/>
         <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
         <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
@@ -2151,12 +2028,6 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/COMPAS_RecidivismSystem">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
-                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
-            </owl:Restriction>
-        </rdf:type>
         <webprotege:affects rdf:resource="http://webprotege.stanford.edu/Defendant_1"/>
         <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
         <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/ProfilingDecision"/>
@@ -2174,12 +2045,6 @@
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/ClearviewAI_System">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdf:type rdf:resource="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
-                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
-            </owl:Restriction>
-        </rdf:type>
         <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/>
         <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/TransparencySecurityTension"/>
         <webprotege:hasUserArea rdf:resource="http://webprotege.stanford.edu/PublicSpace"/>
@@ -2279,6 +2144,7 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HighRisk">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdfs:label>HighRisk</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2312,6 +2178,7 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/LimitedRisk">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdfs:label>LimitedRisk</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2320,6 +2187,7 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/MinimalRisk">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdfs:label>MinimalRisk</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2409,12 +2277,6 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/StudentGradingSystem">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
-                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
-            </owl:Restriction>
-        </rdf:type>
         <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/ScoringDecision"/>
         <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/EducationSector"/>
         <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
@@ -2453,6 +2315,7 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/UnacceptableRisk">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdfs:label>UnacceptableRisk</rdfs:label>
     </owl:NamedIndividual>
     <rdf:Description>
         <rdfs:label rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/RequirementCollection"/>
@@ -2484,15 +2347,6 @@
     <rdf:Description rdf:about="http://webprotege.stanford.edu/DataMinimizationPrinciple">
         <rdfs:label>DataMinimizationPrinciple</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://webprotege.stanford.edu/HighRisk">
-        <rdfs:label>HighRisk</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://webprotege.stanford.edu/LimitedRisk">
-        <rdfs:label>LimitedRisk</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://webprotege.stanford.edu/MinimalRisk">
-        <rdfs:label>MinimalRisk</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://webprotege.stanford.edu/RightToExplanationPrinciple">
         <rdfs:label>RightToExplanationPrinciple</rdfs:label>
     </rdf:Description>
@@ -2504,12 +2358,6 @@
     </rdf:Description>
     <rdf:Description rdf:about="http://webprotege.stanford.edu/TransparencyPrinciple">
         <rdfs:label>TransparencyPrinciple</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://webprotege.stanford.edu/UnacceptableRisk">
-        <rdfs:label>UnacceptableRisk</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://webprotege.stanford.edu/hasEvaluatio">
-        <rdfs:label>hasEvaluation</rdfs:label>
     </rdf:Description>
     
 
@@ -2599,6 +2447,61 @@
                         <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/requires"/>
                         <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
                         <swrl:argument2 rdf:resource="http://www.w3.org/2002/07/owl#h"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/hasUserArea"/>
+                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
+                        <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/PublicSpace"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                                <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
+                                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
+                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
+                        <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -2835,61 +2738,6 @@
                         <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/requires"/>
                         <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
                         <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-            </rdf:Description>
-        </swrl:head>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
-        <swrl:body>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/hasUserArea"/>
-                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
-                        <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/PublicSpace"/>
-                    </rdf:Description>
-                </rdf:first>
-                <rdf:rest>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                <swrl:classPredicate rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-                                <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
-                            </rdf:Description>
-                        </rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                                <rdf:first>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
-                                        <swrl:classPredicate rdf:resource="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
-                                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
-                                    </rdf:Description>
-                                </rdf:first>
-                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </rdf:rest>
-            </rdf:Description>
-        </swrl:body>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
-                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
-                        <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
