@@ -1,0 +1,56 @@
+Fark Şu
+LLM olmadan (sadece ontoloji):
+
+"ClearviewAI_System → UnacceptableRisk"
+
+Makine üretiyor, ama kuru ve bağlamsız.
+LLM olmadan, ontoloji olmadan (ham LLM):
+
+"Yüz tanıma sistemleri gizlilik açısından sorunlu olabilir..."
+
+Akıcı ama uydurma olabilir, kaynaksız, tutarsız.
+Ontoloji + LLM (senin yaptığın):
+
+"ClearviewAI_System, OWL ontolojisindeki Kural S1 uyarınca (BiometricIdentificationSystem + PublicSpace → UnacceptableRisk) Kabul Edilemez Risk sınıfına girmektedir. Bu sınıflandırma AB YZ Yasası Madde 5(1)(b) kapsamındaki yasağı tetiklemektedir..."
+
+LLM sadece anlatıyor — kararı veren ontoloji. Her cümle kaynağa bağlı, halüsinasyon yok.
+
+
+Halüsinasyon Nasıl Ortaya Çıkar?
+GraphRAG pipeline'ında her rapor cümlesinin yanında kaynak etiketi olacak:
+
+"Bu sistem AB YZ Yasası Madde 5(1)(b) kapsamındadır." [kaynak: ontoloji:S1_kuralı]
+
+
+"Sistem %87 doğruluk oranına sahiptir." [kaynak: ???]
+
+İkinci cümle için ne ontolojinde ne ChromaDB'de kaynak yok. Bu halüsinasyon. Bunu tespit etmek için alıntı doğruluk skoru hesaplıyorsun — tezinde hedef ≥0.9 idi.
+
+Ontoloji Eksikliklerini Nasıl Bulacaksın?
+3 yöntem var:
+1. Competency Question testi — "Bu sistem hangi etik ilkeleri ihlal ediyor?" sorusunu hem Neo4j'e hem LLM'e sor. Cevaplar farklıysa ontoloji eksik.
+2. Benchmark vaka testi — COMPAS için bilinen gerçek sonuç: ırk yanlılığı var, adalet ilkesi ihlal ediliyor. Sistem bunu bulamazsa ontoloji eksik.
+3. Cohen's Kappa — Bir etik uzman aynı sistemi manuel değerlendirsin, senin sistemin ne dedi karşılaştır. Uyum skoru düşükse ontoloji eksik.
+
+Şu An Bilinen Eksiklikler
+Sana dürüst söyleyeyim, şu an gördüklerim:
+Veri eksikliği: VIOLATES ve HAS_ETHICAL_TENSION ilişkilerini elle eklemek zorunda kaldık — SWRL kuralları bunları otomatik üretmeliydi ama owl:topObjectProperty sorununu tam çözemedik. Bu ontolojinin bir kısıtlaması.
+Kapsam eksikliği: Şu an sadece 5 benchmark sistem var. Gerçek bir denetim platformu için çok az. Ama tez için yeterli.
+ERC skoru basit: Şu an violations*3 + tensions*2 + requirements*1 — bu çok kaba. Uzman puanıyla karşılaştırınca fark çıkacak, bu da tezinin "kısıtlamalar" bölümüne güzel malzeme.
+
+LLM Bağlandıktan Sonra Test Planı
+1. 3 benchmark vaka için rapor üret
+   (ClearviewAI, AmazonHR, COMPAS)
+
+2. Her rapordaki her cümleyi kontrol et:
+   - Kaynağı var mı? (ontoloji node'u veya yasal madde)
+   - Kaynak gerçekten o bilgiyi içeriyor mu?
+   → Alıntı doğruluk skoru hesapla
+
+3. Bir etik uzmana aynı 3 vakayı manuel değerlendirt
+   → Cohen's Kappa hesapla
+
+4. Halüsinasyon testi:
+   - "Bu sistemin eğitim veri seti nedir?" gibi 
+     ontolojide olmayan sorular sor
+   - LLM "bilmiyorum" mı diyor, uyduruyor mu?

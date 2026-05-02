@@ -1,31 +1,43 @@
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from fastapi import FastAPI
-from pydantic import BaseModel
-from services.risk_analysis import analyze_text
-from db.neo4j_client import close_driver
 
-app = FastAPI()
+from db.connection import close_driver
+from routers import (
+    analyze_router,
+    assess_router,
+    query_router,
+    risk_router,
+    systems_router,
+    tensions_router,
+    violations_router,
+)
 
-class RequestModel(BaseModel):
-    text: str
+app = FastAPI(title="Ethic AI Ontology Backend")
+
 
 @app.get("/")
 def root():
-    return {"message": "API çalışıyor 🚀"}
+    return {"status": "ok"}
 
-@app.post("/analyze")
-def analyze(req: RequestModel):
-    result = analyze_text(req.text)
 
-    return {
-        "input_text": req.text,
-        "analysis_result": result
-    }
+app.include_router(systems_router, prefix="/systems", tags=["systems"])
+app.include_router(risk_router, prefix="/risk", tags=["risk"])
+app.include_router(query_router, prefix="/query", tags=["query"])
+app.include_router(analyze_router, tags=["analyze"])
+app.include_router(violations_router, prefix="/violations", tags=["violations"])
+app.include_router(tensions_router, prefix="/tensions", tags=["tensions"])
+app.include_router(assess_router, prefix="/assess", tags=["assess"])
+
 
 @app.on_event("shutdown")
 def shutdown_db_client():
     close_driver()
 
-#cd ai-ethics-backend
-#venv\Scripts\activate
+
+#.\venv\Scripts\Activate.ps1
 #uvicorn main:app --reload
-#http://127.0.0.1:8000/docs
+#http://127.0.0.1:8000/docs .
+
