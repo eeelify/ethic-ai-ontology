@@ -3,3 +3,8 @@ uvicorn
 neo4j
 pydantic
 python-dotenv
+chromadb
+google-generativeai
+langchain
+langchain-google-genai
+langchain-community

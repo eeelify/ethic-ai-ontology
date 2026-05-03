@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 
-load_dotenv()
+# Windows’ta kullanıcı/sistem ortamında eski veya boş GEMINI_* varsa .env’deki değer
+# varsayılan load_dotenv ile yüklenmez; override=True .env’i önceliklendirir.
+load_dotenv(override=True)
 
 from fastapi import FastAPI
 
@@ -9,6 +11,7 @@ from routers import (
     analyze_router,
     assess_router,
     query_router,
+    report_router,
     risk_router,
     systems_router,
     tensions_router,
@@ -30,6 +33,7 @@ app.include_router(analyze_router, tags=["analyze"])
 app.include_router(violations_router, prefix="/violations", tags=["violations"])
 app.include_router(tensions_router, prefix="/tensions", tags=["tensions"])
 app.include_router(assess_router, prefix="/assess", tags=["assess"])
+app.include_router(report_router, tags=["report"])
 
 
 @app.on_event("shutdown")

@@ -78,3 +78,11 @@ class AssessResponse(BaseModel):
     regulations: List[str] = Field(default_factory=list)
     summary: str
 
+
+class ReportResponse(BaseModel):
+    system: str
+    ontology_profile: dict
+    legal_sources_used: List[str]
+    report: dict  # contains executive_summary, risk_assessment, etc.
+    gemini_model: Optional[str] = None  # hangi model yanıt üretti (fallback sonrası)
+
