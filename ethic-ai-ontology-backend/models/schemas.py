@@ -47,6 +47,7 @@ class FullProfileResponse(BaseModel):
     decision_type: Optional[str] = None
     automation_level: Optional[str] = None
     legal_basis: Optional[str] = None
+    user_area: Optional[str] = None
     ethical_tensions: List[str] = Field(default_factory=list)
     requirements: List[str] = Field(default_factory=list)
     affected_parties: List[str] = Field(default_factory=list)
@@ -79,9 +80,15 @@ class AssessResponse(BaseModel):
     summary: str
 
 
+class AnalyzeTextResponse(BaseModel):
+    inferred_system_types: List[str]
+    inferred_risks: List[str]
+    inferred_regulations: List[str]
+
 class ReportResponse(BaseModel):
     system: str
-    ontology_profile: dict
+    dynamic_profile: dict
+    inferred_data: Optional[dict] = None
     legal_sources_used: List[str]
     report: dict  # contains executive_summary, risk_assessment, etc.
     gemini_model: Optional[str] = None  # hangi model yanıt üretti (fallback sonrası)

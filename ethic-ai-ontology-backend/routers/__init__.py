@@ -6,6 +6,7 @@ from .risk import router as risk_router
 from .systems import router as systems_router
 from .tensions import router as tensions_router
 from .violations import router as violations_router
+from .profile import router as profile_router
 
 __all__ = [
     "analyze_router",
@@ -16,5 +17,6 @@ __all__ = [
     "systems_router",
     "tensions_router",
     "violations_router",
+    "profile_router",
 ]
 

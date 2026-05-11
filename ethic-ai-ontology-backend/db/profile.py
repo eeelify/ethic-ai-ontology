@@ -29,6 +29,8 @@ def get_full_profile(system_name: str) -> Dict[str, Any]:
         WITH s, _risk, _sector, _dt, _aut, _lb, _et, _rq, collect(DISTINCT af.name) AS _aff
         OPTIONAL MATCH (s)-[:VIOLATES]->(vio:Individual)
         WITH s, _risk, _sector, _dt, _aut, _lb, _et, _rq, _aff, collect(DISTINCT vio.name) AS _vio
+        OPTIONAL MATCH (s)-[:HAS_USER_AREA]->(ua:Individual)
+        WITH s, _risk, _sector, _dt, _aut, _lb, _et, _rq, _aff, _vio, collect(DISTINCT ua.name) AS _ua
         RETURN s.name AS system,
                head([x IN _risk WHERE x IS NOT NULL]) AS risk_level,
                head([x IN _sector WHERE x IS NOT NULL]) AS sector,
@@ -38,7 +40,8 @@ def get_full_profile(system_name: str) -> Dict[str, Any]:
                [x IN _et WHERE x IS NOT NULL] AS ethical_tensions,
                [x IN _rq WHERE x IS NOT NULL] AS requirements,
                [x IN _aff WHERE x IS NOT NULL] AS affected_parties,
-               [x IN _vio WHERE x IS NOT NULL] AS violated_principles
+               [x IN _vio WHERE x IS NOT NULL] AS violated_principles,
+               head([x IN _ua WHERE x IS NOT NULL]) AS user_area
         """,
         {"system_name": system_name},
     )
@@ -57,4 +60,5 @@ def get_full_profile(system_name: str) -> Dict[str, Any]:
         "requirements": _filter_names(row.get("requirements") or []),
         "affected_parties": _filter_names(row.get("affected_parties") or []),
         "violated_principles": _filter_names(row.get("violated_principles") or []),
+        "user_area": row.get("user_area"),
     }

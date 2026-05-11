@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 
 # Windows’ta kullanıcı/sistem ortamında eski veya boş GEMINI_* varsa .env’deki değer
@@ -16,8 +17,8 @@ from routers import (
     systems_router,
     tensions_router,
     violations_router,
+    profile_router,
 )
-
 app = FastAPI(title="Ethic AI Ontology Backend")
 
 
@@ -33,6 +34,7 @@ app.include_router(analyze_router, tags=["analyze"])
 app.include_router(violations_router, prefix="/violations", tags=["violations"])
 app.include_router(tensions_router, prefix="/tensions", tags=["tensions"])
 app.include_router(assess_router, prefix="/assess", tags=["assess"])
+app.include_router(profile_router, prefix="/profile", tags=["profile"])
 app.include_router(report_router, tags=["report"])
 
 

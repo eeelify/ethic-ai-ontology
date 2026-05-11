@@ -1,16 +1,19 @@
 import json
 import os
+import logging
 from typing import List, Optional, Tuple
 
 import google.generativeai as genai
 from google.api_core import exceptions as google_api_exceptions
 
 from services.chroma_client import get_or_create_collection
+from services.graph_service import get_dynamic_profile
+from services.analysis_service import analyze_text
 
+logger = logging.getLogger(__name__)
 
 class NoGeminiModelAvailable(RuntimeError):
     """Tüm aday modeller generateContent için reddedildiğinde."""
-
     def __init__(self, tried: List[str], last: Optional[BaseException]):
         self.tried = tried
         self.last = last
@@ -20,9 +23,7 @@ class NoGeminiModelAvailable(RuntimeError):
             + (f". Son hata: {last!s}" if last else "")
         )
 
-
 def _default_model_candidates() -> List[str]:
-    """Hesap / API sürümüne göre model adları değişebilir; sırayla dene."""
     return [
         "gemini-2.5-flash",
         "gemini-2.0-flash",
@@ -34,12 +35,7 @@ def _default_model_candidates() -> List[str]:
         "gemini-pro",
     ]
 
-
 def _model_candidates() -> List[str]:
-    """
-    GEMINI_MODEL_CANDIDATES=gemini-2.0-flash,gemini-1.5-flash  → tüm listeyi override eder.
-    Aksi halde GEMINI_MODEL varsa listenin başına alınır, sonra varsayılanlar eklenir.
-    """
     raw = (os.getenv("GEMINI_MODEL_CANDIDATES") or "").strip()
     if raw:
         return [m.strip() for m in raw.split(",") if m.strip()]
@@ -53,9 +49,7 @@ def _model_candidates() -> List[str]:
             out.append(m)
     return out
 
-
 def _should_try_next_model(exc: BaseException) -> bool:
-    """Yanlış/erişilemeyen model adı; sıradakine geç."""
     if isinstance(exc, google_api_exceptions.NotFound):
         return True
     if isinstance(exc, google_api_exceptions.InvalidArgument):
@@ -73,22 +67,17 @@ def _should_try_next_model(exc: BaseException) -> bool:
         return True
     return False
 
-
 def _configure_genai() -> None:
-    """Her istekte güncel env kullan; başta/sonda boşluk ve tırnakları temizle."""
     raw = os.getenv("GEMINI_API_KEY") or ""
     key = raw.strip().strip('"').strip("'")
     if not key:
-        raise ValueError(
-            "GEMINI_API_KEY boş. .env dosyasına anahtarı yaz ve sunucuyu yeniden başlat."
-        )
+        raise ValueError("GEMINI_API_KEY boş.")
     genai.configure(api_key=key)
-
 
 def _parse_report_from_response(response) -> dict:
     raw_text = getattr(response, "text", None) or ""
     if not raw_text.strip():
-        raise ValueError("Gemini yanıtı boş (içerik engellenmiş veya metin yok).")
+        raise ValueError("Gemini yanıtı boş.")
     try:
         return json.loads(raw_text)
     except json.JSONDecodeError:
@@ -98,7 +87,6 @@ def _parse_report_from_response(response) -> dict:
             if text.startswith("json"):
                 text = text[4:]
         return json.loads(text.strip())
-
 
 def _generate_report_with_model_fallback(prompt: str) -> Tuple[dict, str]:
     _configure_genai()
@@ -119,7 +107,6 @@ def _generate_report_with_model_fallback(prompt: str) -> Tuple[dict, str]:
             raise
     raise NoGeminiModelAvailable(candidates, last_exc)
 
-
 def retrieve_legal_context(query: str, n_results: int = 4) -> list[dict]:
     collection = get_or_create_collection()
     results = collection.query(
@@ -128,6 +115,9 @@ def retrieve_legal_context(query: str, n_results: int = 4) -> list[dict]:
     )
 
     documents = []
+    if not results["documents"] or len(results["documents"]) == 0 or len(results["documents"][0]) == 0:
+        return documents
+
     for i, doc in enumerate(results["documents"][0]):
         metadata = results["metadatas"][0][i]
         documents.append({
@@ -138,11 +128,11 @@ def retrieve_legal_context(query: str, n_results: int = 4) -> list[dict]:
         })
     return documents
 
-
 def generate_zinspection_report(
     system_name: str,
-    ontology_profile: dict,
-    legal_context: list[dict]
+    dynamic_profile: dict,
+    legal_context: list[dict],
+    inferred_data: dict = None
 ) -> Tuple[dict, str]:
 
     legal_text = "\n".join([
@@ -150,21 +140,19 @@ def generate_zinspection_report(
         for doc in legal_context
     ])
 
+    inferred_str = json.dumps(inferred_data, indent=2) if inferred_data else "None"
+    profile_str = json.dumps(dynamic_profile, indent=2)
+
     prompt = f"""You are a Z-Inspection AI ethics auditor.
 Generate a structured audit report based ONLY on the provided ontology data and legal context.
-Do NOT invent facts not present in the data.
 
-ONTOLOGY DATA (from OWL ontology + Neo4j):
+ONTOLOGY DATA (Dynamic Graph Profile):
 System: {system_name}
-Risk Level: {ontology_profile.get('risk_level', 'Unknown')}
-Sector: {ontology_profile.get('sector', 'Unknown')}
-Decision Type: {ontology_profile.get('decision_type', 'Unknown')}
-Automation Level: {ontology_profile.get('automation_level', 'Unknown')}
-Legal Basis: {ontology_profile.get('legal_basis', 'Unknown')}
-Violated Principles: {ontology_profile.get('violated_principles', [])}
-Ethical Tensions: {ontology_profile.get('ethical_tensions', [])}
-Requirements: {ontology_profile.get('requirements', [])}
-ERC Score: {ontology_profile.get('erc_score', 0)}
+Relationships:
+{profile_str}
+
+INFERRED DATA (Keyword-based):
+{inferred_str}
 
 LEGAL CONTEXT (from ChromaDB):
 {legal_text}
@@ -179,31 +167,37 @@ Generate a JSON report with these exact fields:
   "citation_sources": ["source1", "source2"]
 }}
 
-IMPORTANT: Every claim must reference either an ontology node or a legal article.
 Format: Return valid JSON only, no markdown.
 """
 
     report, model_used = _generate_report_with_model_fallback(prompt)
     return report, model_used
 
-
-def run_graphrag_pipeline(system_name: str, ontology_profile: dict) -> dict:
-    # Build query from ontology data
-    query = f"""
-    AI system ethics audit: {system_name}
-    Risk: {ontology_profile.get('risk_level')}
-    Violations: {ontology_profile.get('violated_principles')}
-    Sector: {ontology_profile.get('sector')}
-    """
-
+def run_graphrag_pipeline(system_name: str, text: str = "") -> dict:
+    logger.info(f"Running GraphRAG pipeline for {system_name}")
+    # 1. Fetch graph profile
+    dynamic_profile = get_dynamic_profile(system_name)
+    
+    # 2. Extract keywords if text is provided
+    inferred_data = analyze_text(text) if text else None
+    
+    # 3. Build query dynamically
+    flat_profile = " ".join([f"{k}: {', '.join(v)}" for k, v in dynamic_profile.get("relationships", {}).items()])
+    query = f"AI system ethics audit: {system_name} {flat_profile}"
+    
+    if inferred_data:
+        query += " " + " ".join(inferred_data.get("inferred_regulations", []))
+        
+    # 4. Retrieve legal documents
     legal_context = retrieve_legal_context(query, n_results=5)
-    report, gemini_model = generate_zinspection_report(
-        system_name, ontology_profile, legal_context
-    )
-
+    
+    # 5. Generate report
+    report, gemini_model = generate_zinspection_report(system_name, dynamic_profile, legal_context, inferred_data)
+    
     return {
         "system": system_name,
-        "ontology_profile": ontology_profile,
+        "dynamic_profile": dynamic_profile,
+        "inferred_data": inferred_data,
         "legal_sources_used": [f"{d['source']} - {d['article']}" for d in legal_context],
         "report": report,
         "gemini_model": gemini_model,

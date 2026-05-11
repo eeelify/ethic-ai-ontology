@@ -61,9 +61,24 @@ LEGAL_CHUNKS = [
     },
     # KVKK
     {
+        "id": "kvkk_art4",
+        "text": "KVKK Madde 4 - Genel İlkeler: Kişisel veriler ancak hukuka ve dürüstlük kurallarına uygun, doğru ve gerektiğinde güncel, belirli, açık ve meşru amaçlar için, işlendikleri amaçla bağlantılı, sınırlı ve ölçülü, ilgili mevzuatta öngörülen veya işlendikleri amaç için gerekli olan süre kadar muhafaza edilme ilkelerine uygun işlenebilir.",
+        "metadata": {"source": "KVKK", "article": "Madde 4", "category": "principles"}
+    },
+    {
         "id": "kvkk_art6",
         "text": "KVKK Madde 6 - Özel Nitelikli Kişisel Verilerin İşlenmesi: Kişilerin ırkı, etnik kökeni, siyasi düşüncesi, felsefi inancı, dini, mezhebi veya diğer inançları, kılık ve kıyafeti, dernek, vakıf ya da sendika üyeliği, sağlığı, cinsel hayatı, ceza mahkûmiyeti ve güvenlik tedbirleriyle ilgili verileri ile biyometrik ve genetik verileri özel nitelikli kişisel veridir.",
         "metadata": {"source": "KVKK", "article": "Madde 6", "category": "sensitive_data"}
+    },
+    {
+        "id": "kvkk_art10",
+        "text": "KVKK Madde 10 - Aydınlatma Yükümlülüğü: Kişisel verilerin elde edilmesi sırasında veri sorumlusu veya yetkilendirdiği kişi, ilgili kişilere veri sorumlusunun kimliği, verilerin hangi amaçla işleneceği, kime aktarılabileceği, toplama yöntemi ve hukuki sebebi ile hakları konusunda bilgi vermekle yükümlüdür.",
+        "metadata": {"source": "KVKK", "article": "Madde 10", "category": "transparency"}
+    },
+    {
+        "id": "kvkk_art11",
+        "text": "KVKK Madde 11 - İlgili Kişinin Hakları: Herkes, veri sorumlusuna başvurarak kendisiyle ilgili kişisel veri işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, amacına uygun kullanılıp kullanılmadığını öğrenme, eksik veya yanlış işlenmişse düzeltilmesini isteme, silinmesini veya yok edilmesini isteme haklarına sahiptir.",
+        "metadata": {"source": "KVKK", "article": "Madde 11", "category": "data_subject_rights"}
     },
     {
         "id": "kvkk_art12",
