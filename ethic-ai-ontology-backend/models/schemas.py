@@ -80,10 +80,30 @@ class AssessResponse(BaseModel):
     summary: str
 
 
+class EthicalImpact(BaseModel):
+    """Explainable ethical concern inferred from the graph."""
+    principle: str
+    reason: str
+    impact: str
+    severity: str
+    harm_type: str
+
+
+class KeywordMatch(BaseModel):
+    """A single keyword hit returned by the ontology-driven analysis."""
+    keyword: str
+    mapped_category: str
+    risk_level: str
+    regulations: List[str] = Field(default_factory=list)
+    ethical_analysis: List[EthicalImpact] = Field(default_factory=list)
+
+
 class AnalyzeTextResponse(BaseModel):
-    inferred_system_types: List[str]
-    inferred_risks: List[str]
-    inferred_regulations: List[str]
+    matched_keywords: List[KeywordMatch] = Field(default_factory=list)
+    inferred_categories: List[str] = Field(default_factory=list)
+    inferred_risks: List[str] = Field(default_factory=list)
+    inferred_regulations: List[str] = Field(default_factory=list)
+    ethical_analysis: List[EthicalImpact] = Field(default_factory=list)
 
 class ReportResponse(BaseModel):
     system: str
