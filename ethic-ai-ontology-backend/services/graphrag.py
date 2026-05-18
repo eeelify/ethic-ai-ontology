@@ -173,29 +173,38 @@ Format: Return valid JSON only, no markdown.
     report, model_used = _generate_report_with_model_fallback(prompt)
     return report, model_used
 
-def run_graphrag_pipeline(system_name: str, text: str = "") -> dict:
-    logger.info(f"Running GraphRAG pipeline for {system_name}")
+def run_graphrag_pipeline(system_name: Optional[str] = None, text: str = "") -> dict:
+    logger.info(f"Running GraphRAG pipeline for {system_name or 'Raw Text'}")
     # 1. Fetch graph profile
-    dynamic_profile = get_dynamic_profile(system_name)
+    dynamic_profile = get_dynamic_profile(system_name) if system_name else {}
     
     # 2. Extract keywords if text is provided
     inferred_data = analyze_text(text) if text else None
     
     # 3. Build query dynamically
-    flat_profile = " ".join([f"{k}: {', '.join(v)}" for k, v in dynamic_profile.get("relationships", {}).items()])
-    query = f"AI system ethics audit: {system_name} {flat_profile}"
-    
-    if inferred_data:
-        query += " " + " ".join(inferred_data.get("inferred_regulations", []))
+    query_parts = []
+    if system_name:
+        flat_profile = " ".join([f"{k}: {', '.join(v)}" for k, v in dynamic_profile.get("relationships", {}).items()])
+        query_parts.append(f"AI system ethics audit: {system_name} {flat_profile}")
+    else:
+        query_parts.append("AI system ethics audit.")
         
+    if inferred_data:
+        inferred_categories = inferred_data.get("inferred_categories", [])
+        if inferred_categories:
+            query_parts.append(f"Categories: {', '.join(inferred_categories)}")
+        query_parts.append(" ".join(inferred_data.get("inferred_regulations", [])))
+        
+    query = " ".join(query_parts)
+    
     # 4. Retrieve legal documents
     legal_context = retrieve_legal_context(query, n_results=5)
     
     # 5. Generate report
-    report, gemini_model = generate_zinspection_report(system_name, dynamic_profile, legal_context, inferred_data)
+    report, gemini_model = generate_zinspection_report(system_name or "Unknown System", dynamic_profile, legal_context, inferred_data)
     
     return {
-        "system": system_name,
+        "system": system_name or "Unknown System",
         "dynamic_profile": dynamic_profile,
         "inferred_data": inferred_data,
         "legal_sources_used": [f"{d['source']} - {d['article']}" for d in legal_context],

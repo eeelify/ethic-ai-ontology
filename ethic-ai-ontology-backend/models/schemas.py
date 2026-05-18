@@ -113,3 +113,30 @@ class ReportResponse(BaseModel):
     report: dict  # contains executive_summary, risk_assessment, etc.
     gemini_model: Optional[str] = None  # hangi model yanıt üretti (fallback sonrası)
 
+
+class IncompleteCategory(BaseModel):
+    category: str
+    missing: List[str]
+
+class DuplicatedKeyword(BaseModel):
+    term: str
+    occurrences: int
+
+class DisconnectedNode(BaseModel):
+    labels: List[str]
+    identifier: str
+
+class OntologyHealthResponse(BaseModel):
+    total_categories: int
+    healthy_categories: int
+    completeness_score: float
+    incomplete_categories: List[IncompleteCategory]
+    categories_without_keywords: List[str]
+    orphan_categories: List[str]
+    duplicated_keywords: List[DuplicatedKeyword]
+    disconnected_nodes: List[DisconnectedNode]
+
+class ReloadOntologyResponse(BaseModel):
+    status: str
+    loaded_keywords: int
+    loaded_categories: int

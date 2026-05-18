@@ -7,6 +7,7 @@ from .systems import router as systems_router
 from .tensions import router as tensions_router
 from .violations import router as violations_router
 from .profile import router as profile_router
+from .ontology import router as ontology_router
 
 __all__ = [
     "analyze_router",
@@ -18,5 +19,5 @@ __all__ = [
     "tensions_router",
     "violations_router",
     "profile_router",
+    "ontology_router",
 ]
-

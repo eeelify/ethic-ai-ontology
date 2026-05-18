@@ -14,10 +14,10 @@ def generate_report(req: Dict[str, Any] = Body(...)):
     system_name = req.get("system_name")
     text = req.get("text", "")
     
-    if not system_name:
-        raise HTTPException(status_code=422, detail="system_name required")
+    if not system_name and not text:
+        raise HTTPException(status_code=422, detail="Either system_name or text is required")
 
-    logger.info(f"POST /report called for system: {system_name}")
+    logger.info(f"POST /report called for system: {system_name or 'Raw Text'}")
 
     try:
         result = run_graphrag_pipeline(system_name, text)

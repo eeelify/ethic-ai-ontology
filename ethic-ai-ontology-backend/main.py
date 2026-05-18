@@ -18,6 +18,7 @@ from routers import (
     tensions_router,
     violations_router,
     profile_router,
+    ontology_router,
 )
 app = FastAPI(title="Ethic AI Ontology Backend")
 
@@ -35,8 +36,15 @@ app.include_router(violations_router, prefix="/violations", tags=["violations"])
 app.include_router(tensions_router, prefix="/tensions", tags=["tensions"])
 app.include_router(assess_router, prefix="/assess", tags=["assess"])
 app.include_router(profile_router, prefix="/profile", tags=["profile"])
+app.include_router(ontology_router, tags=["ontology"])
 app.include_router(report_router, tags=["report"])
 
+
+from services.analysis_service import refresh_ontology_cache
+
+@app.on_event("startup")
+def startup_event():
+    refresh_ontology_cache()
 
 @app.on_event("shutdown")
 def shutdown_db_client():
