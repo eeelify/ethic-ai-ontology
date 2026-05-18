@@ -1,0 +1,288 @@
+2026-05-18 11:43:18,299 - INFO - Starting Ontology Enrichment for Ethical Principles...
+2026-05-18 11:43:56,922 - INFO - Starting Ontology Enrichment for Ethical Principles...
+2026-05-18 11:43:57,720 - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `id` does not exist in database `ada522e9`. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=14, offset=83>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 83, 'line': 4, 'column': 14}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n    MATCH (c:AI_Category)\n    WHERE NOT (c)-[:IMPACTS_PRINCIPLE]->()\n    RETURN c.id AS id, c.name AS name\n    '
+2026-05-18 11:43:57,722 - INFO - Found 15 categories missing IMPACTS_PRINCIPLE relations.
+2026-05-18 11:43:57,722 - INFO - Enriching category 'BiometricSurveillance' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:43:57,820 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:43:57,910 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:43:57,988 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:43:58,064 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:43:58,148 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:43:58,148 - INFO - Enriching category 'BiometricSystem' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:43:58,240 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:43:58,326 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:43:58,418 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:43:58,502 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:43:58,576 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:43:58,577 - INFO - Enriching category 'SurveillanceSystem' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:43:58,651 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:43:58,724 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:43:58,799 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:43:58,882 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:43:58,883 - INFO - Enriching category 'HealthcareAI' (ID: None) with principles: ['Safety', 'Accountability', 'HumanOversight', 'Transparency']
+2026-05-18 11:43:58,955 - INFO -  -> Created relationship to principle: Safety
+2026-05-18 11:43:59,032 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:43:59,123 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:43:59,198 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:43:59,198 - INFO - Skipping category 'DataProcessingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:43:59,198 - INFO - Skipping category 'EmotionRecognitionAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:43:59,198 - INFO - Enriching category 'BiometricAI' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:43:59,273 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:43:59,349 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:43:59,426 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:43:59,499 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:43:59,573 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:43:59,574 - INFO - Enriching category 'SurveillanceAI' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:43:59,648 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:43:59,728 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:43:59,814 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:43:59,893 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:43:59,893 - INFO - Enriching category 'CreditScoringAI' (ID: None) with principles: ['Fairness', 'NonDiscrimination', 'Explainability', 'Accountability']
+2026-05-18 11:43:59,994 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:44:00,068 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:44:00,160 - INFO -  -> Created relationship to principle: Explainability
+2026-05-18 11:44:00,232 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:44:00,232 - INFO - Enriching category 'EducationalAI' (ID: None) with principles: ['Fairness', 'Transparency', 'HumanOversight', 'Autonomy']
+2026-05-18 11:44:00,311 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:44:00,388 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:44:00,461 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:44:00,533 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:44:00,534 - INFO - Skipping category 'LawEnforcementAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:44:00,534 - INFO - Skipping category 'RecommendationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:44:00,534 - INFO - Skipping category 'GenerativeAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:44:00,534 - INFO - Skipping category 'ProfilingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:44:00,534 - INFO - Skipping category 'SocialScoringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:44:00,535 - INFO - Enrichment process completed.
+2026-05-18 11:44:00,535 - INFO - Total categories enriched: 8
+2026-05-18 11:44:00,536 - INFO - Total categories skipped: 7
+2026-05-18 11:46:24,809 - INFO - Starting Ontology Enrichment for Ethical Principles...
+2026-05-18 11:46:25,959 - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `id` does not exist in database `ada522e9`. Verify that the spelling is correct.', position=<SummaryInputPosition line=3, column=14, offset=40>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 40, 'line': 3, 'column': 14}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n    MATCH (c:AI_Category)\n    RETURN c.id AS id, c.name AS name\n    '
+2026-05-18 11:46:25,960 - INFO - Found 17 categories to evaluate for enrichment.
+2026-05-18 11:46:25,960 - INFO - Skipping category 'HiringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:25,960 - INFO - Enriching category 'BiometricSurveillance' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:46:26,065 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:46:26,261 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:46:26,362 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:46:26,468 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:46:26,670 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:46:26,671 - INFO - Enriching category 'BiometricSystem' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:46:26,771 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:46:26,874 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:46:26,977 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:46:27,078 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:46:27,182 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:46:27,182 - INFO - Enriching category 'SurveillanceSystem' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:46:27,281 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:46:27,387 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:46:27,493 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:46:27,593 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:46:27,593 - INFO - Enriching category 'HealthcareAI' (ID: None) with principles: ['Safety', 'Accountability', 'HumanOversight', 'Transparency']
+2026-05-18 11:46:27,699 - INFO -  -> Created relationship to principle: Safety
+2026-05-18 11:46:27,795 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:46:27,900 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:46:28,002 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:46:28,002 - INFO - Skipping category 'DataProcessingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:28,002 - INFO - Skipping category 'EmotionRecognitionAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:28,002 - INFO - Enriching category 'BiometricAI' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:46:28,103 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:46:28,214 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:46:28,308 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:46:28,414 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:46:28,521 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:46:28,521 - INFO - Enriching category 'SurveillanceAI' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:46:28,616 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:46:28,718 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:46:28,822 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:46:28,922 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:46:28,922 - INFO - Enriching category 'CreditScoringAI' (ID: None) with principles: ['Fairness', 'NonDiscrimination', 'Explainability', 'Accountability']
+2026-05-18 11:46:29,026 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:46:29,137 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:46:29,239 - INFO -  -> Created relationship to principle: Explainability
+2026-05-18 11:46:29,339 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:46:29,339 - INFO - Enriching category 'EducationalAI' (ID: None) with principles: ['Fairness', 'Transparency', 'HumanOversight', 'Autonomy']
+2026-05-18 11:46:29,432 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:46:29,506 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:46:29,585 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:46:29,672 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:46:29,672 - INFO - Skipping category 'LawEnforcementAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:29,673 - INFO - Skipping category 'RecommendationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:29,673 - INFO - Skipping category 'GenerativeAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:29,673 - INFO - Skipping category 'ProfilingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:29,673 - INFO - Skipping category 'SocialScoringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:29,673 - INFO - Skipping category 'EmotionManipulationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:46:29,674 - INFO - Enrichment process completed.
+2026-05-18 11:46:29,674 - INFO - Total categories enriched: 8
+2026-05-18 11:46:29,674 - INFO - Total categories skipped: 9
+2026-05-18 11:51:12,971 - INFO - Starting Ontology Enrichment for Ethical Principles...
+2026-05-18 11:51:14,734 - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `id` does not exist in database `ada522e9`. Verify that the spelling is correct.', position=<SummaryInputPosition line=3, column=14, offset=40>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 40, 'line': 3, 'column': 14}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n    MATCH (c:AI_Category)\n    RETURN c.id AS id, c.name AS name\n    '
+2026-05-18 11:51:14,735 - INFO - Found 17 categories to evaluate for enrichment.
+2026-05-18 11:51:14,735 - INFO - Skipping category 'HiringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:14,735 - INFO - Enriching category 'BiometricSurveillance' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:51:14,828 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:51:14,932 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:51:15,031 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:51:15,134 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:51:15,242 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:51:15,242 - INFO - Enriching category 'BiometricSystem' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:51:15,437 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:51:15,541 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:51:15,644 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:51:15,749 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:51:15,846 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:51:15,846 - INFO - Enriching category 'SurveillanceSystem' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:51:15,953 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:51:16,155 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:51:16,264 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:51:16,364 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:51:16,364 - INFO - Enriching category 'HealthcareAI' (ID: None) with principles: ['Safety', 'Accountability', 'HumanOversight', 'Transparency']
+2026-05-18 11:51:16,464 - INFO -  -> Created relationship to principle: Safety
+2026-05-18 11:51:16,566 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:51:16,671 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:51:16,773 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:51:16,774 - INFO - Skipping category 'DataProcessingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:16,774 - INFO - Skipping category 'EmotionRecognitionAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:16,774 - INFO - Enriching category 'BiometricAI' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:51:16,876 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:51:16,978 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:51:17,081 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:51:17,186 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:51:17,280 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:51:17,281 - INFO - Enriching category 'SurveillanceAI' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:51:17,388 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:51:17,484 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:51:17,561 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:51:17,633 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:51:17,633 - INFO - Enriching category 'CreditScoringAI' (ID: None) with principles: ['Fairness', 'NonDiscrimination', 'Explainability', 'Accountability']
+2026-05-18 11:51:17,707 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:51:17,900 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:51:17,999 - INFO -  -> Created relationship to principle: Explainability
+2026-05-18 11:51:18,121 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:51:18,121 - INFO - Enriching category 'EducationalAI' (ID: None) with principles: ['Fairness', 'Transparency', 'HumanOversight', 'Autonomy']
+2026-05-18 11:51:18,219 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:51:18,324 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:51:18,431 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:51:18,621 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:51:18,621 - INFO - Skipping category 'LawEnforcementAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:18,621 - INFO - Skipping category 'RecommendationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:18,621 - INFO - Skipping category 'GenerativeAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:18,621 - INFO - Skipping category 'ProfilingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:18,622 - INFO - Skipping category 'SocialScoringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:18,622 - INFO - Skipping category 'EmotionManipulationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:18,622 - INFO - Enrichment process completed.
+2026-05-18 11:51:18,622 - INFO - Total categories enriched: 8
+2026-05-18 11:51:18,623 - INFO - Total categories skipped: 9
+2026-05-18 11:51:58,525 - INFO - Starting Ontology Enrichment for Ethical Principles...
+2026-05-18 11:51:59,899 - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `id` does not exist in database `ada522e9`. Verify that the spelling is correct.', position=<SummaryInputPosition line=3, column=14, offset=40>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 40, 'line': 3, 'column': 14}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n    MATCH (c:AI_Category)\n    RETURN c.id AS id, c.name AS name\n    '
+2026-05-18 11:51:59,900 - INFO - Found 17 categories to evaluate for enrichment.
+2026-05-18 11:51:59,900 - INFO - Skipping category 'HiringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:51:59,900 - INFO - Enriching category 'BiometricSurveillance' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:52:00,088 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:52:00,188 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:52:00,292 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:52:00,399 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:52:00,497 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:52:00,497 - INFO - Enriching category 'BiometricSystem' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:52:00,607 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:52:00,701 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:52:00,805 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:52:00,906 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:52:01,006 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:52:01,006 - INFO - Enriching category 'SurveillanceSystem' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:52:01,110 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:52:01,216 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:52:01,314 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:52:01,418 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:52:01,418 - INFO - Enriching category 'HealthcareAI' (ID: None) with principles: ['Safety', 'Accountability', 'HumanOversight', 'Transparency']
+2026-05-18 11:52:01,524 - INFO -  -> Created relationship to principle: Safety
+2026-05-18 11:52:01,623 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:52:01,729 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:52:01,829 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:52:01,829 - INFO - Skipping category 'DataProcessingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:01,830 - INFO - Skipping category 'EmotionRecognitionAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:01,830 - INFO - Enriching category 'BiometricAI' (ID: None) with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 11:52:01,930 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:52:02,029 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 11:52:02,131 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:52:02,350 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:52:02,446 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:52:02,447 - INFO - Enriching category 'SurveillanceAI' (ID: None) with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 11:52:02,546 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 11:52:02,751 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:52:02,853 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:52:02,957 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 11:52:02,957 - INFO - Enriching category 'CreditScoringAI' (ID: None) with principles: ['Fairness', 'NonDiscrimination', 'Explainability', 'Accountability']
+2026-05-18 11:52:03,070 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:52:03,163 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 11:52:03,267 - INFO -  -> Created relationship to principle: Explainability
+2026-05-18 11:52:03,364 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 11:52:03,364 - INFO - Enriching category 'EducationalAI' (ID: None) with principles: ['Fairness', 'Transparency', 'HumanOversight', 'Autonomy']
+2026-05-18 11:52:03,464 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 11:52:03,567 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 11:52:03,668 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 11:52:03,776 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 11:52:03,776 - INFO - Skipping category 'LawEnforcementAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:03,777 - INFO - Skipping category 'RecommendationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:03,777 - INFO - Skipping category 'GenerativeAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:03,777 - INFO - Skipping category 'ProfilingAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:03,777 - INFO - Skipping category 'SocialScoringAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:03,778 - INFO - Skipping category 'EmotionManipulationAI' (ID: None): No matching semantic mapping found.
+2026-05-18 11:52:03,778 - INFO - Enrichment process completed.
+2026-05-18 11:52:03,778 - INFO - Total categories enriched: 8
+2026-05-18 11:52:03,778 - INFO - Total categories skipped: 9
+2026-05-18 12:00:23,125 - INFO - Starting Ontology Enrichment for Ethical Principles...
+2026-05-18 12:00:25,638 - INFO - Found 17 categories to evaluate for enrichment.
+2026-05-18 12:00:25,638 - INFO - Skipping category 'HiringAI': No matching semantic mapping found.
+2026-05-18 12:00:25,638 - INFO - Enriching category 'BiometricSurveillance' with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 12:00:25,843 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 12:00:26,046 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 12:00:26,146 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 12:00:26,247 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 12:00:26,452 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 12:00:26,454 - INFO - Enriching category 'BiometricSystem' with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 12:00:26,562 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 12:00:26,807 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 12:00:26,968 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 12:00:27,043 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 12:00:27,122 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 12:00:27,122 - INFO - Enriching category 'SurveillanceSystem' with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 12:00:27,199 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 12:00:27,280 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 12:00:27,358 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 12:00:27,442 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 12:00:27,443 - INFO - Enriching category 'HealthcareAI' with principles: ['Safety', 'Accountability', 'HumanOversight', 'Transparency']
+2026-05-18 12:00:27,535 - INFO -  -> Created relationship to principle: Safety
+2026-05-18 12:00:27,612 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 12:00:27,695 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 12:00:27,781 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 12:00:27,781 - INFO - Skipping category 'DataProcessingAI': No matching semantic mapping found.
+2026-05-18 12:00:27,782 - INFO - Skipping category 'EmotionRecognitionAI': No matching semantic mapping found.
+2026-05-18 12:00:27,782 - INFO - Enriching category 'BiometricAI' with principles: ['Privacy', 'DataProtection', 'HumanAgency', 'Autonomy', 'NonDiscrimination']
+2026-05-18 12:00:27,862 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 12:00:27,956 - INFO -  -> Created relationship to principle: DataProtection
+2026-05-18 12:00:28,470 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 12:00:28,546 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 12:00:28,625 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 12:00:28,625 - INFO - Enriching category 'SurveillanceAI' with principles: ['Privacy', 'Transparency', 'Accountability', 'HumanAgency']
+2026-05-18 12:00:28,701 - INFO -  -> Created relationship to principle: Privacy
+2026-05-18 12:00:28,781 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 12:00:28,870 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 12:00:28,945 - INFO -  -> Created relationship to principle: HumanAgency
+2026-05-18 12:00:28,945 - INFO - Enriching category 'CreditScoringAI' with principles: ['Fairness', 'NonDiscrimination', 'Explainability', 'Accountability']
+2026-05-18 12:00:29,032 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 12:00:29,149 - INFO -  -> Created relationship to principle: NonDiscrimination
+2026-05-18 12:00:29,249 - INFO -  -> Created relationship to principle: Explainability
+2026-05-18 12:00:29,322 - INFO -  -> Created relationship to principle: Accountability
+2026-05-18 12:00:29,322 - INFO - Enriching category 'EducationalAI' with principles: ['Fairness', 'Transparency', 'HumanOversight', 'Autonomy']
+2026-05-18 12:00:29,400 - INFO -  -> Created relationship to principle: Fairness
+2026-05-18 12:00:29,478 - INFO -  -> Created relationship to principle: Transparency
+2026-05-18 12:00:29,567 - INFO -  -> Created relationship to principle: HumanOversight
+2026-05-18 12:00:29,641 - INFO -  -> Created relationship to principle: Autonomy
+2026-05-18 12:00:29,641 - INFO - Skipping category 'LawEnforcementAI': No matching semantic mapping found.
+2026-05-18 12:00:29,641 - INFO - Skipping category 'RecommendationAI': No matching semantic mapping found.
+2026-05-18 12:00:29,641 - INFO - Skipping category 'GenerativeAI': No matching semantic mapping found.
+2026-05-18 12:00:29,641 - INFO - Skipping category 'ProfilingAI': No matching semantic mapping found.
+2026-05-18 12:00:29,641 - INFO - Skipping category 'SocialScoringAI': No matching semantic mapping found.
+2026-05-18 12:00:29,641 - INFO - Skipping category 'EmotionManipulationAI': No matching semantic mapping found.
+2026-05-18 12:00:29,646 - INFO - Enrichment process completed.
+2026-05-18 12:00:29,646 - INFO - Total categories enriched: 8
+2026-05-18 12:00:29,647 - INFO - Total categories skipped: 9
