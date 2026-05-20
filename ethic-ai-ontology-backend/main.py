@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from db.connection import close_driver
 from routers import (
@@ -21,6 +22,14 @@ from routers import (
     ontology_router,
 )
 app = FastAPI(title="Ethic AI Ontology Backend")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")

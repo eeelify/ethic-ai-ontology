@@ -262,19 +262,29 @@ MERGE (cat:AI_Category {name: $name})
   ON CREATE SET cat.risk_level = $risk_level
   ON MATCH  SET cat.risk_level = $risk_level
 WITH cat
+MERGE (r:RiskLevel {name: $risk_level})
+MERGE (cat)-[:HAS_RISK]->(r)
+WITH cat
 UNWIND $regulations AS reg_name
   MERGE (reg:Regulation {name: reg_name})
+  MERGE (cat)-[:RELATED_TO_REGULATION]->(reg)
   MERGE (cat)-[:HAS_REGULATION]->(reg)
 """
 
 _VIOLATION_CYPHER = """
 MATCH (cat:AI_Category {name: $category})
 MERGE (ep:EthicalPrinciple {name: $principle})
-MERGE (cat)-[r:MAY_VIOLATE]->(ep)
+MERGE (cat)-[r:IMPACTS_PRINCIPLE]->(ep)
 SET r.reason    = $reason,
     r.impact    = $impact,
     r.severity  = $severity,
     r.harm_type = $harm_type
+WITH cat, ep
+MERGE (cat)-[old_r:MAY_VIOLATE]->(ep)
+SET old_r.reason    = $reason,
+    old_r.impact    = $impact,
+    old_r.severity  = $severity,
+    old_r.harm_type = $harm_type
 """
 
 _KW_CYPHER = """

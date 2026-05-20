@@ -9,7 +9,13 @@
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:webprotege="http://webprotege.stanford.edu/">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-26"/>
+    <owl:Ontology rdf:about="http://www.semanticweb.org/pelin/ontologies/2026/3/untitled-ontology-26">
+        <rdfs:comment xml:lang="en">Domain: Ethical AI systems ontology for benchmarking real-world AI (HR, law enforcement, biometrics, education) against EU AI Act style risk levels, legal bases, ethical principle tensions, and compliance obligations. Integrates TAIR requirements vocabulary.</rdfs:comment>
+        <rdfs:comment xml:lang="en">CQ1: Which AI systems operate in the education sector and what decision types do they make?</rdfs:comment>
+        <rdfs:comment xml:lang="en">CQ2: Which fully automated AI systems require human oversight obligations?</rdfs:comment>
+        <rdfs:comment xml:lang="en">CQ3: Which AI systems exhibit ethical tensions related to fairness, privacy, or transparency?</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://tair.adaptcentre.ie/ontologies/tair"/>
+    </owl:Ontology>
     
 
 
@@ -23,13 +29,6 @@
 
     
 
-
-    <!-- http://www.w3.org/2001/XMLSchema#duration%20 -->
-
-    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration%20">
-        <rdfs:label>duration </rdfs:label>
-    </rdfs:Datatype>
-    
 
 
     <!-- 
@@ -273,7 +272,7 @@
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/affects">
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Stakeholder"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/AffectedPerson"/>
         <rdfs:label>affects</rdfs:label>
     </owl:ObjectProperty>
     
@@ -323,7 +322,7 @@
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasAutomationLevel">
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/AutomationLevel"/>
         <rdfs:label>hasAutomationLevel</rdfs:label>
     </owl:ObjectProperty>
     
@@ -353,7 +352,7 @@
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasEthicalTension">
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
         <rdfs:label>hasEthicalTension</rdfs:label>
     </owl:ObjectProperty>
     
@@ -403,7 +402,7 @@
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasRiskLevel">
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
         <rdfs:label>hasRiskLevel</rdfs:label>
     </owl:ObjectProperty>
     
@@ -492,7 +491,7 @@
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/requires">
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/Obligation"/>
         <rdfs:label>requires</rdfs:label>
     </owl:ObjectProperty>
     
@@ -531,7 +530,17 @@
 
     <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/violates">
         <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>violates</rdfs:label>
+    </owl:ObjectProperty>
+
+
+    <!-- http://webprotege.stanford.edu/conflictsWith -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/conflictsWith">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>conflictsWith</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -744,7 +753,7 @@
     <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/phaseDuration">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://webprotege.stanford.edu/ZInspectionPhase"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration%20"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
         <rdfs:label>phaseDuration</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1141,7 +1150,9 @@
     <!-- http://webprotege.stanford.edu/ConformityAssessmentObligation -->
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/ConformityAssessmentObligation">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Obligation"/>
         <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/ConformityAssessment"/>
+        <rdfs:label>ConformityAssessmentObligation</rdfs:label>
     </owl:Class>
     
 
@@ -1276,6 +1287,7 @@
 
     <owl:Class rdf:about="http://webprotege.stanford.edu/EthicalTension">
         <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/AIAuditExtension"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
         <rdfs:label>EthicalTension</rdfs:label>
     </owl:Class>
     
@@ -1667,6 +1679,336 @@
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:label>EthicalPrinciple</rdfs:label>
     </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/EthicalPrinciple">
+        <owl:equivalentClass rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
+        <rdfs:label>EthicalPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Obligation">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/AIAuditExtension"/>
+        <rdfs:label>Obligation</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/PrivacyPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <rdfs:label>PrivacyPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/FairnessPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>FairnessPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/TransparencyPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>TransparencyPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AccountabilityPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>AccountabilityPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/AccuracyPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>AccuracyPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RightToExplanationPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>RightToExplanationPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/SecurityPrinciple">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/EthicalPrinciple"/>
+        <rdfs:label>SecurityPrinciple</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/FairnessAccuracyTensionType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://webprotege.stanford.edu/EthicalTension"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/conflictsWith"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/conflictsWith"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>FairnessAccuracyTensionType</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/PrivacyAccountabilityTensionType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://webprotege.stanford.edu/EthicalTension"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/conflictsWith"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/conflictsWith"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>PrivacyAccountabilityTensionType</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/TransparencySecurityTensionType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://webprotege.stanford.edu/EthicalTension"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/conflictsWith"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/conflictsWith"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>TransparencySecurityTensionType</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HRSectorOnlySystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasSector"/>
+                        <owl:allValuesFrom rdf:resource="http://webprotege.stanford.edu/HRSector"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>HRSectorOnlySystem</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/MultiTensionAISystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasEthicalTension"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>MultiTensionAISystem</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/NonEducationalAISystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasSector"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="http://webprotege.stanford.edu/EducationSector"/>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>NonEducationalAISystem</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/UnacceptableRisk">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/LimitedRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/MinimalRisk"/>
+        <rdfs:label>UnacceptableRisk</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HighRisk">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/LimitedRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/MinimalRisk"/>
+        <rdfs:label>HighRisk</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/LimitedRisk">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/MinimalRisk"/>
+        <rdfs:label>LimitedRisk</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/MinimalRisk">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
+        <owl:disjointWith rdf:resource="http://webprotege.stanford.edu/LimitedRisk"/>
+        <rdfs:label>MinimalRisk</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/FullyAutomated">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/AutomationLevel"/>
+        <rdfs:label>FullyAutomated</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/EducationSector">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdfs:label>EducationSector</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/FinanceSector">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdfs:label>FinanceSector</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HRSector">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdfs:label>HRSector</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HealthcareSector">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdfs:label>HealthcareSector</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/CreditScoringDecision">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdfs:label>CreditScoringDecision</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/ProfilingDecision">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdfs:label>ProfilingDecision</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RecruitmentFilteringDecision">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdfs:label>RecruitmentFilteringDecision</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/ScoringDecision">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdfs:label>ScoringDecision</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/NoConsentBasis">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
+        <rdfs:label>NoConsentBasis</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/NoExplicitConsentBasis">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
+        <rdfs:label>NoExplicitConsentBasis</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/NoAdequacyDecision">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
+        <rdfs:label>NoAdequacyDecision</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HumanOversightMechanismObligation">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Obligation"/>
+        <rdfs:label>HumanOversightMechanismObligation</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/OversightRequiredAISystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/requires"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>OversightRequiredAISystem</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HighRiskSystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasRiskLevel"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>HighRiskSystem</rdfs:label>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/FullyAutomatedSystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://webprotege.stanford.edu/hasAutomationLevel"/>
+                        <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label>FullyAutomatedSystem</rdfs:label>
+    </owl:Class>
     
 
 
@@ -1990,14 +2332,6 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/AccountabilityPrinciple -->
-
-    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccountabilityPrinciple">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
-        <rdfs:label>AccountabilityPrinciple</rdfs:label>
-    </owl:NamedIndividual>
-    
-
 
     <!-- http://webprotege.stanford.edu/AmazonHR_CVFilter -->
 
@@ -2005,11 +2339,13 @@
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdf:type rdf:resource="http://webprotege.stanford.edu/HRRecruitmentSystem"/>
         <webprotege:affects rdf:resource="http://webprotege.stanford.edu/JobApplicant_2"/>
-        <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
-        <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
-        <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/FairnessAccuracyTension"/>
         <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/HRSector"/>
-        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+        <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
+        <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+        <webprotege:hasLegalBasis rdf:resource="http://webprotege.stanford.edu/NoExplicitConsentBasis"/>
+        <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/FairnessAccuracyTension"/>
+        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightObligation_Ind"/>
+        <webprotege:hasRiskScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.82</webprotege:hasRiskScore>
     </owl:NamedIndividual>
     
 
@@ -2018,8 +2354,15 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AutoHiringSystem">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/HRRecruitmentSystem"/>
         <webprotege:affects rdf:resource="http://webprotege.stanford.edu/JobApplicant_1"/>
+        <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/HRSector"/>
+        <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
         <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+        <webprotege:hasLegalBasis rdf:resource="http://webprotege.stanford.edu/NoExplicitConsentBasis"/>
+        <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/FairnessAccuracyTension"/>
+        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightObligation_Ind"/>
+        <webprotege:hasRiskScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.76</webprotege:hasRiskScore>
     </owl:NamedIndividual>
     
 
@@ -2028,14 +2371,17 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/COMPAS_RecidivismSystem">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/LawEnforcementAISystem"/>
         <webprotege:affects rdf:resource="http://webprotege.stanford.edu/Defendant_1"/>
-        <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+        <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/FinanceSector"/>
         <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/ProfilingDecision"/>
+        <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+        <webprotege:hasLegalBasis rdf:resource="http://webprotege.stanford.edu/NoConsentBasis"/>
         <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/FairnessAccuracyTension"/>
         <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/>
-        <webprotege:hasLegalBasis rdf:resource="http://webprotege.stanford.edu/NoConsentBasis"/>
-        <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/FinanceSector"/>
-        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+        <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/PrivacyFairnessTension"/>
+        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightObligation_Ind"/>
+        <webprotege:hasRiskScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.91</webprotege:hasRiskScore>
     </owl:NamedIndividual>
     
 
@@ -2045,9 +2391,15 @@
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/ClearviewAI_System">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
         <rdf:type rdf:resource="http://webprotege.stanford.edu/BiometricIdentificationSystem"/>
+        <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/HRSector"/>
+        <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/ProfilingDecision"/>
+        <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+        <webprotege:hasLegalBasis rdf:resource="http://webprotege.stanford.edu/NoConsentBasis"/>
         <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/PrivacyAccountabilityTension"/>
+        <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/PrivacyAccuracyTension"/>
         <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/TransparencySecurityTension"/>
         <webprotege:hasUserArea rdf:resource="http://webprotege.stanford.edu/PublicSpace"/>
+        <webprotege:hasRiskScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.95</webprotege:hasRiskScore>
     </owl:NamedIndividual>
     
 
@@ -2055,7 +2407,9 @@
     <!-- http://webprotege.stanford.edu/ConformityAssessmentObligation -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/ConformityAssessmentObligation">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/ConformityAssessment"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/ConformityAssessmentObligation"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Obligation"/>
+        <rdfs:label>ConformityAssessmentObligation</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2063,7 +2417,7 @@
     <!-- http://webprotege.stanford.edu/CreditScoringDecision -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/CreditScoringDecision">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/CreditScoringDecision"/>
         <rdfs:label>CreditScoringDecision</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2080,7 +2434,7 @@
     <!-- http://webprotege.stanford.edu/EducationSector -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/EducationSector">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EducationSector"/>
         <rdfs:label>EducationSector</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2088,26 +2442,203 @@
 
     <!-- http://webprotege.stanford.edu/FairnessAccuracyTension -->
 
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <rdfs:label>PrivacyPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FairnessPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <rdfs:label>FairnessPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/TransparencyPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <rdfs:label>TransparencyPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccountabilityPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+        <rdfs:label>AccountabilityPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccuracyPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+        <rdfs:label>AccuracyPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/SecurityPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
+        <rdfs:label>SecurityPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RightToExplanationPrinciple">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+        <rdfs:label>RightToExplanationPrinciple</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <!-- Principle-pair ethical tensions (conflictsWith both principles) -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyAccuracyTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+        <rdfs:label>PrivacyAccuracyTension</rdfs:label>
+        <rdfs:comment>Trade-off between Privacy and Accuracy</rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyFairnessTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <rdfs:label>PrivacyFairnessTension</rdfs:label>
+        <rdfs:comment>Trade-off between Privacy and Fairness</rdfs:comment>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyTransparencyTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <rdfs:label>PrivacyTransparencyTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyRightToExplanationTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+        <rdfs:label>PrivacyRightToExplanationTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacySecurityTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
+        <rdfs:label>PrivacySecurityTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FairnessTransparencyTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <rdfs:label>FairnessTransparencyTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FairnessAccountabilityTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+        <rdfs:label>FairnessAccountabilityTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FairnessRightToExplanationTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+        <rdfs:label>FairnessRightToExplanationTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccuracyTransparencyTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <rdfs:label>AccuracyTransparencyTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccuracyAccountabilityTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+        <rdfs:label>AccuracyAccountabilityTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccuracyRightToExplanationTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+        <rdfs:label>AccuracyRightToExplanationTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/TransparencyAccountabilityTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+        <rdfs:label>TransparencyAccountabilityTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/TransparencyRightToExplanationTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+        <rdfs:label>TransparencyRightToExplanationTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/AccountabilityRightToExplanationTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/RightToExplanationPrinciple"/>
+        <rdfs:label>AccountabilityRightToExplanationTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/SecurityFairnessTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <rdfs:label>SecurityFairnessTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/SecurityAccuracyTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
+        <rdfs:label>SecurityAccuracyTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/SecurityAccountabilityTension">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
+        <rdfs:label>SecurityAccountabilityTension</rdfs:label>
+    </owl:NamedIndividual>
+
+
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FairnessAccuracyTension">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/FairnessAccuracyTensionType"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/FairnessPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccuracyPrinciple"/>
         <rdfs:label>FairnessAccuracyTension</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://webprotege.stanford.edu/FairnessPrinciple -->
-
-    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FairnessPrinciple">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
-        <rdfs:label>FairnessPrinciple</rdfs:label>
-    </owl:NamedIndividual>
-    
-
 
     <!-- http://webprotege.stanford.edu/FinanceSector -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FinanceSector">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/FinanceSector"/>
         <rdfs:label>FinanceSector</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2116,7 +2647,7 @@
     <!-- http://webprotege.stanford.edu/FullyAutomated -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/FullyAutomated">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/AutomationLevel"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
         <rdfs:label>FullyAutomated</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2125,7 +2656,7 @@
     <!-- http://webprotege.stanford.edu/HRSector -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HRSector">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/HRSector"/>
         <rdfs:label>HRSector</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2134,7 +2665,7 @@
     <!-- http://webprotege.stanford.edu/HealthcareSector -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HealthcareSector">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/Sector"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/HealthcareSector"/>
         <rdfs:label>HealthcareSector</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2143,17 +2674,18 @@
     <!-- http://webprotege.stanford.edu/HighRisk -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HighRisk">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
         <rdfs:label>HighRisk</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://webprotege.stanford.edu/HumanOversightMechanismObligation -->
+    <!-- http://webprotege.stanford.edu/HumanOversightObligation_Ind -->
 
-    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HumanOversightMechanismObligation">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanism"/>
-        <rdfs:label>HumanOversightMechanismObligation</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HumanOversightObligation_Ind">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Obligation"/>
+        <rdfs:label>HumanOversightObligation</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2177,7 +2709,7 @@
     <!-- http://webprotege.stanford.edu/LimitedRisk -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/LimitedRisk">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/LimitedRisk"/>
         <rdfs:label>LimitedRisk</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2186,7 +2718,7 @@
     <!-- http://webprotege.stanford.edu/MinimalRisk -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/MinimalRisk">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/MinimalRisk"/>
         <rdfs:label>MinimalRisk</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2195,7 +2727,7 @@
     <!-- http://webprotege.stanford.edu/NoAdequacyDecision -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/NoAdequacyDecision">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/NoAdequacyDecision"/>
         <rdfs:label>NoAdequacyDecision</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2204,7 +2736,7 @@
     <!-- http://webprotege.stanford.edu/NoConsentBasis -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/NoConsentBasis">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/NoConsentBasis"/>
         <rdfs:label>NoConsentBasis</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2213,7 +2745,7 @@
     <!-- http://webprotege.stanford.edu/NoExplicitConsentBasis -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/NoExplicitConsentBasis">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/LegalBasis"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/NoExplicitConsentBasis"/>
         <rdfs:label>NoExplicitConsentBasis</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2223,24 +2755,19 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyAccountabilityTension">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/PrivacyAccountabilityTensionType"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/PrivacyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/AccountabilityPrinciple"/>
         <rdfs:label>PrivacyAccountabilityTension</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://webprotege.stanford.edu/PrivacyPrinciple -->
-
-    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/PrivacyPrinciple">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RBsn89WRZfp7u2arD3CXxV4"/>
-        <rdfs:label>PrivacyPrinciple</rdfs:label>
-    </owl:NamedIndividual>
-    
-
 
     <!-- http://webprotege.stanford.edu/ProfilingDecision -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/ProfilingDecision">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/ProfilingDecision"/>
         <rdfs:label>ProfilingDecision</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2258,7 +2785,7 @@
     <!-- http://webprotege.stanford.edu/RecruitmentFilteringDecision -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RecruitmentFilteringDecision">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RecruitmentFilteringDecision"/>
         <rdfs:label>RecruitmentFilteringDecision</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2267,7 +2794,7 @@
     <!-- http://webprotege.stanford.edu/ScoringDecision -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/ScoringDecision">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/DecisionType"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/ScoringDecision"/>
         <rdfs:label>ScoringDecision</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2277,9 +2804,14 @@
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/StudentGradingSystem">
         <rdf:type rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
-        <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/ScoringDecision"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/EducationAISystem"/>
         <webprotege:hasSector rdf:resource="http://webprotege.stanford.edu/EducationSector"/>
-        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+        <webprotege:hasDecisionType rdf:resource="http://webprotege.stanford.edu/ScoringDecision"/>
+        <webprotege:hasAutomationLevel rdf:resource="http://webprotege.stanford.edu/FullyAutomated"/>
+        <webprotege:hasLegalBasis rdf:resource="http://webprotege.stanford.edu/NoExplicitConsentBasis"/>
+        <webprotege:hasEthicalTension rdf:resource="http://webprotege.stanford.edu/TransparencySecurityTension"/>
+        <webprotege:requires rdf:resource="http://webprotege.stanford.edu/HumanOversightObligation_Ind"/>
+        <webprotege:hasRiskScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.68</webprotege:hasRiskScore>
     </owl:NamedIndividual>
     
 
@@ -2293,19 +2825,14 @@
     
 
 
-    <!-- http://webprotege.stanford.edu/TransparencyObligation -->
-
-    <owl:Class rdf:about="http://webprotege.stanford.edu/TransparencyObligation">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/TransparencyObligation"/>
-    </owl:Class>
-    
-
 
     <!-- http://webprotege.stanford.edu/TransparencySecurityTension -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/TransparencySecurityTension">
         <rdf:type rdf:resource="http://webprotege.stanford.edu/EthicalTension"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/TransparencySecurityTensionType"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/TransparencyPrinciple"/>
+        <webprotege:conflictsWith rdf:resource="http://webprotege.stanford.edu/SecurityPrinciple"/>
         <rdfs:label>TransparencySecurityTension</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2314,14 +2841,9 @@
     <!-- http://webprotege.stanford.edu/UnacceptableRisk -->
 
     <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/UnacceptableRisk">
-        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
         <rdfs:label>UnacceptableRisk</rdfs:label>
     </owl:NamedIndividual>
-    <rdf:Description>
-        <rdfs:label rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/RequirementCollection"/>
-    </rdf:Description>
-    
-
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -2625,7 +3147,7 @@
                         <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
                         <swrl:propertyPredicate rdf:resource="http://webprotege.stanford.edu/requires"/>
                         <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#s"/>
-                        <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/HumanOversightMechanismObligation"/>
+                        <swrl:argument2 rdf:resource="http://webprotege.stanford.edu/HumanOversightObligation_Ind"/>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
