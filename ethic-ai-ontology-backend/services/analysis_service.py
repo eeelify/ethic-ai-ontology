@@ -33,13 +33,13 @@ logger = logging.getLogger(__name__)
 _FETCH_ONTOLOGY_CYPHER = """
 MATCH (k:Keyword)-[:MAPS_TO]->(c:AI_Category)
 OPTIONAL MATCH (c)-[:HAS_RISK]->(r:RiskLevel)
-OPTIONAL MATCH (c)-[:RELATED_TO_REGULATION]->(reg:Regulation)
-WITH k, c, r, collect(DISTINCT reg.name) AS regulations
+OPTIONAL MATCH (c)-[:HAS_REGULATION]->(reg:Regulation)
+WITH k, c, collect(DISTINCT coalesce(r.name, c.risk_level)) AS risks, collect(DISTINCT reg.name) AS regulations
 OPTIONAL MATCH (c)-[vr:IMPACTS_PRINCIPLE]->(p:EthicalPrinciple)
 RETURN
     k.term         AS keyword,
     c.name         AS category,
-    r.name         AS risk,
+    risks,
     regulations,
     collect(DISTINCT {
         principle: p.name,
@@ -64,7 +64,44 @@ def refresh_ontology_cache() -> dict:
                 _ONTOLOGY_CACHE = rows
             
             categories_count = len(set(r.get("category") for r in rows if r.get("category")))
+            
+            # Calculate metrics
+            principles_set = set()
+            cats_with_ethics = set()
+            cats_with_risks = set()
+            cats_with_regs = set()
+            total_risks = 0
+            total_regs = 0
+
+            for r in rows:
+                cat = r.get("category")
+                ea_list = [e for e in (r.get("ethical_analysis") or []) if e.get("principle")]
+                risks_list = [risk for risk in (r.get("risks") or []) if risk]
+                regs_list = [reg for reg in (r.get("regulations") or []) if reg]
+
+                if cat:
+                    if ea_list:
+                        cats_with_ethics.add(cat)
+                        for ea in ea_list:
+                            principles_set.add(ea.get("principle"))
+                    if risks_list:
+                        cats_with_risks.add(cat)
+                        total_risks += len(risks_list)
+                    if regs_list:
+                        cats_with_regs.add(cat)
+                        total_regs += len(regs_list)
+            
+            principles_count = len(principles_set)
+            missing_relations = categories_count - len(cats_with_ethics)
+            missing_risks = categories_count - len(cats_with_risks)
+            missing_regs = categories_count - len(cats_with_regs)
+
             logger.info(f"Successfully loaded {len(rows)} keyword mappings into ontology cache")
+            logger.info(f"Loaded {principles_count} unique ethical principles.")
+            logger.info(f"Categories with ethical mappings: {len(cats_with_ethics)} (Missing: {missing_relations})")
+            logger.info(f"Loaded risk mappings: {total_risks} across {len(cats_with_risks)} categories (Missing: {missing_risks})")
+            logger.info(f"Loaded regulation mappings: {total_regs} across {len(cats_with_regs)} categories (Missing: {missing_regs})")
+
             return {
                 "status": "success",
                 "loaded_keywords": len(rows),
@@ -110,7 +147,7 @@ def analyze_text(text: str) -> dict:
             {
                 "keyword": str,
                 "mapped_category": str,
-                "risk_level": str,
+                "risks": [str, ...],
                 "regulations": [str, ...],
                 "ethical_analysis": [
                     {
@@ -151,22 +188,22 @@ def analyze_text(text: str) -> dict:
             continue
 
         category: str = row.get("category") or ""
-        risk: str = row.get("risk") or ""
+        risks: list[str] = [r for r in (row.get("risks") or []) if r]
         regs: list[str] = [r for r in (row.get("regulations") or []) if r]
         ea: list[dict] = _clean_ethical_analysis(row.get("ethical_analysis") or [])
 
         matched.append({
             "keyword": kw,
             "mapped_category": category,
-            "risk_level": risk,
+            "risks": sorted(risks),
             "regulations": sorted(regs),
             "ethical_analysis": ea,
         })
 
         if category:
             inferred_categories.add(category)
-        if risk:
-            inferred_risks.add(risk)
+        
+        inferred_risks.update(risks)
         inferred_regulations.update(regs)
 
         # Deduplicate at top level
@@ -189,7 +226,10 @@ def analyze_text(text: str) -> dict:
 
     logger.info(
         f"Matched {len(matched)} keyword(s) -> "
-        f"{len(inferred_categories)} category/ies: {sorted(inferred_categories)}"
+        f"Categories: {sorted(inferred_categories)} | "
+        f"Risks: {sorted(inferred_risks)} | "
+        f"Regs: {len(inferred_regulations)} "
+        f"(Ethical impacts: {len(top_ethical)})"
     )
 
     return {
@@ -238,10 +278,11 @@ def generate_graph_trace(text: str) -> dict:
             seen_categories.add(category)
             
         # 3. Risk inference trace
-        risk: str = row.get("risk") or ""
-        if risk and risk not in seen_risks:
-            trace.append({"step": "risk_inference", "value": risk})
-            seen_risks.add(risk)
+        risks: list[str] = [r for r in (row.get("risks") or []) if r]
+        for risk in risks:
+            if risk not in seen_risks:
+                trace.append({"step": "risk_inference", "value": risk})
+                seen_risks.add(risk)
             
         # 4. Regulation inference trace
         regs: list[str] = [r for r in (row.get("regulations") or []) if r]

@@ -93,7 +93,7 @@ class KeywordMatch(BaseModel):
     """A single keyword hit returned by the ontology-driven analysis."""
     keyword: str
     mapped_category: str
-    risk_level: str
+    risks: List[str] = Field(default_factory=list)
     regulations: List[str] = Field(default_factory=list)
     ethical_analysis: List[EthicalImpact] = Field(default_factory=list)
 
