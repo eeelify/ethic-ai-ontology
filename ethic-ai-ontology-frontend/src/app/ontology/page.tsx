@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Database, Filter, Layers, Network } from "lucide-react";
 import { ReactFlow, Background, Controls, MiniMap, Node, Edge, MarkerType } from "@xyflow/react";
 import '@xyflow/react/dist/style.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Initial Demo Ontology Data
 const initialNodes: Node[] = [
@@ -46,9 +46,79 @@ const initialEdges: Edge[] = [
 export default function OntologyExplorerPage() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
+  const [loading, setLoading] = useState(true);
+  const [activeFilters, setActiveFilters] = useState<Record<string, boolean>>({
+    AI_Category: true,
+    RiskLevel: true,
+    Regulation: true,
+    EthicalPrinciple: true
+  });
 
-  // In a real application, you would fetch the full graph from the backend:
-  // useEffect(() => { api.get("/ontology-graph").then(...) }, [])
+  const visibleNodes = nodes.filter(n => {
+    if (n.style?.background === "#a855f7") return activeFilters.AI_Category;
+    if (n.style?.background === "#ef4444") return activeFilters.RiskLevel;
+    if (n.style?.background === "#3b82f6") return activeFilters.Regulation;
+    if (n.style?.background === "#10b981") return activeFilters.EthicalPrinciple;
+    return true;
+  });
+
+  const visibleNodeIds = new Set(visibleNodes.map(n => n.id));
+  const visibleEdges = edges.filter(e => visibleNodeIds.has(e.source) && visibleNodeIds.has(e.target));
+
+  useEffect(() => {
+    fetch("http://localhost:8000/ontology-graph")
+      .then(res => res.json())
+      .then(data => {
+        if (!data.nodes || !data.edges) return;
+        
+        const counts: Record<string, number> = { Regulation: 0, AI_Category: 0, RiskLevel: 0, EthicalPrinciple: 0 };
+        
+        const mappedNodes: Node[] = data.nodes.map((n: any) => {
+          const type = n.label_type;
+          const x = type === 'Regulation' ? 100 : type === 'AI_Category' ? 400 : (type === 'RiskLevel' ? 700 : 1000);
+          counts[type] = (counts[type] || 0) + 1;
+          const y = counts[type] * 120;
+          
+          let bgColor = "#333";
+          if (type === "Regulation") bgColor = "#3b82f6";
+          if (type === "AI_Category") bgColor = "#a855f7";
+          if (type === "RiskLevel") bgColor = "#ef4444";
+          if (type === "EthicalPrinciple") bgColor = "#10b981";
+
+          return {
+            id: n.id,
+            position: { x, y },
+            data: { label: n.name },
+            style: { background: bgColor, color: "#fff", padding: 10, borderRadius: 8 }
+          };
+        });
+
+        const mappedEdges: Edge[] = data.edges.map((e: any) => {
+          let color = "#fff";
+          if (e.label === "HAS_RISK") color = "#ef4444";
+          if (e.label === "RELATED_TO_REGULATION") color = "#3b82f6";
+          if (e.label === "IMPACTS_PRINCIPLE") color = "#10b981";
+
+          return {
+            id: e.id,
+            source: e.source,
+            target: e.target,
+            label: e.label,
+            animated: e.label !== "RELATED_TO_REGULATION",
+            markerEnd: { type: MarkerType.ArrowClosed, color },
+            style: { stroke: color }
+          };
+        });
+
+        setNodes(mappedNodes);
+        setEdges(mappedEdges);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load ontology graph:", err);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="relative min-h-screen py-10 px-4">
@@ -64,10 +134,30 @@ export default function OntologyExplorerPage() {
             <p className="text-zinc-400 mt-1">Interactive visualization of the underlying Neo4j knowledge graph.</p>
           </div>
           <div className="flex gap-2">
-            <Badge variant="outline" className="bg-purple-500/10 text-purple-300 border-purple-500/30">AI Categories</Badge>
-            <Badge variant="outline" className="bg-red-500/10 text-red-300 border-red-500/30">Risks</Badge>
-            <Badge variant="outline" className="bg-blue-500/10 text-blue-300 border-blue-500/30">Regulations</Badge>
-            <Badge variant="outline" className="bg-emerald-500/10 text-emerald-300 border-emerald-500/30">Principles</Badge>
+            <Badge 
+              onClick={() => setActiveFilters(prev => ({...prev, AI_Category: !prev.AI_Category}))}
+              variant="outline" 
+              className={`cursor-pointer transition-colors select-none ${activeFilters.AI_Category ? "bg-purple-500/20 text-purple-300 border-purple-500/50" : "bg-transparent text-zinc-500 border-zinc-700 hover:border-purple-500/30"}`}>
+              AI Categories
+            </Badge>
+            <Badge 
+              onClick={() => setActiveFilters(prev => ({...prev, RiskLevel: !prev.RiskLevel}))}
+              variant="outline" 
+              className={`cursor-pointer transition-colors select-none ${activeFilters.RiskLevel ? "bg-red-500/20 text-red-300 border-red-500/50" : "bg-transparent text-zinc-500 border-zinc-700 hover:border-red-500/30"}`}>
+              Risks
+            </Badge>
+            <Badge 
+              onClick={() => setActiveFilters(prev => ({...prev, Regulation: !prev.Regulation}))}
+              variant="outline" 
+              className={`cursor-pointer transition-colors select-none ${activeFilters.Regulation ? "bg-blue-500/20 text-blue-300 border-blue-500/50" : "bg-transparent text-zinc-500 border-zinc-700 hover:border-blue-500/30"}`}>
+              Regulations
+            </Badge>
+            <Badge 
+              onClick={() => setActiveFilters(prev => ({...prev, EthicalPrinciple: !prev.EthicalPrinciple}))}
+              variant="outline" 
+              className={`cursor-pointer transition-colors select-none ${activeFilters.EthicalPrinciple ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/50" : "bg-transparent text-zinc-500 border-zinc-700 hover:border-emerald-500/30"}`}>
+              Principles
+            </Badge>
           </div>
         </div>
 
@@ -75,15 +165,14 @@ export default function OntologyExplorerPage() {
           {/* React Flow Map */}
           <Card className="lg:col-span-4 bg-black/40 border-white/10 overflow-hidden relative">
             <ReactFlow 
-              nodes={nodes} 
-              edges={edges}
+              nodes={visibleNodes} 
+              edges={visibleEdges}
               fitView
               className="dark"
               minZoom={0.2}
             >
               <Background color="#333" gap={20} />
               <Controls />
-              <MiniMap style={{ backgroundColor: "#111", border: "1px solid #333" }} />
             </ReactFlow>
           </Card>
 
@@ -106,17 +195,17 @@ export default function OntologyExplorerPage() {
               </div>
               <div className="space-y-1">
                 <span className="text-xs text-zinc-500 uppercase font-bold">AI Categories</span>
-                <p className="text-2xl font-bold text-purple-400">2</p>
+                <p className="text-2xl font-bold text-purple-400">{nodes.filter(n => n.style?.background === "#a855f7").length}</p>
               </div>
               <div className="space-y-1">
                 <span className="text-xs text-zinc-500 uppercase font-bold">Regulations</span>
-                <p className="text-2xl font-bold text-blue-400">3</p>
+                <p className="text-2xl font-bold text-blue-400">{nodes.filter(n => n.style?.background === "#3b82f6").length}</p>
               </div>
               
               <div className="mt-8 pt-4 border-t border-white/10">
                 <CardDescription className="text-xs text-zinc-400">
-                  This explorer is currently rendering a demo subset of the ontology graph. 
-                  Connect to the `GET /ontology-graph` backend endpoint to stream the live Neo4j topology.
+                  Streaming live Neo4j topology from the backend. 
+                  {loading && " Loading..."}
                 </CardDescription>
               </div>
             </CardContent>
