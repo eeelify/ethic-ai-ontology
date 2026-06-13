@@ -25,11 +25,11 @@ class NoGeminiModelAvailable(RuntimeError):
 
 def _default_model_candidates() -> List[str]:
     return [
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-latest",
         "gemini-2.5-flash",
         "gemini-2.0-flash",
-        "gemini-1.5-flash",
         "gemini-1.5-flash-8b",
-        "gemini-1.5-flash-latest",
         "gemini-1.5-pro-latest",
         "gemini-1.5-pro",
         "gemini-pro",
@@ -132,7 +132,8 @@ def generate_zinspection_report(
     system_name: str,
     dynamic_profile: dict,
     legal_context: list[dict],
-    inferred_data: dict = None
+    inferred_data: dict = None,
+    raw_text: str = ""
 ) -> Tuple[dict, str]:
 
     legal_text = "\n".join([
@@ -142,13 +143,15 @@ def generate_zinspection_report(
 
     inferred_str = json.dumps(inferred_data, indent=2) if inferred_data else "None"
     profile_str = json.dumps(dynamic_profile, indent=2)
+    
+    raw_text_section = f"\nDOCUMENT CONTENTS (from user upload):\n{raw_text}\n" if raw_text.strip() else ""
 
     prompt = f"""You are a Z-Inspection AI ethics auditor.
-Generate a structured audit report based ONLY on the provided ontology data and legal context.
+Generate a structured audit report based ONLY on the provided ontology data, legal context, and the document contents.
 
 ONTOLOGY DATA (Dynamic Graph Profile):
 System: {system_name}
-Relationships:
+Relationships and Properties:
 {profile_str}
 
 INFERRED DATA (Keyword-based):
@@ -156,16 +159,35 @@ INFERRED DATA (Keyword-based):
 
 LEGAL CONTEXT (from ChromaDB):
 {legal_text}
-
+{raw_text_section}
 Generate a JSON report with these exact fields:
 {{
-  "executive_summary": "2-3 sentence summary citing ontology data",
+  "executive_summary": "2-3 sentence summary citing ontology data and document details",
   "risk_assessment": "Risk level explanation with legal article reference",
-  "ethical_analysis": "Analysis of violated principles and tensions",
+  "composite_risk_score": "Composite risk score calculation out of 100",
+  "risk_level": "MinimalRisk | LimitedRisk | HighRisk | UnacceptableRisk",
+  "score_components": {{
+    "ethical_score": "...",
+    "legal_score": "...",
+    "data_score": "...",
+    "technical_score": "...",
+    "oversight_score": "..."
+  }},
+  "risk_threshold_explanation": "Explanation of why the risk level was assigned based on the composite score",
+  "ethical_analysis": "Analysis of violated principles and overall ethical impact",
+  "ethical_tensions": [
+    {{
+      "tension": "Name of the tension (e.g. Privacy vs Transparency)",
+      "description": "A detailed, contextual explanation of how this specific trade-off manifests in this exact AI system's use case, rather than just a generic definition."
+    }}
+  ],
   "legal_compliance": "Specific legal obligations with article numbers",
   "recommendations": ["recommendation 1", "recommendation 2", "recommendation 3"],
   "citation_sources": ["source1", "source2"]
 }}
+
+CRITICAL INSTRUCTION 1: If the ONTOLOGY DATA properties (e.g. under the 'properties' key in the Dynamic Graph Profile JSON) contain `hasCompositeRiskScore`, `hasEthicalImpactScore`, `hasLegalComplianceScore`, `hasDataSensitivityScore`, `hasTechnicalRobustnessScore`, or `hasHumanOversightScore`, you MUST populate the corresponding fields (`composite_risk_score`, `risk_level`, and `score_components` with keys `ethical_score`, `legal_score`, `data_score`, `technical_score`, `oversight_score`) in your response JSON using those exact values. Do not recalculate, modify, or hallucinate these values.
+CRITICAL INSTRUCTION 2 FOR ETHICAL TENSIONS: Do not just list generic definitions. Analyze the system's specific context, use case, document contents, and provided data. Identify actual ethical trade-offs (tensions) that apply to this specific system. Provide a highly tailored explanation for *how and why* this system experiences each tension based on the uploaded document text.
 
 Format: Return valid JSON only, no markdown.
 """
@@ -201,7 +223,7 @@ def run_graphrag_pipeline(system_name: Optional[str] = None, text: str = "") -> 
     legal_context = retrieve_legal_context(query, n_results=5)
     
     # 5. Generate report
-    report, gemini_model = generate_zinspection_report(system_name or "Unknown System", dynamic_profile, legal_context, inferred_data)
+    report, gemini_model = generate_zinspection_report(system_name or "Unknown System", dynamic_profile, legal_context, inferred_data, raw_text=text)
     
     return {
         "system": system_name or "Unknown System",

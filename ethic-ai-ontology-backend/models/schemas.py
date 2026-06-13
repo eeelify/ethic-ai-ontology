@@ -64,11 +64,17 @@ class ERCLevel(str, Enum):
 
 class AssessRequest(BaseModel):
     system_name: str
+    ethical_score: float = 0.0
+    legal_score: float = 0.0
+    data_score: float = 0.0
+    technical_score: float = 0.0
+    oversight_score: float = 0.0
 
 
 class AssessResponse(BaseModel):
     system: str
-    risk_level: Optional[str] = None
+    risk_level: str
+    composite_risk_score: float
     erc_score: int
     erc_level: ERCLevel
     sector: Optional[str] = None
@@ -89,6 +95,14 @@ class EthicalImpact(BaseModel):
     harm_type: str
 
 
+class EthicalTensionDetail(BaseModel):
+    name: str
+    conflicting_principles: List[str] = Field(default_factory=list)
+    severity: str
+    description: str
+    recommendation: str
+
+
 class KeywordMatch(BaseModel):
     """A single keyword hit returned by the ontology-driven analysis."""
     keyword: str
@@ -96,6 +110,7 @@ class KeywordMatch(BaseModel):
     risks: List[str] = Field(default_factory=list)
     regulations: List[str] = Field(default_factory=list)
     ethical_analysis: List[EthicalImpact] = Field(default_factory=list)
+    ethical_tensions: List[EthicalTensionDetail] = Field(default_factory=list)
 
 
 class AnalyzeTextResponse(BaseModel):
@@ -104,6 +119,7 @@ class AnalyzeTextResponse(BaseModel):
     inferred_risks: List[str] = Field(default_factory=list)
     inferred_regulations: List[str] = Field(default_factory=list)
     ethical_analysis: List[EthicalImpact] = Field(default_factory=list)
+    ethical_tensions: List[EthicalTensionDetail] = Field(default_factory=list)
 
 class ReportResponse(BaseModel):
     system: str
@@ -121,6 +137,15 @@ class IncompleteCategory(BaseModel):
 class DuplicatedKeyword(BaseModel):
     term: str
     occurrences: int
+
+class PrincipleConflict(BaseModel):
+    principle_1: str
+    principle_2: str
+
+class TensionsResponse(BaseModel):
+    system: str
+    ethical_tensions: List[str]  # Or List[EthicalTensionDetail] depending on what we return
+    principle_conflicts: List[PrincipleConflict]
 
 class DisconnectedNode(BaseModel):
     labels: List[str]

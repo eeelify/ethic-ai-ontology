@@ -35,12 +35,26 @@ MATCH (k:Keyword)-[:MAPS_TO]->(c:AI_Category)
 OPTIONAL MATCH (c)-[:HAS_RISK]->(r:RiskLevel)
 OPTIONAL MATCH (c)-[:HAS_REGULATION]->(reg:Regulation)
 WITH k, c, collect(DISTINCT coalesce(r.name, c.risk_level)) AS risks, collect(DISTINCT reg.name) AS regulations
+
+OPTIONAL MATCH (c)-[:MAY_CREATE_TENSION]->(t:EthicalTension)
+OPTIONAL MATCH (t)-[:CONFLICTS_WITH]->(tp:EthicalPrinciple)
+WITH k, c, risks, regulations, t, collect(DISTINCT tp.name) AS conflicting_principles
+WITH k, c, risks, regulations, 
+     collect(CASE WHEN t IS NOT NULL THEN {
+         name: t.name,
+         severity: t.severity,
+         description: t.description,
+         recommendation: t.recommendation,
+         conflicting_principles: conflicting_principles
+     } END) AS ethical_tensions
+
 OPTIONAL MATCH (c)-[vr:IMPACTS_PRINCIPLE]->(p:EthicalPrinciple)
 RETURN
     k.term         AS keyword,
     c.name         AS category,
     risks,
     regulations,
+    ethical_tensions,
     collect(DISTINCT {
         principle: p.name,
         reason:    vr.reason,
@@ -158,14 +172,16 @@ def analyze_text(text: str) -> dict:
                         "harm_type": str
                     },
                     ...
-                ]
+                ],
+                "ethical_tensions": [...]
             },
             ...
         ],
         "inferred_categories": [str, ...],
         "inferred_risks":      [str, ...],
         "inferred_regulations":[str, ...],
-        "ethical_analysis":    [EthicalImpact, ...]  # deduplicated, top-level
+        "ethical_analysis":    [EthicalImpact, ...],  # deduplicated, top-level
+        "ethical_tensions":    [EthicalTensionDetail, ...]
     }
     """
     logger.info("POST /analyze-text: running ontology-driven analysis")
@@ -182,6 +198,10 @@ def analyze_text(text: str) -> dict:
     seen_impacts: set[tuple] = set()
     top_ethical: list[dict] = []
 
+    # Top-level ethical tensions: deduplicate by name
+    seen_tensions: set[str] = set()
+    top_tensions: list[dict] = []
+
     for row in ontology:
         kw: str = (row.get("keyword") or "").strip()
         if not kw or kw.lower() not in t:
@@ -191,6 +211,7 @@ def analyze_text(text: str) -> dict:
         risks: list[str] = [r for r in (row.get("risks") or []) if r]
         regs: list[str] = [r for r in (row.get("regulations") or []) if r]
         ea: list[dict] = _clean_ethical_analysis(row.get("ethical_analysis") or [])
+        et: list[dict] = row.get("ethical_tensions") or []
 
         matched.append({
             "keyword": kw,
@@ -198,6 +219,7 @@ def analyze_text(text: str) -> dict:
             "risks": sorted(risks),
             "regulations": sorted(regs),
             "ethical_analysis": ea,
+            "ethical_tensions": et,
         })
 
         if category:
@@ -206,12 +228,19 @@ def analyze_text(text: str) -> dict:
         inferred_risks.update(risks)
         inferred_regulations.update(regs)
 
-        # Deduplicate at top level
+        # Deduplicate at top level for impacts
         for impact in ea:
             key = (category, impact.get("principle", ""), impact.get("harm_type", ""))
             if key not in seen_impacts:
                 seen_impacts.add(key)
                 top_ethical.append(impact)
+
+        # Deduplicate at top level for tensions
+        for tension in et:
+            t_name = tension.get("name")
+            if t_name and t_name not in seen_tensions:
+                seen_tensions.add(t_name)
+                top_tensions.append(tension)
                 
     if not matched:
         logger.info("No known AI governance category detected.")
@@ -221,7 +250,8 @@ def analyze_text(text: str) -> dict:
             "inferred_categories": [],
             "inferred_risks": [],
             "inferred_regulations": [],
-            "ethical_analysis": []
+            "ethical_analysis": [],
+            "ethical_tensions": []
         }
 
     logger.info(
@@ -229,7 +259,8 @@ def analyze_text(text: str) -> dict:
         f"Categories: {sorted(inferred_categories)} | "
         f"Risks: {sorted(inferred_risks)} | "
         f"Regs: {len(inferred_regulations)} "
-        f"(Ethical impacts: {len(top_ethical)})"
+        f"(Ethical impacts: {len(top_ethical)}) "
+        f"(Ethical tensions: {len(top_tensions)})"
     )
 
     return {
@@ -238,8 +269,8 @@ def analyze_text(text: str) -> dict:
         "inferred_risks": sorted(inferred_risks),
         "inferred_regulations": sorted(inferred_regulations),
         "ethical_analysis": top_ethical,
+        "ethical_tensions": top_tensions,
     }
-
 
 def generate_graph_trace(text: str) -> dict:
     """

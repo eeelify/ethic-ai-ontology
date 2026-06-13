@@ -8,3 +8,6 @@ google-generativeai
 langchain
 langchain-google-genai
 langchain-community
+PyMuPDF
+python-multipart
+python-docx

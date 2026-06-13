@@ -614,6 +614,31 @@
         <rdfs:domain rdf:resource="http://www.w3.org/ns/oa#Annotation"/>
         <rdfs:range rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/Requirement"/>
     </owl:ObjectProperty>
+
+    <!-- http://webprotege.stanford.edu/hasRiskMetric -->
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/hasRiskMetric">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:ObjectProperty>
+
+    <!-- http://webprotege.stanford.edu/calculatedByMetric -->
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/calculatedByMetric">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RiskAssessment"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:ObjectProperty>
+
+    <!-- http://webprotege.stanford.edu/classifiedByThreshold -->
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/classifiedByThreshold">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RiskAssessment"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+    </owl:ObjectProperty>
+
+    <!-- http://webprotege.stanford.edu/thresholdForRiskLevel -->
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/thresholdForRiskLevel">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <rdfs:range rdf:resource="http://webprotege.stanford.edu/RiskLevel"/>
+    </owl:ObjectProperty>
+
     
 
 
@@ -778,6 +803,79 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:label>responseText</rdfs:label>
     </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasLikelihoodScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasLikelihoodScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasImpactScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasImpactScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasDetectabilityScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasDetectabilityScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasEthicalImpactScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasEthicalImpactScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasLegalComplianceScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasLegalComplianceScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasTechnicalRobustnessScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasTechnicalRobustnessScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasHumanOversightScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasHumanOversightScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasDataSensitivityScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasDataSensitivityScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasCompositeRiskScore -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasCompositeRiskScore">
+        <rdfs:domain rdf:resource="http://tair.adaptcentre.ie/ontologies/tair/AiSystem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasRiskFormula -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasRiskFormula">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasThresholdMin -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasThresholdMin">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://webprotege.stanford.edu/hasThresholdMax -->
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/hasThresholdMax">
+        <rdfs:domain rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
     
 
 
@@ -2312,6 +2410,59 @@
     <!-- http://www.w3.org/ns/oa#Annotation -->
 
     <owl:Class rdf:about="http://www.w3.org/ns/oa#Annotation"/>
+
+    <!-- http://webprotege.stanford.edu/LikelihoodScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/LikelihoodScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/ImpactScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/ImpactScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/DetectabilityScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/DetectabilityScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/EthicalImpactScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/EthicalImpactScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/LegalComplianceScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/LegalComplianceScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/TechnicalRobustnessScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/TechnicalRobustnessScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/HumanOversightScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/HumanOversightScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/DataSensitivityScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/DataSensitivityScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/CompositeRiskScore -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/CompositeRiskScore">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiskMetric"/>
+        <rdfs:comment>Composite risk score is calculated in the FastAPI backend using weighted ethical, legal, technical, data sensitivity, and human oversight scores. The ontology stores the metric schema, threshold definitions, and final classification.</rdfs:comment>
+        <rdfs:comment>CompositeRiskScore = (0.25 * EthicalImpactScore) + (0.25 * LegalComplianceScore) + (0.20 * DataSensitivityScore) + (0.15 * TechnicalRobustnessScore) + (0.15 * HumanOversightScore)</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://webprotege.stanford.edu/RiskThreshold -->
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RiskThreshold">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/AIAuditExtension"/>
+    </owl:Class>
+
     
 
 
@@ -2881,6 +3032,39 @@
     <rdf:Description rdf:about="http://webprotege.stanford.edu/TransparencyPrinciple">
         <rdfs:label>TransparencyPrinciple</rdfs:label>
     </rdf:Description>
+
+    <!-- http://webprotege.stanford.edu/MinimalRiskThreshold -->
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/MinimalRiskThreshold">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <webprotege:hasThresholdMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</webprotege:hasThresholdMin>
+        <webprotege:hasThresholdMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25</webprotege:hasThresholdMax>
+        <webprotege:thresholdForRiskLevel rdf:resource="http://webprotege.stanford.edu/MinimalRisk"/>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/LimitedRiskThreshold -->
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/LimitedRiskThreshold">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <webprotege:hasThresholdMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">26</webprotege:hasThresholdMin>
+        <webprotege:hasThresholdMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">50</webprotege:hasThresholdMax>
+        <webprotege:thresholdForRiskLevel rdf:resource="http://webprotege.stanford.edu/LimitedRisk"/>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/HighRiskThreshold -->
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/HighRiskThreshold">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <webprotege:hasThresholdMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">51</webprotege:hasThresholdMin>
+        <webprotege:hasThresholdMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">75</webprotege:hasThresholdMax>
+        <webprotege:thresholdForRiskLevel rdf:resource="http://webprotege.stanford.edu/HighRisk"/>
+    </owl:NamedIndividual>
+
+    <!-- http://webprotege.stanford.edu/UnacceptableRiskThreshold -->
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/UnacceptableRiskThreshold">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiskThreshold"/>
+        <webprotege:hasThresholdMin rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">76</webprotege:hasThresholdMin>
+        <webprotege:hasThresholdMax rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100</webprotege:hasThresholdMax>
+        <webprotege:thresholdForRiskLevel rdf:resource="http://webprotege.stanford.edu/UnacceptableRisk"/>
+    </owl:NamedIndividual>
+
     
 
 

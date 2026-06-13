@@ -1,36 +1,85 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Activity, ShieldAlert, BookOpen, AlertTriangle, FileText, GitBranch, Loader2 } from "lucide-react";
+import { Activity, ShieldAlert, BookOpen, AlertTriangle, FileText, GitBranch, Loader2, Upload, FileUp, X } from "lucide-react";
 import { toast } from "sonner";
+import axios from "axios";
 import api from "@/services/api";
 import { AnalyzeTextResponse } from "@/types";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
 export default function AnalyzerPage() {
   const router = useRouter();
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<AnalyzeTextResponse | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const extension = file.name.split('.').pop()?.toLowerCase();
+    if (extension !== "pdf" && extension !== "docx" && extension !== "doc") {
+      toast.error("Only PDF and Word (.docx, .doc) files can be uploaded.");
+      return;
+    }
+
+    if (file.size > 20 * 1024 * 1024) {
+      toast.error("File size must be less than 20MB.");
+      return;
+    }
+
+    setUploadedFile(file);
+    toast.success(`"${file.name}" uploaded.`);
+  };
+
+  const handleRemoveFile = () => {
+    setUploadedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
 
   const handleAnalyze = async () => {
-    if (!text.trim()) {
-      toast.error("Please describe an AI system to analyze.");
+    if (!text.trim() && !uploadedFile) {
+      toast.error("Please describe an AI system or upload a file.");
       return;
     }
     setLoading(true);
     try {
-      const response = await api.post<AnalyzeTextResponse>("/analyze-text", { text });
+      let response;
+
+      if (uploadedFile) {
+        const formData = new FormData();
+        if (text.trim()) {
+          formData.append("text", text);
+        }
+        formData.append("file", uploadedFile);
+
+        response = await axios.post<AnalyzeTextResponse>(
+          `${API_BASE_URL}/analyze-text`,
+          formData
+        );
+      } else {
+        response = await api.post<AnalyzeTextResponse>("/analyze-text", { text });
+      }
+
       setResults(response.data);
       toast.success("Analysis complete.");
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error("Failed to analyze text. Ensure backend is running.");
+      const detail = error?.response?.data?.detail;
+      toast.error(detail || "Failed to analyze. Ensure backend is running.");
     } finally {
       setLoading(false);
     }
@@ -66,7 +115,7 @@ export default function AnalyzerPage() {
               AI System Analyzer
             </CardTitle>
             <CardDescription className="text-zinc-400">
-              Describe the AI system&apos;s capabilities, inputs, and purpose to infer regulatory and ethical exposure.
+              Describe the AI system&apos;s capabilities, inputs, and purpose — or upload a PDF/Word document for analysis.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -76,6 +125,65 @@ export default function AnalyzerPage() {
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
+
+            {/* PDF/Word Upload Area */}
+            <div className="space-y-3">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".pdf,.docx,.doc"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+
+              {!uploadedFile ? (
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-full group relative flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-white/15 bg-white/[0.03] py-6 px-4 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-500/[0.06] cursor-pointer"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 ring-1 ring-white/10 group-hover:ring-blue-400/30 transition-all duration-300 group-hover:scale-110">
+                    <Upload className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors">
+                      Upload File (PDF, Word)
+                    </p>
+                    <p className="text-xs text-zinc-500 mt-1">
+                      Click or drag-and-drop · Max 20MB
+                    </p>
+                  </div>
+                </button>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex items-center justify-between rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 shrink-0">
+                      <FileUp className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-emerald-300 truncate">
+                        {uploadedFile.name}
+                      </p>
+                      <p className="text-xs text-emerald-500/80">
+                        {(uploadedFile.size / 1024).toFixed(1)} KB
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleRemoveFile}
+                    className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-red-500/20 transition-colors group"
+                  >
+                    <X className="w-4 h-4 text-zinc-400 group-hover:text-red-400 transition-colors" />
+                  </button>
+                </motion.div>
+              )}
+            </div>
+
             <div className="flex flex-wrap gap-3">
               <Button 
                 onClick={handleAnalyze} 
