@@ -10,10 +10,10 @@ export function Navbar() {
   const navItems = [
     { name: "Home", path: "/", icon: <ShieldAlert className="w-4 h-4 mr-2" /> },
     { name: "Analyzer", path: "/analyzer", icon: <Activity className="w-4 h-4 mr-2" /> },
-    { name: "Risk Assess", path: "/assess", icon: <ShieldAlert className="w-4 h-4 mr-2 text-red-400" /> },
     { name: "Graph Trace", path: "/trace", icon: <GitBranch className="w-4 h-4 mr-2" /> },
     { name: "Report", path: "/report", icon: <FileText className="w-4 h-4 mr-2" /> },
-    { name: "Ontology", path: "/ontology", icon: <Database className="w-4 h-4 mr-2" /> },
+    { name: "Systems", path: "/systems", icon: <Database className="w-4 h-4 mr-2 text-indigo-400" /> },
+    { name: "Ontology", path: "/ontology", icon: <GitBranch className="w-4 h-4 mr-2" /> },
   ];
 
   return (

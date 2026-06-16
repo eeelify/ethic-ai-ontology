@@ -71,21 +71,24 @@ async def analyze_text_endpoint(request: Request):
     if "multipart/form-data" in content_type:
         form = await request.form()
         text = form.get("text", "") or ""
-        file: Optional[UploadFile] = form.get("file")
+        files = form.getlist("file")
+        if not files and form.get("files"):
+            files = form.getlist("files")
 
-        file_text = ""
-        if file and hasattr(file, "read"):
-            if not any(file.filename.lower().endswith(ext) for ext in ALLOWED_EXTENSIONS):
-                raise HTTPException(
-                    status_code=422,
-                    detail="Sadece PDF ve Word (.docx) dosyaları desteklenmektedir.",
-                )
-            file_bytes = await file.read()
-            if file_bytes:
-                file_text = _extract_text_from_file(file.filename, file_bytes)
+        file_texts = []
+        for file in files:
+            if hasattr(file, "read") and file.filename:
+                if not any(file.filename.lower().endswith(ext) for ext in ALLOWED_EXTENSIONS):
+                    raise HTTPException(
+                        status_code=422,
+                        detail=f"Sadece PDF ve Word (.docx) dosyaları desteklenmektedir. Bulunan: {file.filename}",
+                    )
+                file_bytes = await file.read()
+                if file_bytes:
+                    file_texts.append(_extract_text_from_file(file.filename, file_bytes))
 
         combined_text = "\n\n".join(
-            part for part in [text, file_text] if part.strip()
+            part for part in [text] + file_texts if part.strip()
         )
     else:
         # JSON body
@@ -103,11 +106,39 @@ async def analyze_text_endpoint(request: Request):
 
 
 @router.post("/graph-trace")
-def graph_trace_endpoint(payload: dict = Body(...)):
+async def graph_trace_endpoint(request: Request):
     """
     Returns an explainable reasoning chain for ontology inference.
-    Deterministic, no LLM.
+    Deterministic, no LLM. Accepts JSON or multipart/form-data.
     """
-    text = payload.get("text", "")
-    logger.info("POST /graph-trace called")
-    return generate_graph_trace(text)
+    content_type = request.headers.get("content-type", "")
+
+    if "multipart/form-data" in content_type:
+        form = await request.form()
+        text = form.get("text", "") or ""
+        files = form.getlist("file")
+        if not files and form.get("files"):
+            files = form.getlist("files")
+
+        file_texts = []
+        for file in files:
+            if hasattr(file, "read") and file.filename:
+                if not any(file.filename.lower().endswith(ext) for ext in ALLOWED_EXTENSIONS):
+                    raise HTTPException(
+                        status_code=422,
+                        detail=f"Sadece PDF ve Word (.docx) dosyaları desteklenmektedir. Bulunan: {file.filename}",
+                    )
+                file_bytes = await file.read()
+                if file_bytes:
+                    file_texts.append(_extract_text_from_file(file.filename, file_bytes))
+
+        combined_text = "\n\n".join(
+            part for part in [text] + file_texts if part.strip()
+        )
+    else:
+        # JSON body
+        body = await request.json()
+        combined_text = body.get("text", "")
+
+    logger.info("POST /graph-trace called (text_len=%d)", len(combined_text))
+    return generate_graph_trace(combined_text)

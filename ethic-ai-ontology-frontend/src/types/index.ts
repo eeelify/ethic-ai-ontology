@@ -18,9 +18,15 @@ export interface AnalyzeTextResponse {
   message?: string;
   matched_keywords: MatchedKeyword[];
   inferred_categories: string[];
-  inferred_risks: string[];
   inferred_regulations: string[];
   ethical_analysis: EthicalAnalysis[];
+  detected_risk_triggers: string[];
+  detected_safeguards: string[];
+  missing_safeguards: string[];
+  initial_risk_level: string;
+  final_risk_level: string;
+  composite_score?: number;
+  reasoning_trace: string[];
 }
 
 export interface TraceStep {
@@ -30,6 +36,7 @@ export interface TraceStep {
 
 export interface GraphTraceResponse {
   trace: TraceStep[];
+  explanations?: string[];
 }
 
 export interface OntologyHealthResponse {

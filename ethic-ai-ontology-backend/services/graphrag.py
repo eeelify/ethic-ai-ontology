@@ -164,16 +164,17 @@ Generate a JSON report with these exact fields:
 {{
   "executive_summary": "2-3 sentence summary citing ontology data and document details",
   "risk_assessment": "Risk level explanation with legal article reference",
-  "composite_risk_score": "Composite risk score calculation out of 100",
+  "composite_risk_score": 75,
   "risk_level": "MinimalRisk | LimitedRisk | HighRisk | UnacceptableRisk",
   "score_components": {{
-    "ethical_score": "...",
-    "legal_score": "...",
-    "data_score": "...",
-    "technical_score": "...",
-    "oversight_score": "..."
+    "ethical_score": 80,
+    "legal_score": 70,
+    "data_score": 90,
+    "technical_score": 60,
+    "oversight_score": 80
   }},
   "risk_threshold_explanation": "Explanation of why the risk level was assigned based on the composite score",
+  "risk_trigger_safeguard_analysis": "Detailed narrative explaining which risk triggers were found, which safeguards were detected, what safeguards are missing, what the initial risk level was, and why the final risk level changed or remained the same based on the INFERRED DATA.",
   "ethical_analysis": "Analysis of violated principles and overall ethical impact",
   "ethical_tensions": [
     {{
@@ -186,7 +187,7 @@ Generate a JSON report with these exact fields:
   "citation_sources": ["source1", "source2"]
 }}
 
-CRITICAL INSTRUCTION 1: If the ONTOLOGY DATA properties (e.g. under the 'properties' key in the Dynamic Graph Profile JSON) contain `hasCompositeRiskScore`, `hasEthicalImpactScore`, `hasLegalComplianceScore`, `hasDataSensitivityScore`, `hasTechnicalRobustnessScore`, or `hasHumanOversightScore`, you MUST populate the corresponding fields (`composite_risk_score`, `risk_level`, and `score_components` with keys `ethical_score`, `legal_score`, `data_score`, `technical_score`, `oversight_score`) in your response JSON using those exact values. Do not recalculate, modify, or hallucinate these values.
+CRITICAL INSTRUCTION 1: If the ONTOLOGY DATA properties (e.g. under the 'properties' key in the Dynamic Graph Profile JSON) contain `hasCompositeRiskScore`, `hasEthicalImpactScore`, `hasLegalComplianceScore`, `hasDataSensitivityScore`, `hasTechnicalRobustnessScore`, or `hasHumanOversightScore`, you MUST populate the corresponding fields (`composite_risk_score`, `risk_level`, and `score_components` with keys `ethical_score`, `legal_score`, `data_score`, `technical_score`, `oversight_score`) in your response JSON using those exact values. Do not recalculate, modify, or hallucinate these values. IF THEY ARE MISSING, YOU MUST GENERATE realistic integer estimates between 0 and 100 based on your ethical analysis, and calculate the `composite_risk_score` yourself (as the weighted average of the 5 vectors). Ensure all score values in the JSON are integers, not strings.
 CRITICAL INSTRUCTION 2 FOR ETHICAL TENSIONS: Do not just list generic definitions. Analyze the system's specific context, use case, document contents, and provided data. Identify actual ethical trade-offs (tensions) that apply to this specific system. Provide a highly tailored explanation for *how and why* this system experiences each tension based on the uploaded document text.
 
 Format: Return valid JSON only, no markdown.

@@ -128,3 +128,21 @@
     @apply font-sans;
   }
 }
+
+@media print {
+  @page {
+    margin: 15mm;
+  }
+  
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
+  }
+  
+  /* Avoid breaking inside cards and lists */
+  .space-y-3 > *, .space-y-8 > *, section, p, li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

@@ -6,6 +6,8 @@ from pydantic import BaseModel, Field
 
 class SystemResponse(BaseModel):
     name: str
+    composite_risk_score: Optional[float] = None
+    risk_level: Optional[str] = None
 
 
 class RiskResponse(BaseModel):
@@ -116,10 +118,18 @@ class KeywordMatch(BaseModel):
 class AnalyzeTextResponse(BaseModel):
     matched_keywords: List[KeywordMatch] = Field(default_factory=list)
     inferred_categories: List[str] = Field(default_factory=list)
-    inferred_risks: List[str] = Field(default_factory=list)
     inferred_regulations: List[str] = Field(default_factory=list)
     ethical_analysis: List[EthicalImpact] = Field(default_factory=list)
     ethical_tensions: List[EthicalTensionDetail] = Field(default_factory=list)
+    
+    # New Context-Aware Risk Fields
+    detected_risk_triggers: List[str] = Field(default_factory=list)
+    detected_safeguards: List[str] = Field(default_factory=list)
+    missing_safeguards: List[str] = Field(default_factory=list)
+    initial_risk_level: str = "Unknown"
+    final_risk_level: str = "Unknown"
+    composite_score: Optional[int] = None
+    reasoning_trace: List[str] = Field(default_factory=list)
 
 class ReportResponse(BaseModel):
     system: str

@@ -242,12 +242,111 @@ def analyze_text(text: str) -> dict:
                 seen_tensions.add(t_name)
                 top_tensions.append(tension)
                 
-    if not matched:
-        logger.info("No known AI governance category detected.")
+    # If ontology didn't find much, use LLM enrichment
+    if not inferred_categories and not top_ethical:
+        logger.info("Ontology match weak/empty, running LLM enrichment for Analyzer.")
+        try:
+            import google.generativeai as genai
+            import json
+            import os
+            
+            api_key = os.getenv("GEMINI_API_KEY")
+            if not api_key:
+                raise Exception("GEMINI_API_KEY not set")
+                
+            genai.configure(api_key=api_key)
+            
+            prompt = f"""
+            Analyze the following text about an AI system and extract key ethical, risk, and compliance information.
+            Return ONLY a valid JSON object with the following schema, with no markdown formatting:
+            {{
+                "inferred_categories": ["Category 1", ...],
+                "inferred_regulations": ["Regulation 1", ...],
+                "risk_triggers": ["BiometricFeature", "ProfilingFeature", "HiringFeature", ...],
+                "data_types": ["SensitiveHealthData", "CriminalData", ...],
+                "safeguards": ["ExplicitConsent", "HumanOversight", "LegalBasis", "DataMinimization", "SecurityMeasure", "TransparencyMeasure", "ExplainabilityMeasure"],
+                "ethical_tensions": [{{"name": "Tension Name", "description": "Short explanation"}}],
+                "ethical_analysis": [{{"principle": "Principle", "harm_type": "Harm", "reason": "Reason"}}]
+            }}
+            Do NOT guess the final risk level. Just extract objective facts.
+            For "safeguards", ONLY include safeguards explicitly mentioned or strongly implied as being implemented.
+            For "risk_triggers", include any risky features like biometric, emotion recognition, profiling, automated decision, surveillance, hiring, credit, education, health.
+            Text: {text[:6000]}
+            """
+            
+            response = None
+            models_to_try = [
+                os.getenv("GEMINI_MODEL"),
+                "gemini-2.5-flash",
+                "gemini-1.5-flash",
+                "gemini-1.5-pro-latest",
+                "gemini-pro"
+            ]
+            
+            for m_name in models_to_try:
+                if not m_name:
+                    continue
+                try:
+                    model = genai.GenerativeModel(m_name)
+                    response = model.generate_content(prompt)
+                    if response and response.text:
+                        break
+                except Exception as ex:
+                    logger.warning(f"Model {m_name} failed: {ex}")
+                    continue
+            
+            if not response:
+                raise Exception("All Gemini models failed for Analyzer.")
+                
+            raw_text = response.text.strip()
+            if raw_text.startswith("```json"):
+                raw_text = raw_text[7:-3].strip()
+            elif raw_text.startswith("```"):
+                raw_text = raw_text[3:-3].strip()
+                
+            llm_data = json.loads(raw_text)
+            
+            inferred_categories.update(llm_data.get("inferred_categories", []))
+            inferred_regulations.update(llm_data.get("inferred_regulations", []))
+            
+            extracted_triggers = llm_data.get("risk_triggers", [])
+            extracted_safeguards = llm_data.get("safeguards", [])
+            extracted_data_types = llm_data.get("data_types", [])
+            for ea in llm_data.get("ethical_analysis", []):
+                top_ethical.append({
+                    "principle": ea.get("principle", "Unknown"),
+                    "reason": ea.get("reason", ""),
+                    "impact": "Inferred from document context",
+                    "severity": "Medium",
+                    "harm_type": ea.get("harm_type", "Potential Harm")
+                })
+            for et in llm_data.get("ethical_tensions", []):
+                top_tensions.append({
+                    "name": et.get("name", "Unknown Tension"),
+                    "description": et.get("description", ""),
+                    "severity": "Medium",
+                    "recommendation": "Review contextually"
+                })
+                
+            # If we used LLM, add a fake matched keyword so the UI knows it succeeded
+            if not matched and inferred_categories:
+                matched.append({
+                    "keyword": "AI Context Analysis (LLM)",
+                    "mapped_category": list(inferred_categories)[0],
+                    "risks": list(inferred_risks),
+                    "regulations": list(inferred_regulations),
+                    "ethical_analysis": top_ethical,
+                    "ethical_tensions": top_tensions
+                })
+        except Exception as e:
+            logger.error(f"LLM Enrichment failed in analyze_text: {e}")
+            inferred_categories.add(f"DEBUG_ERROR: {str(e)}")
+
+    if not matched and not inferred_categories:
+        logger.info("No AI governance category detected even after fallback.")
         return {
-            "message": "No known AI governance category detected",
-            "matched_keywords": [],
-            "inferred_categories": [],
+            "matched_keywords": [{"keyword": "NO_MATCH", "mapped_category": "Failed to analyze", "risks": [], "regulations": [], "ethical_analysis": [], "ethical_tensions": []}],
+            "inferred_categories": ["Analysis Failed"],
             "inferred_risks": [],
             "inferred_regulations": [],
             "ethical_analysis": [],
@@ -255,7 +354,7 @@ def analyze_text(text: str) -> dict:
         }
 
     logger.info(
-        f"Matched {len(matched)} keyword(s) -> "
+        f"Analysis complete -> "
         f"Categories: {sorted(inferred_categories)} | "
         f"Risks: {sorted(inferred_risks)} | "
         f"Regs: {len(inferred_regulations)} "
@@ -263,13 +362,88 @@ def analyze_text(text: str) -> dict:
         f"(Ethical tensions: {len(top_tensions)})"
     )
 
+    # --- START REASONER INTEGRATION ---
+    detected_risk_triggers = []
+    detected_safeguards = []
+    missing_safeguards = []
+    initial_risk_level = "Unknown"
+    final_risk_level = "Unknown"
+    reasoning_trace = []
+    
+    try:
+        from services.reasoning_service import run_contextual_inference
+        # Collect features to pass to the reasoner
+        features_to_reason = list(inferred_categories)
+        if 'extracted_triggers' in locals():
+            features_to_reason.extend(extracted_triggers)
+            
+        safeguards_to_reason = []
+        if 'extracted_safeguards' in locals():
+            safeguards_to_reason.extend(extracted_safeguards)
+            
+        # Deterministic safeguard extraction fallback
+        safeguard_keywords = {
+            "human oversight": "HumanOversight",
+            "manual review": "HumanOversight",
+            "human expert": "HumanOversight",
+            "human in the loop": "HumanOversight",
+            "explicit consent": "ExplicitConsent",
+            "anonymization": "Anonymization",
+            "data minimization": "DataMinimization",
+            "legal basis": "LegalBasis",
+            "transparency": "TransparencyMeasure",
+            "explainab": "ExplainabilityMeasure"
+        }
+        t_lower = text.lower()
+        for kw, sg_class in safeguard_keywords.items():
+            if kw in t_lower and sg_class not in safeguards_to_reason:
+                safeguards_to_reason.append(sg_class)
+                
+        data_to_reason = []
+        if 'extracted_data_types' in locals():
+            data_to_reason.extend(extracted_data_types)
+            
+        for mk in matched:
+            features_to_reason.append(mk["mapped_category"])
+            features_to_reason.append(mk["keyword"])
+            
+        reasoning_result = run_contextual_inference(triggers=features_to_reason, safeguards=safeguards_to_reason, data_types=data_to_reason)
+        
+        initial_risk_level = reasoning_result.get("initial_risk_level", "Unknown")
+        final_risk_level = reasoning_result.get("final_risk_level", "Unknown")
+        composite_score = reasoning_result.get("composite_score", 0)
+        detected_risk_triggers = reasoning_result.get("detected_risk_triggers", [])
+        detected_safeguards = reasoning_result.get("detected_safeguards", [])
+        missing_safeguards = reasoning_result.get("missing_safeguards", [])
+        reasoning_trace = reasoning_result.get("reasoning_trace", [])
+        
+        trace_str = " | ".join(reasoning_trace)
+        top_ethical.insert(0, {
+            "principle": "Deterministik Çıkarım (SWRL)",
+            "reason": trace_str,
+            "impact": f"Initial Risk: {initial_risk_level} -> Final Risk: {final_risk_level} (Score: {composite_score})",
+            "severity": "Critical" if final_risk_level in ["HighRisk", "ProhibitedRisk"] else "Low",
+            "harm_type": "Context-Aware Inference"
+        })
+    except Exception as e:
+        logger.error(f"Failed to run reasoner integration: {e}")
+        reasoning_trace = [f"Reasoner execution failed: {str(e)}"]
+        composite_score = 0
+    # --- END REASONER INTEGRATION ---
+
     return {
         "matched_keywords": matched,
         "inferred_categories": sorted(inferred_categories),
-        "inferred_risks": sorted(inferred_risks),
         "inferred_regulations": sorted(inferred_regulations),
         "ethical_analysis": top_ethical,
         "ethical_tensions": top_tensions,
+        "detected_risk_triggers": detected_risk_triggers,
+        "detected_safeguards": detected_safeguards,
+        "missing_safeguards": missing_safeguards,
+        "initial_risk_level": initial_risk_level,
+        "final_risk_level": final_risk_level,
+        "composite_score": composite_score,
+        "reasoning_trace": reasoning_trace
     }
 
 def generate_graph_trace(text: str) -> dict:
@@ -289,6 +463,8 @@ def generate_graph_trace(text: str) -> dict:
     seen_principles = set()
     seen_harms = set()
     
+    explanations = []
+    
     for row in ontology:
         kw: str = (row.get("keyword") or "").strip()
         if not kw or kw.lower() not in t:
@@ -302,6 +478,20 @@ def generate_graph_trace(text: str) -> dict:
         if kw not in seen_keywords:
             trace.append({"step": "keyword_match", "value": kw})
             seen_keywords.add(kw)
+            
+            # Generate narrative for this keyword match
+            narrative = f"Sistem, metinde geçen '{kw}' kelimesinden hareketle bu yapay zekayı '{category}' kategorisinde sınıflandırdı."
+            risks: list[str] = [r for r in (row.get("risks") or []) if r]
+            regs: list[str] = [r for r in (row.get("regulations") or []) if r]
+            
+            if risks and regs:
+                narrative += f" Bu durum, sistemin {', '.join(risks)} gibi riskler taşımasına ve {', '.join(regs)} gibi yasal düzenlemelerin radarına girmesine neden olmaktadır."
+            elif risks:
+                narrative += f" Bu eşleşme, sistemin potansiyel olarak {', '.join(risks)} risklerini taşıdığı anlamına gelir."
+            elif regs:
+                narrative += f" Bu eşleşme, sistemin {', '.join(regs)} mevzuatlarına tabi olduğunu gösterir."
+                
+            explanations.append(narrative)
             
         # 2. Mapped category trace
         if category not in seen_categories:
@@ -335,4 +525,4 @@ def generate_graph_trace(text: str) -> dict:
                 trace.append({"step": "harm_type", "value": harm_type})
                 seen_harms.add(harm_type)
                     
-    return {"trace": trace}
+    return {"trace": trace, "explanations": explanations}

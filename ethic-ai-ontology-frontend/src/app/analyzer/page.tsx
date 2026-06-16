@@ -21,37 +21,42 @@ export default function AnalyzerPage() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<AnalyzeTextResponse | null>(null);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
 
-    const extension = file.name.split('.').pop()?.toLowerCase();
-    if (extension !== "pdf" && extension !== "docx" && extension !== "doc") {
-      toast.error("Only PDF and Word (.docx, .doc) files can be uploaded.");
-      return;
+    const validFiles: File[] = [];
+    for (const file of files) {
+      const extension = file.name.split('.').pop()?.toLowerCase();
+      if (extension !== "pdf" && extension !== "docx" && extension !== "doc") {
+        toast.error(`Invalid file type: ${file.name}`);
+        continue;
+      }
+      if (file.size > 20 * 1024 * 1024) {
+        toast.error(`File too large: ${file.name}`);
+        continue;
+      }
+      validFiles.push(file);
     }
 
-    if (file.size > 20 * 1024 * 1024) {
-      toast.error("File size must be less than 20MB.");
-      return;
+    if (validFiles.length > 0) {
+      setUploadedFiles(prev => [...prev, ...validFiles]);
+      toast.success(`${validFiles.length} file(s) added.`);
     }
-
-    setUploadedFile(file);
-    toast.success(`"${file.name}" uploaded.`);
   };
 
-  const handleRemoveFile = () => {
-    setUploadedFile(null);
+  const handleRemoveFile = (indexToRemove: number) => {
+    setUploadedFiles(prev => prev.filter((_, idx) => idx !== indexToRemove));
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
   };
 
   const handleAnalyze = async () => {
-    if (!text.trim() && !uploadedFile) {
+    if (!text.trim() && uploadedFiles.length === 0) {
       toast.error("Please describe an AI system or upload a file.");
       return;
     }
@@ -59,12 +64,14 @@ export default function AnalyzerPage() {
     try {
       let response;
 
-      if (uploadedFile) {
+      if (uploadedFiles.length > 0) {
         const formData = new FormData();
         if (text.trim()) {
           formData.append("text", text);
         }
-        formData.append("file", uploadedFile);
+        uploadedFiles.forEach(file => {
+          formData.append("file", file);
+        });
 
         response = await axios.post<AnalyzeTextResponse>(
           `${API_BASE_URL}/analyze-text`,
@@ -131,12 +138,13 @@ export default function AnalyzerPage() {
               <input
                 ref={fileInputRef}
                 type="file"
+                multiple
                 accept=".pdf,.docx,.doc"
                 className="hidden"
                 onChange={handleFileChange}
               />
 
-              {!uploadedFile ? (
+              {uploadedFiles.length === 0 ? (
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
@@ -147,40 +155,44 @@ export default function AnalyzerPage() {
                   </div>
                   <div className="text-center">
                     <p className="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors">
-                      Upload File (PDF, Word)
+                      Upload Files (PDF, Word)
                     </p>
                     <p className="text-xs text-zinc-500 mt-1">
-                      Click or drag-and-drop · Max 20MB
+                      You can select multiple files
                     </p>
                   </div>
                 </button>
               ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex items-center justify-between rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4"
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 shrink-0">
-                      <FileUp className="w-5 h-5 text-emerald-400" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium text-emerald-300 truncate">
-                        {uploadedFile.name}
-                      </p>
-                      <p className="text-xs text-emerald-500/80">
-                        {(uploadedFile.size / 1024).toFixed(1)} KB
-                      </p>
-                    </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between px-2">
+                    <span className="text-sm font-medium text-zinc-300">Uploaded Files ({uploadedFiles.length})</span>
+                    <button 
+                      onClick={() => fileInputRef.current?.click()}
+                      className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                    >
+                      <FileUp className="w-3 h-3" /> Add more
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={handleRemoveFile}
-                    className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-red-500/20 transition-colors group"
-                  >
-                    <X className="w-4 h-4 text-zinc-400 group-hover:text-red-400 transition-colors" />
-                  </button>
-                </motion.div>
+                  <div className="grid gap-2 max-h-[160px] overflow-y-auto pr-1">
+                    {uploadedFiles.map((file, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-3 rounded-lg border border-blue-500/30 bg-blue-500/10 transition-all hover:bg-blue-500/20 group">
+                        <div className="flex items-center gap-3 overflow-hidden">
+                          <FileUp className="w-5 h-5 text-blue-400 shrink-0" />
+                          <div className="flex flex-col truncate">
+                            <span className="text-sm font-medium text-blue-100 truncate">{file.name}</span>
+                            <span className="text-xs text-blue-400/60">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => handleRemoveFile(idx)}
+                          className="p-1.5 rounded-md hover:bg-red-500/20 text-red-400/70 hover:text-red-400 transition-colors shrink-0"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               )}
             </div>
 
@@ -217,7 +229,46 @@ export default function AnalyzerPage() {
 
         {/* Results Section */}
         {results && !results.message && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            
+            {/* Composite Score Card */}
+            {results.composite_score !== undefined && (
+              <div className="mb-6 p-6 rounded-2xl bg-black/60 border border-white/10 flex flex-col md:flex-row items-center gap-8 shadow-2xl backdrop-blur-xl">
+                <div className="relative w-32 h-32 flex-shrink-0">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" className="text-white/10" strokeWidth="10" />
+                    <circle 
+                      cx="50" cy="50" r="45" fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="10" 
+                      strokeDasharray="283" 
+                      strokeDashoffset={283 - (283 * results.composite_score) / 100}
+                      className={`transition-all duration-1000 ease-out ${
+                        results.composite_score >= 75 ? "text-emerald-500" : 
+                        results.composite_score >= 50 ? "text-yellow-500" : 
+                        results.composite_score >= 25 ? "text-red-500" : "text-rose-700"
+                      }`} 
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-3xl font-bold text-white">{results.composite_score}</span>
+                    <span className="text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Score</span>
+                  </div>
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl font-semibold text-white mb-2">Ethical Reliability Score</h3>
+                  <p className="text-zinc-400 text-sm">
+                    This score (0-100) evaluates the overall ethical risk and compliance of your AI system. It begins with the Base Risk of your system's domain, applies penalties for specific risk triggers, and grants bonuses for robust safeguards like human oversight and anonymization.
+                  </p>
+                  <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
+                    <Badge variant="outline" className="bg-white/5 border-white/10 text-zinc-300">Initial Risk: {results.initial_risk_level}</Badge>
+                    <Badge variant="outline" className="bg-white/5 border-white/10 text-zinc-300">Final Risk: {results.final_risk_level}</Badge>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Overview Column */}
             <div className="space-y-6">
@@ -241,15 +292,52 @@ export default function AnalyzerPage() {
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-orange-400" />
-                    Risk Classification
+                    Context-Aware Risk
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <p className="text-sm text-zinc-400 mb-1">Initial Risk (Triggers Only)</p>
+                    <Badge variant="outline" className={`text-base py-1 ${getRiskColor(results.initial_risk_level)}`}>
+                      {results.initial_risk_level}
+                    </Badge>
+                  </div>
+                  {results.final_risk_level !== results.initial_risk_level ? (
+                    <div>
+                      <p className="text-sm text-zinc-400 mb-1">Final Risk (After Safeguards)</p>
+                      <Badge variant="outline" className={`text-base py-1 ${getRiskColor(results.final_risk_level)}`}>
+                        {results.final_risk_level}
+                      </Badge>
+                      <p className="text-xs text-emerald-400 mt-2">Risk successfully mitigated</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="text-sm text-zinc-400 mb-1">Final Risk</p>
+                      <Badge variant="outline" className={`text-base py-1 ${getRiskColor(results.final_risk_level)}`}>
+                        {results.final_risk_level}
+                      </Badge>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              <Card className="bg-black/40 backdrop-blur-md border-white/10">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <ShieldAlert className="w-5 h-5 text-emerald-400" />
+                    Detected Safeguards
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-2">
-                  {results.inferred_risks.map((risk, i) => (
-                    <Badge key={i} variant="outline" className={getRiskColor(risk)}>
-                      {risk}
-                    </Badge>
-                  ))}
+                  {results.detected_safeguards?.length > 0 ? (
+                    results.detected_safeguards.map((sg, i) => (
+                      <Badge key={i} variant="outline" className="bg-emerald-500/10 text-emerald-300 border-emerald-500/30">
+                        {sg}
+                      </Badge>
+                    ))
+                  ) : (
+                    <span className="text-sm text-zinc-500">No sufficient safeguards detected.</span>
+                  )}
                 </CardContent>
               </Card>
 
@@ -301,8 +389,8 @@ export default function AnalyzerPage() {
                   </Card>
                 ))}
               </div>
+              </div>
             </div>
-
           </div>
         )}
 
