@@ -36,6 +36,13 @@ app.add_middleware(
 def root():
     return {"status": "ok"}
 
+@app.get("/health")
+def health_check():
+    return {
+        "status": "ok",
+        "service": "ethical-ai-backend"
+    }
+
 
 app.include_router(systems_router, prefix="/systems", tags=["systems"])
 app.include_router(risk_router, prefix="/risk", tags=["risk"])

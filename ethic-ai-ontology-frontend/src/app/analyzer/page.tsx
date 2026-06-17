@@ -230,35 +230,36 @@ export default function AnalyzerPage() {
         {/* Results Section */}
         {results && !results.message && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            
-            {/* Composite Score Card */}
+                       {/* Composite Score Card */}
             {results.composite_score !== undefined && (
               <div className="mb-6 p-6 rounded-2xl bg-black/60 border border-white/10 flex flex-col md:flex-row items-center gap-8 shadow-2xl backdrop-blur-xl">
-                <div className="relative w-32 h-32 flex-shrink-0">
-                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" className="text-white/10" strokeWidth="10" />
-                    <circle 
-                      cx="50" cy="50" r="45" fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="10" 
-                      strokeDasharray="283" 
-                      strokeDashoffset={283 - (283 * results.composite_score) / 100}
-                      className={`transition-all duration-1000 ease-out ${
-                        results.composite_score >= 75 ? "text-emerald-500" : 
-                        results.composite_score >= 50 ? "text-yellow-500" : 
-                        results.composite_score >= 25 ? "text-red-500" : "text-rose-700"
-                      }`} 
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-3xl font-bold text-white">{results.composite_score}</span>
-                    <span className="text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Score</span>
-                  </div>
-                </div>
+                {(() => {
+                  const getRiskColorClass = (risk: string) => {
+                    const r = (risk || "").toLowerCase();
+                    if (r.includes("unacceptable") || r.includes("prohibited")) return { text: "text-red-500", bg: "bg-red-500/10", border: "border-red-500/30" };
+                    if (r.includes("high")) return { text: "text-orange-500", bg: "bg-orange-500/10", border: "border-orange-500/30" };
+                    if (r.includes("limited") || r.includes("medium")) return { text: "text-yellow-500", bg: "bg-yellow-500/10", border: "border-yellow-500/30" };
+                    return { text: "text-blue-500", bg: "bg-blue-500/10", border: "border-blue-500/30" };
+                  };
+                  const riskColors = getRiskColorClass(results.final_risk_level);
+                  
+                  return (
+                    <div className={`p-6 rounded-2xl border ${riskColors.border} ${riskColors.bg} flex flex-col items-center justify-center text-center shadow-sm w-48 shrink-0`}>
+                      <span className="text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2">Composite Risk Score</span>
+                      <div className={`text-6xl font-black ${riskColors.text}`}>
+                        {typeof results.composite_score === 'number' ? results.composite_score.toFixed(1) : results.composite_score}
+                      </div>
+                      <div className={`mt-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${riskColors.border} bg-black/50 ${riskColors.text} shadow-sm inline-block`}>
+                        {results.final_risk_level || "Assessed Risk"}
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-semibold text-white mb-2">Ethical Reliability Score</h3>
+                  <h3 className="text-2xl font-semibold text-white mb-2">Composite Risk Score</h3>
                   <p className="text-zinc-400 text-sm">
-                    This score (0-100) evaluates the overall ethical risk and compliance of your AI system. It begins with the Base Risk of your system's domain, applies penalties for specific risk triggers, and grants bonuses for robust safeguards like human oversight and anonymization.
+                    This score (0-100) evaluates the overall ethical risk and compliance of your AI system. A higher score indicates a higher level of risk. It begins with the Base Risk of your system's domain, increases for specific risk triggers, and decreases for robust safeguards like human oversight and anonymization.
                   </p>
                   <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
                     <Badge variant="outline" className="bg-white/5 border-white/10 text-zinc-300">Initial Risk: {results.initial_risk_level}</Badge>

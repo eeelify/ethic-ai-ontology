@@ -180,7 +180,7 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
             # Determine Initial Risk
             initial_risk = "MinimalRisk"
             if "InitialProhibitedRisk" in inferred_classes:
-                initial_risk = "ProhibitedRisk"
+                initial_risk = "UnacceptableRisk"
             elif "InitialHighRisk" in inferred_classes:
                 initial_risk = "HighRisk"
                 
@@ -189,7 +189,7 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
             is_mitigated = "MitigatedRiskSystem" in inferred_classes
             
             if is_mitigated:
-                if initial_risk == "ProhibitedRisk":
+                if initial_risk == "UnacceptableRisk":
                     final_risk = "HighRisk" # Mitigated down
                 elif initial_risk == "HighRisk":
                     final_risk = "LimitedRisk" # Mitigated down
@@ -210,32 +210,32 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
                     else:
                         trace.append(f"Final risk remains {final_risk} because no sufficient safeguards were detected.")
 
-            # Calculate Composite Risk Score (10-100)
+            # Calculate Composite Risk Score (0-100, higher is worse)
             base_scores = {
-                "MinimalRisk": 100,
-                "LimitedRisk": 75,
-                "HighRisk": 50,
-                "ProhibitedRisk": 25
+                "MinimalRisk": 10,
+                "LimitedRisk": 40,
+                "HighRisk": 75,
+                "UnacceptableRisk": 100
             }
-            composite_score = base_scores.get(final_risk, 50)
+            composite_score = base_scores.get(final_risk, 10)
             
-            # Weighted Penalties for triggers
+            # Weighted Penalties for triggers (Increase Risk)
             prohibited_triggers = {"EmotionRecognitionFeature", "BiometricFeature", "SurveillanceFeature"}
             for t in applied_triggers:
                 if t in prohibited_triggers:
-                    composite_score -= 10
+                    composite_score += 15
                 else:
-                    composite_score -= 5
+                    composite_score += 10
                 
-            # Bonuses for safeguards
+            # Bonuses for safeguards (Decrease Risk)
             strong_safeguards = {"HumanOversight", "ExplicitConsent", "Anonymization", "LegalBasis"}
             for s in applied_safeguards:
                 if s in strong_safeguards:
-                    composite_score += 10
+                    composite_score -= 15
                 else:
-                    composite_score += 5
+                    composite_score -= 10
                     
-            # Clamp the score between 0 and 100 (Natural floor)
+            # Clamp the score between 0 and 100 (Natural floor/ceiling)
             composite_score = max(0, min(100, composite_score))
 
             # Clean up instances

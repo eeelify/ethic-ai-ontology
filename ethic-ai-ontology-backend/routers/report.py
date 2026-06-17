@@ -128,29 +128,7 @@ async def generate_report(request: Request):
                 "report": saved_report
             }
 
-    try:
-        result = run_graphrag_pipeline(effective_system_name, combined_text)
-    except ValueError as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-    except NoGeminiModelAvailable as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-    except google_api_exceptions.InvalidArgument as exc:
-        err = str(exc).lower()
-        if "api key" in err or "api_key" in err:
-            raise HTTPException(
-                status_code=502,
-                detail=(
-                    "Gemini API anahtarı geçersiz veya eksik. "
-                    ".env içinde GEMINI_API_KEY değerini Google AI Studio'dan aldığın geçerli bir anahtarla güncelle; "
-                    "uvicorn'u durdurup yeniden başlat."
-                ),
-            ) from exc
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-    except google_api_exceptions.GoogleAPIError as exc:
-        raise HTTPException(
-            status_code=502,
-            detail=f"Gemini API hatası: {exc}",
-        ) from exc
+    result = run_graphrag_pipeline(effective_system_name, combined_text)
 
     # If the user provided a system name (or one was generated), save the new report scores to the Neo4j DB
     sys_name = result.get("system", effective_system_name)

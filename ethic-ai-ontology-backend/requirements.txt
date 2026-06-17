@@ -12,3 +12,12 @@ PyMuPDF
 python-multipart
 python-docx
 owlready2
+
+# Testing & QA
+pytest
+pytest-asyncio
+httpx
+pytest-cov
+respx
+pytest-mock
+locust

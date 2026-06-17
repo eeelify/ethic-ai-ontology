@@ -187,14 +187,55 @@ Generate a JSON report with these exact fields:
   "citation_sources": ["source1", "source2"]
 }}
 
-CRITICAL INSTRUCTION 1: If the ONTOLOGY DATA properties (e.g. under the 'properties' key in the Dynamic Graph Profile JSON) contain `hasCompositeRiskScore`, `hasEthicalImpactScore`, `hasLegalComplianceScore`, `hasDataSensitivityScore`, `hasTechnicalRobustnessScore`, or `hasHumanOversightScore`, you MUST populate the corresponding fields (`composite_risk_score`, `risk_level`, and `score_components` with keys `ethical_score`, `legal_score`, `data_score`, `technical_score`, `oversight_score`) in your response JSON using those exact values. Do not recalculate, modify, or hallucinate these values. IF THEY ARE MISSING, YOU MUST GENERATE realistic integer estimates between 0 and 100 based on your ethical analysis, and calculate the `composite_risk_score` yourself (as the weighted average of the 5 vectors). Ensure all score values in the JSON are integers, not strings.
-CRITICAL INSTRUCTION 2 FOR ETHICAL TENSIONS: Do not just list generic definitions. Analyze the system's specific context, use case, document contents, and provided data. Identify actual ethical trade-offs (tensions) that apply to this specific system. Provide a highly tailored explanation for *how and why* this system experiences each tension based on the uploaded document text.
+CRITICAL INSTRUCTION 1: If the ONTOLOGY DATA properties (e.g. under the 'properties' key in the Dynamic Graph Profile JSON) contain `hasCompositeRiskScore`, `hasEthicalImpactScore`, `hasLegalComplianceScore`, `hasDataSensitivityScore`, `hasTechnicalRobustnessScore`, or `hasHumanOversightScore`, you MUST populate the corresponding fields (`composite_risk_score`, `risk_level`, and `score_components` with keys `ethical_score`, `legal_score`, `data_score`, `technical_score`, `oversight_score`) in your response JSON using those exact values. Do not recalculate, modify, or hallucinate these values.
+CRITICAL INSTRUCTION 2: IF the properties are missing from ONTOLOGY DATA, BUT you see `composite_score` and `final_risk_level` in the INFERRED DATA, you MUST use the exact `composite_score` value for `composite_risk_score` and the exact `final_risk_level` value for `risk_level`. DO NOT hallucinate different risk levels! IF THEY ARE COMPLETELY MISSING from both, YOU MUST GENERATE realistic integer estimates between 0 and 100 based on your ethical analysis, and calculate the `composite_risk_score` yourself (as the weighted average of the 5 vectors). Ensure all score values in the JSON are integers, not strings.
+CRITICAL INSTRUCTION 3 FOR ETHICAL TENSIONS: Do not just list generic definitions. Analyze the system's specific context, use case, document contents, and provided data. Identify actual ethical trade-offs (tensions) that apply to this specific system. Provide a highly tailored explanation for *how and why* this system experiences each tension based on the uploaded document text.
 
 Format: Return valid JSON only, no markdown.
 """
 
     report, model_used = _generate_report_with_model_fallback(prompt)
     return report, model_used
+
+def build_fallback_report(system_name: str, dynamic_profile: dict, inferred_data: Optional[dict], error_message: str) -> dict:
+    risk_level = "Unknown"
+    composite_score = 50
+    triggers = []
+    safeguards = []
+    regulations = []
+    violations = []
+    
+    if inferred_data:
+        risk_level = inferred_data.get("final_risk_level", "Unknown")
+        composite_score = inferred_data.get("composite_score", 50)
+        triggers = inferred_data.get("detected_risk_triggers", [])
+        safeguards = inferred_data.get("detected_safeguards", [])
+        regulations = inferred_data.get("inferred_regulations", [])
+        violations = inferred_data.get("ethical_analysis", [])
+
+    return {
+        "status": "partial_success",
+        "source": "ontology_fallback",
+        "executive_summary": f"Sistem, ontoloji tabanlı akıl yürütme sonucunda {risk_level} olarak değerlendirilmiştir. Gemini API servisine erişilemediği için ayrıntılı doğal dil raporu üretilememiştir. Ancak ontoloji ve bilgi grafı çıktıları aşağıda özetlenmiştir.",
+        "risk_assessment": f"Risk Level: {risk_level}. This was determined by ontology reasoning.",
+        "composite_risk_score": composite_score,
+        "risk_level": risk_level,
+        "score_components": {
+            "ethical_score": 50,
+            "legal_score": 50,
+            "data_score": 50,
+            "technical_score": 50,
+            "oversight_score": 50
+        },
+        "risk_threshold_explanation": f"Ontology fallback generated due to LLM error. Base score: {composite_score}.",
+        "risk_trigger_safeguard_analysis": f"Triggers detected: {', '.join(triggers) if triggers else 'None'}. Safeguards detected: {', '.join(safeguards) if safeguards else 'None'}.",
+        "ethical_analysis": violations,
+        "ethical_tensions": [],
+        "legal_compliance": f"Relevant inferred regulations: {', '.join(regulations) if regulations else 'None'}",
+        "recommendations": ["Review the detected triggers and safeguards manually.", "Try generating the report again when the LLM service is available."],
+        "citation_sources": [],
+        "error_detail": error_message
+    }
 
 def run_graphrag_pipeline(system_name: Optional[str] = None, text: str = "") -> dict:
     logger.info(f"Running GraphRAG pipeline for {system_name or 'Raw Text'}")
@@ -224,7 +265,20 @@ def run_graphrag_pipeline(system_name: Optional[str] = None, text: str = "") -> 
     legal_context = retrieve_legal_context(query, n_results=5)
     
     # 5. Generate report
-    report, gemini_model = generate_zinspection_report(system_name or "Unknown System", dynamic_profile, legal_context, inferred_data, raw_text=text)
+    import requests
+    
+    if os.environ.get("MOCK_GEMINI") == "True":
+        logger.info("MOCK_GEMINI is True, generating mock fallback report directly.")
+        report = build_fallback_report(system_name or "Unknown System", dynamic_profile, inferred_data, "MOCK_GEMINI is enabled")
+        gemini_model = "mock_ontology_fallback"
+    else:
+        try:
+            report, gemini_model = generate_zinspection_report(system_name or "Unknown System", dynamic_profile, legal_context, inferred_data, raw_text=text)
+            report["status"] = "success"
+        except (google_api_exceptions.GoogleAPIError, requests.exceptions.RequestException, NoGeminiModelAvailable, ValueError, Exception) as e:
+            logger.error(f"LLM generation failed: {e}")
+            report = build_fallback_report(system_name or "Unknown System", dynamic_profile, inferred_data, str(e))
+            gemini_model = "ontology_fallback"
     
     return {
         "system": system_name or "Unknown System",
