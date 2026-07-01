@@ -278,6 +278,15 @@ def run_graphrag_pipeline(system_name: Optional[str] = None, text: str = "") -> 
         except (google_api_exceptions.GoogleAPIError, requests.exceptions.RequestException, NoGeminiModelAvailable, ValueError, Exception) as e:
             logger.error(f"LLM generation failed: {e}")
             report = build_fallback_report(system_name or "Unknown System", dynamic_profile, inferred_data, str(e))
+            gemini_model = "deterministic_ontology_fallback"
+            
+    # Force overwrite LLM scores with Deterministic Ontology scores if available
+    if inferred_data and "score_components" in inferred_data and inferred_data["score_components"]:
+        report["score_components"] = inferred_data["score_components"]
+        if "composite_score" in inferred_data:
+            report["composite_risk_score"] = inferred_data["composite_score"]
+        if "final_risk_level" in inferred_data:
+            report["risk_level"] = inferred_data["final_risk_level"]
             gemini_model = "ontology_fallback"
     
     return {

@@ -32,6 +32,8 @@ with onto:
     class CreditScoringFeature(RiskTrigger): pass
     class EducationalAssessmentFeature(RiskTrigger): pass
     class HealthcareFeature(RiskTrigger): pass
+    class MinorsInteractionFeature(RiskTrigger): pass
+    class PsychologicalProfilingFeature(RiskTrigger): pass
     
     # --- Data Types ---
     class ProcessedData(Thing): pass
@@ -94,6 +96,12 @@ with onto:
     r_init_8 = Imp()
     r_init_8.set_as_rule("AISystem(?a), hasRiskTrigger(?a, ?t), ProfilingFeature(?t) -> InitialHighRisk(?a)")
     
+    r_init_9 = Imp()
+    r_init_9.set_as_rule("AISystem(?a), hasRiskTrigger(?a, ?t), MinorsInteractionFeature(?t) -> InitialHighRisk(?a)")
+    
+    r_init_10 = Imp()
+    r_init_10.set_as_rule("AISystem(?a), hasRiskTrigger(?a, ?t), PsychologicalProfilingFeature(?t) -> InitialHighRisk(?a)")
+    
     # --- SWRL RULES: MITIGATION (CONTEXT AWARE) ---
     
     # Mitigation 1: Biometric + Legal Basis + Consent -> Mitigated
@@ -132,7 +140,10 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
             "credit": CreditScoringFeature,
             "education": EducationalAssessmentFeature,
             "health": HealthcareFeature,
-            "medical": HealthcareFeature
+            "medical": HealthcareFeature,
+            "minors": MinorsInteractionFeature,
+            "children": MinorsInteractionFeature,
+            "psychological": PsychologicalProfilingFeature
         }
         for t in triggers:
             t_low = t.lower()
@@ -210,33 +221,78 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
                     else:
                         trace.append(f"Final risk remains {final_risk} because no sufficient safeguards were detected.")
 
-            # Calculate Composite Risk Score (0-100, higher is worse)
+            # Calculate 5 Component Scores (0-100, higher is worse risk)
             base_scores = {
                 "MinimalRisk": 10,
                 "LimitedRisk": 40,
                 "HighRisk": 75,
                 "UnacceptableRisk": 100
             }
-            composite_score = base_scores.get(final_risk, 10)
+            base_val = base_scores.get(final_risk, 10)
+            comp_scores = {
+                "ethical_score": base_val,
+                "legal_score": base_val,
+                "data_score": base_val,
+                "technical_score": base_val,
+                "oversight_score": base_val
+            }
             
-            # Weighted Penalties for triggers (Increase Risk)
             prohibited_triggers = {"EmotionRecognitionFeature", "BiometricFeature", "SurveillanceFeature"}
-            for t in applied_triggers:
-                if t in prohibited_triggers:
-                    composite_score += 15
-                else:
-                    composite_score += 10
-                
-            # Bonuses for safeguards (Decrease Risk)
             strong_safeguards = {"HumanOversight", "ExplicitConsent", "Anonymization", "LegalBasis"}
+            
+            trigger_mapping = {
+                "ethical_score": ["ProfilingFeature", "EmotionRecognitionFeature", "SocialScoringFeature", "HealthcareFeature", "EducationalAssessmentFeature", "HiringFeature", "CreditScoringFeature", "PsychologicalProfilingFeature"],
+                "data_score": ["BiometricFeature", "MinorsInteractionFeature", "PsychologicalProfilingFeature"],
+                "technical_score": ["SurveillanceFeature", "CriticalInfrastructureFeature"],
+                "oversight_score": ["AutomatedDecisionFeature", "MinorsInteractionFeature"]
+            }
+            
+            for t in applied_triggers:
+                weight = 15 if t in prohibited_triggers else 10
+                matched_comp = False
+                for comp, mapped_triggers in trigger_mapping.items():
+                    if t in mapped_triggers:
+                        comp_scores[comp] += weight
+                        matched_comp = True
+                if not matched_comp:
+                    comp_scores["ethical_score"] += weight / 2
+                    comp_scores["technical_score"] += weight / 2
+
+            safeguard_mapping = {
+                "ethical_score": ["ExplainabilityMeasure", "TransparencyMeasure"],
+                "legal_score": ["LegalBasis", "ComplianceProcedure"],
+                "data_score": ["Anonymization", "Pseudonymization", "DataMinimization", "PurposeLimitation"],
+                "technical_score": ["SecurityMeasure"],
+                "oversight_score": ["HumanOversight"]
+            }
+            
             for s in applied_safeguards:
-                if s in strong_safeguards:
-                    composite_score -= 15
-                else:
-                    composite_score -= 10
+                weight = 15 if s in strong_safeguards else 10
+                matched_comp = False
+                for comp, mapped_safeguards in safeguard_mapping.items():
+                    if s in mapped_safeguards:
+                        comp_scores[comp] -= weight
+                        matched_comp = True
+                if not matched_comp:
+                    comp_scores["oversight_score"] -= weight / 2
+                    comp_scores["technical_score"] -= weight / 2
                     
-            # Clamp the score between 0 and 100 (Natural floor/ceiling)
-            composite_score = max(0, min(100, composite_score))
+            if "LegalBasis" not in applied_safeguards:
+                comp_scores["legal_score"] += 15
+            if "HumanOversight" not in applied_safeguards:
+                comp_scores["oversight_score"] += 15
+                
+            for k in comp_scores:
+                comp_scores[k] = max(0, min(100, comp_scores[k]))
+                
+            composite_score = (
+                0.25 * comp_scores["ethical_score"] +
+                0.25 * comp_scores["legal_score"] +
+                0.20 * comp_scores["data_score"] +
+                0.15 * comp_scores["technical_score"] +
+                0.15 * comp_scores["oversight_score"]
+            )
+            composite_score = round(max(0, min(100, composite_score)), 1)
 
             # Clean up instances
             for prop in list(sys_inst.hasRiskTrigger) + list(sys_inst.hasSafeguard) + list(sys_inst.processesData):
@@ -247,6 +303,7 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
                 "initial_risk_level": initial_risk,
                 "final_risk_level": final_risk,
                 "composite_score": composite_score,
+                "score_components": comp_scores,
                 "detected_risk_triggers": applied_triggers,
                 "detected_safeguards": applied_safeguards,
                 "missing_safeguards": [cls.__name__ for key, cls in safeguard_map.items() if cls.__name__ not in applied_safeguards],
@@ -259,6 +316,7 @@ def run_contextual_inference(triggers: list[str], safeguards: list[str], data_ty
                 "initial_risk_level": "Unknown",
                 "final_risk_level": "Unknown",
                 "composite_score": 10,
+                "score_components": {},
                 "detected_risk_triggers": applied_triggers,
                 "detected_safeguards": applied_safeguards,
                 "missing_safeguards": [],

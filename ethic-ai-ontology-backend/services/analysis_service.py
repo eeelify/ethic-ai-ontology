@@ -262,7 +262,7 @@ def analyze_text(text: str) -> dict:
             {{
                 "inferred_categories": ["Category 1", ...],
                 "inferred_regulations": ["Regulation 1", ...],
-                "risk_triggers": ["BiometricFeature", "ProfilingFeature", "HiringFeature", ...],
+                "risk_triggers": ["BiometricFeature", "ProfilingFeature", "HiringFeature", "MinorsInteractionFeature", "PsychologicalProfilingFeature", ...],
                 "data_types": ["SensitiveHealthData", "CriminalData", ...],
                 "safeguards": ["ExplicitConsent", "HumanOversight", "LegalBasis", "DataMinimization", "SecurityMeasure", "TransparencyMeasure", "ExplainabilityMeasure"],
                 "ethical_tensions": [{{"name": "Tension Name", "description": "Short explanation"}}],
@@ -270,7 +270,7 @@ def analyze_text(text: str) -> dict:
             }}
             Do NOT guess the final risk level. Just extract objective facts.
             For "safeguards", ONLY include safeguards explicitly mentioned or strongly implied as being implemented.
-            For "risk_triggers", include any risky features like biometric, emotion recognition, profiling, automated decision, surveillance, hiring, credit, education, health.
+            For "risk_triggers", include any risky features like biometric, emotion recognition, profiling, automated decision, surveillance, hiring, credit, education, health, interaction with minors, psychological support or analysis.
             Text: {text[:6000]}
             """
             
@@ -412,6 +412,7 @@ def analyze_text(text: str) -> dict:
         initial_risk_level = reasoning_result.get("initial_risk_level", "Unknown")
         final_risk_level = reasoning_result.get("final_risk_level", "Unknown")
         composite_score = reasoning_result.get("composite_score", 0)
+        score_components = reasoning_result.get("score_components", {})
         detected_risk_triggers = reasoning_result.get("detected_risk_triggers", [])
         detected_safeguards = reasoning_result.get("detected_safeguards", [])
         missing_safeguards = reasoning_result.get("missing_safeguards", [])
@@ -429,6 +430,7 @@ def analyze_text(text: str) -> dict:
         logger.error(f"Failed to run reasoner integration: {e}")
         reasoning_trace = [f"Reasoner execution failed: {str(e)}"]
         composite_score = 0
+        score_components = {}
     # --- END REASONER INTEGRATION ---
 
     return {
@@ -443,6 +445,7 @@ def analyze_text(text: str) -> dict:
         "initial_risk_level": initial_risk_level,
         "final_risk_level": final_risk_level,
         "composite_score": composite_score,
+        "score_components": score_components,
         "reasoning_trace": reasoning_trace
     }
 

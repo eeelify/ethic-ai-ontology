@@ -26,6 +26,7 @@ export interface AnalyzeTextResponse {
   initial_risk_level: string;
   final_risk_level: string;
   composite_score?: number;
+  score_components?: Record<string, number>;
   reasoning_trace: string[];
 }
 

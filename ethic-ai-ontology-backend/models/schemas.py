@@ -128,7 +128,8 @@ class AnalyzeTextResponse(BaseModel):
     missing_safeguards: List[str] = Field(default_factory=list)
     initial_risk_level: str = "Unknown"
     final_risk_level: str = "Unknown"
-    composite_score: Optional[int] = None
+    composite_score: Optional[float] = None
+    score_components: Optional[Dict[str, float]] = None
     reasoning_trace: List[str] = Field(default_factory=list)
 
 class ReportResponse(BaseModel):
